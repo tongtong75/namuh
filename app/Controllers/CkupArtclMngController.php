@@ -43,7 +43,8 @@ class CkupArtclMngController extends BaseController
         }
 
         $searchKeyword = $this->request->getPost('search_keyword');
-        $list = $this->model->getActiveItems($hsptlSn, $searchKeyword);
+        $ckupType = $this->request->getPost('ckup_type'); // Add this line
+        $list = $this->model->getActiveItems($hsptlSn, $searchKeyword, $ckupType);
         $data = $this->formatListData($list);
 
         return $this->ajaxSuccessResponse(['data' => $data]);

@@ -12,5 +12,5 @@ class CkupGdsChcGroupModel extends Model
     protected $returnType       = 'array';
 
     // 이 필드들만 insert, update가 허용됩니다.
-    protected $allowedFields    = ['CKUP_GDS_SN', 'GROUP_NM', 'CHC_ARTCL_CNT', 'DEL_YN'];
+    protected $allowedFields    = ['CKUP_GDS_SN', 'GROUP_NM', 'CHC_ARTCL_CNT', 'CHC_ARTCL_CNT2', 'DEL_YN'];
 }

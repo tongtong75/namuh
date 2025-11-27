@@ -266,7 +266,12 @@ class CkupGdsController extends BaseController
 
         if (!empty($data['choiceGroups'])) {
             foreach ($data['choiceGroups'] as $group) {
-                $groupData = ['CKUP_GDS_SN' => $ckupGdsSn, 'GROUP_NM' => $group['GROUP_NM'], 'CHC_ARTCL_CNT' => $group['CHC_ARTCL_CNT']];
+                $groupData = [
+                    'CKUP_GDS_SN' => $ckupGdsSn, 
+                    'GROUP_NM' => $group['GROUP_NM'], 
+                    'CHC_ARTCL_CNT' => $group['CHC_ARTCL_CNT'],
+                    'CHC_ARTCL_CNT2' => $group['CHC_ARTCL_CNT2'] ?? 0 // Add this line
+                ];
                 $this->ckupGdsChcGroupModel->insert($groupData);
                 $ckupGdsChcGroupSn = $this->ckupGdsChcGroupModel->getInsertID();
 

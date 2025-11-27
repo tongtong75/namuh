@@ -139,7 +139,7 @@ class CkupArtclMngModel extends Model
     /**
      * 활성 상태인 검진항목들만 조회 (검진구분별 정렬 추가)
      */
-    public function getActiveItems($hsptlSn = null, $searchKeyword = null): array
+    public function getActiveItems($hsptlSn = null, $searchKeyword = null, $ckupType = null): array
     {
         $builder = $this->select('CKUP_ARTCL_MNG.*, HSPTL_MNG.HSPTL_NM')
                         ->join('HSPTL_MNG', 'HSPTL_MNG.HSPTL_SN = CKUP_ARTCL_MNG.HSPTL_SN', 'left')
@@ -154,6 +154,10 @@ class CkupArtclMngModel extends Model
                     ->like('CKUP_ARTCL_MNG.CKUP_ARTCL', $searchKeyword)
                     ->orLike('CKUP_ARTCL_MNG.DSS', $searchKeyword)
                     ->groupEnd();
+        }
+
+        if ($ckupType) {
+            $builder->where('CKUP_ARTCL_MNG.CKUP_TYPE', $ckupType);
         }
 
         return $builder->orderBy('CKUP_ARTCL_MNG.CKUP_SE', 'ASC')

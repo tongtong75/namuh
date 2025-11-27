@@ -285,6 +285,16 @@ $buttonText = $isEditMode ? '전체수정' : '전체저장';
                         <button type="button" class="plus material-shadow">+</button>
                     </div>
                 </div>
+                <div class="col-auto">
+                    <label for="CHC_ARTCL_CNT2___INDEX__" class="form-label mb-0">또는 선택갯수2</label>
+                </div>
+                <div class="col-auto">
+                    <div class="input-step">
+                        <button type="button" class="minus material-shadow">–</button>
+                        <input type="number" id="CHC_ARTCL_CNT2___INDEX__" name="CHC_ARTCL_CNT2[]" class="product-quantity" value="0" min="0" max="100" readonly>
+                        <button type="button" class="plus material-shadow">+</button>
+                    </div>
+                </div>
                 <div class="col-auto ms-auto">
                     <button type="button" class="btn btn-danger btn-sm delete-choice-group-btn">
                         <i class="ri-close-line me-1"></i> 이 그룹 삭제
@@ -379,6 +389,16 @@ $(document).ready(function () {
                     orderable: false,
                     targets: 'no-sort'
                 }]
+            },
+            
+            ckupTypeMap: {
+                'ET': '기타',
+                'CS': '대장내시경',
+                'GS': '위내시경',
+                'BU': '유방초음파',
+                'PU': '골반초음파',
+                'UT': '초음파',
+                'CT': 'CT'
             }
         },
         
@@ -461,7 +481,8 @@ $(document).ready(function () {
                 paging: true,         // 페이징 기능 활성화
                 scrollY: false,       // 페이징을 사용하므로 내부 스크롤은 비활성화
                 scrollCollapse: false,
-                ordering: false,      // 정렬 비활성화
+                ordering: true,
+                order: [[2, 'asc']],
                 createdRow: function(row, data, dataIndex) {
                     $(row).css('font-size', '12px'); // 폰트 사이즈 축소
                     $('td', row).css('padding', '5px'); // 패딩 축소
@@ -514,7 +535,8 @@ $(document).ready(function () {
                 responsive: false,    // 반응형 비활성화 (가로 스크롤 사용)
                 scrollX: true,        // 가로 스크롤 활성화
                 autoWidth: false,
-                ordering: false,      // 정렬 비활성화
+                ordering: true,
+                order: [[2, 'asc']],
                 createdRow: function(row, data, dataIndex) {
                     $(row).css('font-size', '12px'); // 폰트 사이즈 축소
                     $('td', row).css('padding', '5px'); // 패딩 축소
@@ -557,7 +579,10 @@ $(document).ready(function () {
                 },
                 { data: 'CKUP_ARTCL' },
                 { data: 'ARTCL_CODE' },
-                { data: 'CKUP_TYPE' },
+                { 
+                    data: 'CKUP_TYPE',
+                    render: (d) => CkupGdsManager.config.ckupTypeMap[d] || d
+                },
                 {
                     data: 'GNDR_SE',
                     className: 'text-center',
@@ -590,7 +615,8 @@ $(document).ready(function () {
                 paging: true,         // 페이징 기능 활성화
                 scrollY: false,       // 페이징을 사용하므로 내부 스크롤은 비활성화
                 scrollCollapse: false,
-                ordering: false,      // 정렬 비활성화
+                ordering: true,
+                order: [[2, 'asc']],
                 createdRow: function(row, data, dataIndex) {
                     $(row).css('font-size', '12px'); // 폰트 사이즈 축소
                     $('td', row).css('padding', '5px'); // 패딩 축소
@@ -629,7 +655,8 @@ $(document).ready(function () {
                 responsive: false,    // 반응형 비활성화 (가로 스크롤 사용)
                 scrollX: true,        // 가로 스크롤 활성화
                 autoWidth: false,
-                ordering: false,      // 정렬 비활성화
+                ordering: true,
+                order: [[2, 'asc']],
                 createdRow: function(row, data, dataIndex) {
                     $(row).css('font-size', '12px'); // 폰트 사이즈 축소
                     $('td', row).css('padding', '5px'); // 패딩 축소
@@ -724,12 +751,15 @@ $(document).ready(function () {
                 paging: true,         // 페이징 기능 활성화
                 scrollY: false,       // 페이징을 사용하므로 내부 스크롤은 비활성화
                 scrollCollapse: false,
+                ordering: true,
+                order: [[2, 'asc']],
                 createdRow: function(row, data, dataIndex) {
                     $(row).css('font-size', '12px'); // 폰트 사이즈 축소
                     $('td', row).css('padding', '5px'); // 패딩 축소
                 },
                 info: false,
-                ordering: false, // 정렬 비활성화
+                ordering: true,
+                order: [[2, 'asc']],
                 language: {
                     "search": "검색:",
                     "lengthMenu": "_MENU_ 개씩 보기",
@@ -762,7 +792,10 @@ $(document).ready(function () {
                     },
                     { data: 'CKUP_ARTCL' },
                     { data: 'ARTCL_CODE' },
-                    { data: 'CKUP_TYPE' },
+                    { 
+                        data: 'CKUP_TYPE',
+                        render: (d) => CkupGdsManager.config.ckupTypeMap[d] || d
+                    },
                     {
                         data: 'GNDR_SE',
                         className: 'text-center',
@@ -787,7 +820,8 @@ $(document).ready(function () {
                 responsive: false,    // 반응형 비활성화 (가로 스크롤 사용)
                 scrollX: true,        // 가로 스크롤 활성화
                 autoWidth: false,
-                ordering: false,      // 정렬 비활성화
+                ordering: true,
+                order: [[2, 'asc']],
                 createdRow: function(row, data, dataIndex) {
                     $(row).css('font-size', '12px'); // 폰트 사이즈 축소
                     $('td', row).css('padding', '5px'); // 패딩 축소
@@ -800,7 +834,10 @@ $(document).ready(function () {
                     },
                     { data: 'CKUP_ARTCL' },
                     { data: 'ARTCL_CODE' },
-                    { data: 'CKUP_TYPE' },
+                    { 
+                        data: 'CKUP_TYPE',
+                        render: (d) => CkupGdsManager.config.ckupTypeMap[d] || d
+                    },
                     {
                         data: 'GNDR_SE',
                         className: 'text-center',
@@ -980,6 +1017,7 @@ $(document).ready(function () {
                     // 그룹 정보 설정
                     groupContainer.find('input[name="GROUP_NM[]"]').val(groupData.GROUP_NM);
                     groupContainer.find('input[name="CHC_ARTCL_CNT[]"]').val(groupData.CHC_ARTCL_CNT);
+                    groupContainer.find('input[name="CHC_ARTCL_CNT2[]"]').val(groupData.CHC_ARTCL_CNT2 || 0);
                     
                     // 그룹 항목 데이터를 테이블에 바로 추가하지 않고, 'pending-data'로 저장해 둡니다.
                     // 탭이 표시될 때 데이터를 로드하여 렌더링 문제를 해결합니다.
@@ -1025,6 +1063,7 @@ $(document).ready(function () {
                 const groupIndex = $(this).data('group-index');
                 const groupName = $(this).find(`input[name="GROUP_NM[]"]`).val().trim();
                 const choiceCount = $(this).find(`input[name="CHC_ARTCL_CNT[]"]`).val();
+                const choiceCount2 = $(this).find(`input[name="CHC_ARTCL_CNT2[]"]`).val();
                 
                 if (!groupName) {
                     alert('선택항목정보: 그룹명을 입력해주세요.');
@@ -1039,7 +1078,7 @@ $(document).ready(function () {
                     return false;
                 }
                 
-                choiceGroups.push({ GROUP_NM: groupName, CHC_ARTCL_CNT: choiceCount, items: choiceItems });
+                choiceGroups.push({ GROUP_NM: groupName, CHC_ARTCL_CNT: choiceCount, CHC_ARTCL_CNT2: choiceCount2, items: choiceItems });
             });
 
             if (validationError) return;

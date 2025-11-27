@@ -56,6 +56,19 @@
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
+                                            <div class="col-md-auto">
+                                                <label for="ckup-type-filter" class="form-label">검사유형</label>
+                                                <select id="ckup-type-filter" name="ckup_type_filter" class="form-select">
+                                                    <option value="">전체</option>
+                                                    <option value="ET">기타</option>
+                                                    <option value="CS">대장내시경</option>
+                                                    <option value="GS">위내시경</option>
+                                                    <option value="BU">유방초음파</option>
+                                                    <option value="PU">골반초음파</option>
+                                                    <option value="UT">초음파</option>
+                                                    <option value="CT">CT</option>
+                                                </select>
+                                            </div>
                                             <div class="col-md-2">
                                                 <label for="search-keyword" class="form-label">검색어</label>
                                                 <input type="text" id="search-keyword" class="form-control" placeholder="검색어 입력">
@@ -253,7 +266,8 @@
                         data: function (d) {
                             d[CSRF_TOKEN_NAME] = CSRF_HASH;
                             d.hsptl_sn = $('#hospital-filter').val();
-                            d.search_keyword = $('#search-keyword').val(); // Add this line
+                            d.ckup_type = $('#ckup-type-filter').val(); // Add this line
+                            d.search_keyword = $('#search-keyword').val();
                         },
                         dataSrc: function (json) {
                             updateCsrfTokenOnPage(json.csrf_hash); // 갱신
