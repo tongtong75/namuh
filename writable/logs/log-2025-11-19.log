@@ -1,0 +1,1132 @@
+ERROR - 2025-11-19 12:04:54 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ï¿½Ë·ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'E:\\project\\namu...', 201)
+#1 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#4 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#5 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#7 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#8 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#9 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#10 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#11 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-19 12:04:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù. 
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:05:02 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ï¿½Ë·ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'E:\\project\\namu...', 201)
+#1 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#4 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#7 E:\project\namuh\source\app\Controllers\DayCkupMngController.php(286): CodeIgniter\BaseModel->findAll()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\DayCkupMngController->calendar()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Controllers\DayCkupMngController.php(286): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\DayCkupMngController->calendar()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Controllers\DayCkupMngController.php(286): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\DayCkupMngController->calendar()
+#7 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+#8 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-19 12:05:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù. 
+[Method: GET, Route: mngr/dayCkupMng/calendar]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `HSPTL_MNG`', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DayCkupMngController.php(286): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->calendar()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:05:18 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ï¿½Ë·ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'E:\\project\\namu...', 201)
+#1 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#4 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#7 E:\project\namuh\source\app\Controllers\CkupTrgtController.php(32): CodeIgniter\BaseModel->findAll()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\CkupTrgtController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CkupTrgtController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Controllers\CkupTrgtController.php(32): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\CkupTrgtController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CkupTrgtController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Controllers\CkupTrgtController.php(32): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\CkupTrgtController->index()
+#7 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CkupTrgtController))
+#8 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-19 12:05:18 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù. 
+[Method: GET, Route: mngr/ckupTrgt]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `CO_MNG`
+WHERE `DEL_YN` = :DEL_YN:
+ORDER BY `CO_NM` ASC', [...], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\CkupTrgtController.php(32): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\CkupTrgtController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\CkupTrgtController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:07:45 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ï¿½Ë·ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'E:\\project\\namu...', 201)
+#1 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#4 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#5 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#7 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#8 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#9 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#10 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#11 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-19 12:07:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù. 
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:07:49 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ï¿½Ë·ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'E:\\project\\namu...', 201)
+#1 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#4 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#5 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#7 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#8 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#9 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#10 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#11 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-19 12:07:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù. 
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:07:51 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ï¿½Ë·ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'E:\\project\\namu...', 201)
+#1 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#4 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#5 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#7 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#8 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#9 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#10 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#11 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-19 12:07:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù. 
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-19 12:11:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-19 12:12:09 --> Error connecting to the database: ErrorException: mysqli::real_connect(): php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ï¿½Ë·ï¿½ï¿½ï¿½ È£ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'E:\\project\\namu...', 201)
+#1 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#4 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#5 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#6 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#7 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#8 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#9 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#10 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#11 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#13 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#14 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#15 {main}
+
+Next mysqli_sql_exception: php_network_getaddresses: getaddrinfo for sunwoo901.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.cafe2...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù.  in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-19 12:12:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: php_network_getaddresses: getaddrinfo for ****.cafe24.com failed: ¾Ë·ÁÁø È£½ºÆ®°¡ ¾ø½À´Ï´Ù. 
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:39:06 --> mysqli_sql_exception: Table 'sunwoo901.MNGR_MNG' doesn't exist in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `MNGR_MN...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MN...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MN...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-11-19 12:39:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.MNGR_MNG' doesn't exist
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 12:39:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.MNGR_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 12:39:06 --> [Caused by] mysqli_sql_exception: Table 'sunwoo901.MNGR_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:39:10 --> mysqli_sql_exception: Table 'sunwoo901.MNGR_MNG' doesn't exist in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `MNGR_MN...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MN...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MN...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-11-19 12:39:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.MNGR_MNG' doesn't exist
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 12:39:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.MNGR_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 12:39:10 --> [Caused by] mysqli_sql_exception: Table 'sunwoo901.MNGR_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-19 12:39:16 --> mysqli_sql_exception: Table 'sunwoo901.MNGR_MNG' doesn't exist in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `MNGR_MN...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MN...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MN...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-11-19 12:39:16 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.MNGR_MNG' doesn't exist
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 12:39:16 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.MNGR_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 12:39:16 --> [Caused by] mysqli_sql_exception: Table 'sunwoo901.MNGR_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-19 12:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:58:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:58:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:59:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:59:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:59:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:59:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:59:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 12:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:00:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:00:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:01:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:02:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:02:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:02:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:02:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:02:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:03:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:03:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:09:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:10:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:11:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:12:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:12:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:12:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:12:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:12:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-19 21:12:55 --> mysqli_sql_exception: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT YEAR(dcm...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm...', Array, false)
+#4 E:\project\namuh\source\app\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\app\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList(Array)
+#6 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+#7 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+#8 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-19 21:12:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+[Method: GET, Route: mngr/dayCkupMng/getList]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 2 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 21:12:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 4 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 21:12:55 --> [Caused by] mysqli_sql_exception: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 5 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-19 21:13:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:13:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-19 21:13:12 --> mysqli_sql_exception: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT YEAR(dcm...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm...', Array, false)
+#4 E:\project\namuh\source\app\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\app\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList(Array)
+#6 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+#7 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+#8 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-19 21:13:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+[Method: GET, Route: mngr/dayCkupMng/getList]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 2 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 21:13:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 4 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 21:13:12 --> [Caused by] mysqli_sql_exception: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 5 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-19 21:13:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:13:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:13:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:13:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:14:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-19 21:15:10 --> mysqli_sql_exception: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT YEAR(dcm...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm...', Array, false)
+#4 E:\project\namuh\source\app\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\app\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList(Array)
+#6 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+#7 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+#8 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#10 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-19 21:15:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+[Method: GET, Route: mngr/dayCkupMng/getList]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 2 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 21:15:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 4 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-19 21:15:10 --> [Caused by] mysqli_sql_exception: Table 'sunwoo901.DAY_CKUP_MNG' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT YEAR(dcm.CKUP_YMD) AS ckup_year, `dcm`.`HSPTL_SN`, `hm`.`HSPTL_NM`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`, MAX(dcm.REG_YMD) AS reg_ymd
+FROM `DAY_CKUP_MNG` AS `dcm`
+LEFT JOIN `HSPTL_MNG` AS `hm` ON `hm`.`HSPTL_SN` = `dcm`.`HSPTL_SN`
+GROUP BY YEAR(dcm.CKUP_YMD), `dcm`.`HSPTL_SN`, `dcm`.`DAY_CKUP_SE`, `dcm`.`CKUP_SE`, `dcm`.`MAX_CNT`
+ORDER BY `ckup_year` DESC', [], false)
+ 5 APPPATH\Models\DayCkupMngModel.php(61): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DayCkupMngController.php(63): App\Models\DayCkupMngModel->getSummaryList([...])
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DayCkupMngController->getList()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DayCkupMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-19 21:15:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:15:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:15:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:15:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:15:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:15:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:18:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:21:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:21:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:22:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:23:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:23:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:23:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:23:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:24:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:24:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:24:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:24:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:25:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:25:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:28:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:29:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:29:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 21:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-19 23:54:41 --> Error connecting to the database: mysqli_sql_exception: Host '211.234.195.219' is not allowed to connect to this MariaDB server in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.mycaf...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host '211.234.195.219' is not allowed to connect to this MariaDB server in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MN...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#5 E:\project\namuh\source\app\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+#6 E:\project\namuh\source\app\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-19 23:54:41 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Host '211.234.195.219' is not allowed to connect to this MariaDB server
+[Method: GET, Route: mngr/mngrMng]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `MNGR_MNG`.*, `HSPTL_MNG`.`HSPTL_NM`
+FROM `MNGR_MNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `MNGR_MNG`.`HSPTL_SN`
+ORDER BY `MNGR_MNG`.`MNGR_SN` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Models\MngrMngModel.php(63): CodeIgniter\BaseModel->findAll()
+ 6 APPPATH\Controllers\MngrMngController.php(23): App\Models\MngrMngModel->getManagersWithHospitalDetails()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrMngController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrMngController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-19 23:59:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 23:59:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-19 23:59:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

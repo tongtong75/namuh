@@ -1,0 +1,28 @@
+*   `app/Database/Migrations/2025-07-19-121428_AddHsplSnToCkupArtclMng.php`                                                                   │
+*   `app/Models/CkupArtclMngModel.php`                                                                                                        │
+*   `app/Controllers/CkupArtclMngController.php`                                                                                              │
+*   `app/Views/mngr/ckup_artcl_mng/index.php`                                                                                                 │
+*   `app/Models/HsptlMngModel.php`                                                                                                            │
+*   `app/Views/mngr/ckup_artcl_mng/index.php`                                                                                                 │
+*   `app/Controllers/CkupArtclMngController.php`                                                                                              │
+*   `app/Models/CkupArtclMngModel.php`                                                                                                        │
+*   `app/Views/mngr/ckup_artcl_mng/index.php`                                                                                                 │
+*   `app/Controllers/CkupArtclMngController.php`                                                                                              │
+*   `app/Models/CkupArtclMngModel.php`                                                                                                        │
+*   `app/Views/mngr/ckup_artcl_mng/index.php`                                                                                                 │
+*   `app/Database/Migrations/2025-07-19-141313_AddHsplSnToChcArtclMng.php`                                                                    │
+*   `app/Models/ChcArtclMngModel.php`                                                                                                         │
+*   `app/Controllers/ChcArtclMngController.php`                                                                                               │
+*   `app/Views/mngr/chc_artcl_mng/index.php`  
+*   `app/Database/Migrations/2025-07-19-141313_AddHsplSnToChcArtclMng.php`
+*   `app/Models/ChcArtclMngModel.php`
+*   `app/Controllers/ChcArtclMngController.php`
+*   `app/Views/mngr/chc_artcl_mng/index.php`
+*   `app/Views/mngr/hsptl_mng/index.php`
+*   `app/Controllers/HsptlMngController.php`
+*   `app/Views/mngr/ckup_artcl_mng/index.php`
+*   `app/Views/mngr/chc_artcl_mng/index.php`
+*   `app/Views/mngr/mngr_mng/index.php`
+*   `app/Controllers/MngrMngController.php`
+*   `app/Views/mngr/co_mng/index.php`
+*   `app/Controllers/CoMngController.php`

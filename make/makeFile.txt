@@ -1,0 +1,6 @@
+app/Models/DayCkupMngModel.php
+app/Controllers/DayCkupMngController.php
+app/Views/mngr/dayCkupMng/list.php
+app/Views/mngr/dayCkupMng/form.php
+app/Views/mngr/dayCkupMng/form_tab_content.php
+app/Config/Routes.php

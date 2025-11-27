@@ -1,0 +1,215 @@
+
+-- =================================================================================================
+-- Table: HSPTL_MNG (병원관리)
+-- =================================================================================================
+CREATE TABLE HSPTL_MNG (
+    HSPTL_SN INT NOT NULL AUTO_INCREMENT COMMENT '병원일련번호',
+    HSPTL_NM VARCHAR(100) NOT NULL COMMENT '병원명',
+    PIC_NM VARCHAR(50) COMMENT '담당자명',
+    CNPL1 VARCHAR(50) COMMENT '연락처1',
+    RGN VARCHAR(10) COMMENT '지역',
+    REG_ID VARCHAR(20) COMMENT '등록아이디',
+    MDFCN_ID VARCHAR(20) COMMENT '수정아이디',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    REG_YMD DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '등록일시',
+    MDFCN_YMD DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
+    PRIMARY KEY (HSPTL_SN)
+) COMMENT '병원관리';
+
+-- =================================================================================================
+-- Table: mngr_mng (관리자관리)
+-- =================================================================================================
+CREATE TABLE mngr_mng (
+    MNGR_SN INT NOT NULL AUTO_INCREMENT COMMENT '관리자일련번호',
+    MNGR_ID VARCHAR(50) NOT NULL COMMENT '관리자ID',
+    MNGR_NM VARCHAR(50) NOT NULL COMMENT '관리자명',
+    MNGR_PSWD VARCHAR(255) NOT NULL COMMENT '관리자비밀번호',
+    HSPTL_SN INT COMMENT '병원일련번호',
+    PRIMARY KEY (MNGR_SN),
+    UNIQUE KEY (MNGR_ID),
+    FOREIGN KEY (HSPTL_SN) REFERENCES HSPTL_MNG(HSPTL_SN)
+) COMMENT '관리자관리';
+
+-- =================================================================================================
+-- Table: CO_MNG (회사관리)
+-- =================================================================================================
+CREATE TABLE CO_MNG (
+    CO_SN INT NOT NULL AUTO_INCREMENT COMMENT '회사일련번호',
+    CO_NM VARCHAR(100) NOT NULL COMMENT '회사명',
+    PIC_NM VARCHAR(50) COMMENT '담당자명',
+    CNPL VARCHAR(50) COMMENT '연락처',
+    BGNG_YMD DATE COMMENT '검진시작일자',
+    END_YMD DATE COMMENT '검진종료일자',
+    REG_ID VARCHAR(20) COMMENT '등록아이디',
+    MDFCN_ID VARCHAR(20) COMMENT '수정아이디',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    REG_YMD DATE COMMENT '등록일자',
+    MDFCN_YMD DATE COMMENT '수정일자',
+    PRIMARY KEY (CO_SN)
+) COMMENT '회사관리';
+
+-- =================================================================================================
+-- Table: co_hsptl_lnkng (회사-병원 연계)
+-- =================================================================================================
+CREATE TABLE co_hsptl_lnkng (
+    HSPTL_SN INT NOT NULL COMMENT '병원일련번호',
+    CO_SN INT NOT NULL COMMENT '회사일련번호',
+    REG_ID VARCHAR(20) COMMENT '등록아이디',
+    REG_YMD DATE COMMENT '등록일자',
+    PRIMARY KEY (HSPTL_SN, CO_SN),
+    FOREIGN KEY (HSPTL_SN) REFERENCES HSPTL_MNG(HSPTL_SN),
+    FOREIGN KEY (CO_SN) REFERENCES CO_MNG(CO_SN)
+) COMMENT '회사-병원 연계';
+
+-- =================================================================================================
+-- Table: CHC_ARTCL_MNG (선택항목관리)
+-- =================================================================================================
+CREATE TABLE CHC_ARTCL_MNG (
+    CHC_ARTCL_SN INT NOT NULL AUTO_INCREMENT COMMENT '선택항목일련번호',
+    CKUP_ARTCL VARCHAR(100) NOT NULL COMMENT '검사항목',
+    GNDR_SE CHAR(1) COMMENT '성별구분',
+    CKUP_SE VARCHAR(2) COMMENT '검사구분',
+    CKUP_CST VARCHAR(10) NOT NULL COMMENT '검사비용',
+    RMRK VARCHAR(200) COMMENT '비고',
+    HSPTL_SN INT COMMENT '병원일련번호',
+    REG_ID VARCHAR(20) COMMENT '등록아이디',
+    MDFCN_ID VARCHAR(20) COMMENT '수정아이디',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    REG_YMD DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '등록일시',
+    MDFCN_YMD DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
+    PRIMARY KEY (CHC_ARTCL_SN),
+    FOREIGN KEY (HSPTL_SN) REFERENCES HSPTL_MNG(HSPTL_SN)
+) COMMENT '선택항목관리';
+
+-- =================================================================================================
+-- Table: CKUP_ARTCL_MNG (검진항목관리)
+-- =================================================================================================
+CREATE TABLE CKUP_ARTCL_MNG (
+    CKUP_ARTCL_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진항목일련번호',
+    CKUP_SE VARCHAR(50) NOT NULL COMMENT '검진구분',
+    CKUP_ARTCL VARCHAR(100) NOT NULL COMMENT '검진항목명',
+    DSS VARCHAR(100) COMMENT '질환명',
+    HSPTL_SN INT COMMENT '병원일련번호',
+    REG_ID VARCHAR(20) COMMENT '등록아이디',
+    MDFCN_ID VARCHAR(20) COMMENT '수정아이디',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    REG_YMD DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '등록일시',
+    MDFCN_YMD DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '수정일시',
+    PRIMARY KEY (CKUP_ARTCL_SN),
+    FOREIGN KEY (HSPTL_SN) REFERENCES HSPTL_MNG(HSPTL_SN)
+) COMMENT '검진항목관리';
+
+-- =================================================================================================
+-- Table: ckup_gds_mng (검진상품관리)
+-- =================================================================================================
+CREATE TABLE ckup_gds_mng (
+    CKUP_GDS_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진상품일련번호',
+    HSPTL_SN INT NOT NULL COMMENT '병원일련번호',
+    CO_SN INT NOT NULL COMMENT '회사일련번호',
+    CKUP_YYYY VARCHAR(4) NOT NULL COMMENT '검진년도',
+    CKUP_GDS_NM VARCHAR(100) NOT NULL COMMENT '검진상품명',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    REG_ID VARCHAR(20) COMMENT '등록아이디',
+    MDFCN_ID VARCHAR(20) COMMENT '수정아이디',
+    REG_YMD DATE COMMENT '등록일자',
+    MDFCN_YMD DATE COMMENT '수정일자',
+    PRIMARY KEY (CKUP_GDS_SN),
+    FOREIGN KEY (HSPTL_SN) REFERENCES HSPTL_MNG(HSPTL_SN),
+    FOREIGN KEY (CO_SN) REFERENCES CO_MNG(CO_SN)
+) COMMENT '검진상품관리';
+
+-- =================================================================================================
+-- Table: ckup_gds_add_chc (검진상품추가선택)
+-- =================================================================================================
+CREATE TABLE ckup_gds_add_chc (
+    CKUP_GDS_ADD_CHC_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진상품추가선택일련번호',
+    CKUP_GDS_SN INT NOT NULL COMMENT '검진상품일련번호',
+    CHC_ARTCL_SN INT NOT NULL COMMENT '선택항목일련번호',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    PRIMARY KEY (CKUP_GDS_ADD_CHC_SN),
+    FOREIGN KEY (CKUP_GDS_SN) REFERENCES ckup_gds_mng(CKUP_GDS_SN),
+    FOREIGN KEY (CHC_ARTCL_SN) REFERENCES CHC_ARTCL_MNG(CHC_ARTCL_SN)
+) COMMENT '검진상품추가선택';
+
+-- =================================================================================================
+-- Table: ckup_gds_artcl (검진상품항목)
+-- =================================================================================================
+CREATE TABLE ckup_gds_artcl (
+    CKUP_GDS_ARTCL_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진상품항목일련번호',
+    CKUP_GDS_SN INT NOT NULL COMMENT '검진상품일련번호',
+    CKUP_ARTCL_SN INT NOT NULL COMMENT '검진항목일련번호',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    PRIMARY KEY (CKUP_GDS_ARTCL_SN),
+    FOREIGN KEY (CKUP_GDS_SN) REFERENCES ckup_gds_mng(CKUP_GDS_SN),
+    FOREIGN KEY (CKUP_ARTCL_SN) REFERENCES CKUP_ARTCL_MNG(CKUP_ARTCL_SN)
+) COMMENT '검진상품항목';
+
+-- =================================================================================================
+-- Table: ckup_gds_chc_group (검진상품선택그룹)
+-- =================================================================================================
+CREATE TABLE ckup_gds_chc_group (
+    CKUP_GDS_CHC_GROUP_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진상품선택그룹일련번호',
+    CKUP_GDS_SN INT NOT NULL COMMENT '검진상품일련번호',
+    GROUP_NM VARCHAR(100) COMMENT '그룹명',
+    CHC_ARTCL_CNT INT COMMENT '선택항목수',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    PRIMARY KEY (CKUP_GDS_CHC_GROUP_SN),
+    FOREIGN KEY (CKUP_GDS_SN) REFERENCES ckup_gds_mng(CKUP_GDS_SN)
+) COMMENT '검진상품선택그룹';
+
+-- =================================================================================================
+-- Table: ckup_gds_chc_artcl (검진상품선택항목)
+-- =================================================================================================
+CREATE TABLE ckup_gds_chc_artcl (
+    CKUP_GDS_CHC_ARTCL_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진상품선택항목일련번호',
+    CKUP_GDS_CHC_GROUP_SN INT NOT NULL COMMENT '검진상품선택그룹일련번호',
+    CHC_ARTCL_SN INT NOT NULL COMMENT '선택항목일련번호',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    PRIMARY KEY (CKUP_GDS_CHC_ARTCL_SN),
+    FOREIGN KEY (CKUP_GDS_CHC_GROUP_SN) REFERENCES ckup_gds_chc_group(CKUP_GDS_CHC_GROUP_SN),
+    FOREIGN KEY (CHC_ARTCL_SN) REFERENCES CHC_ARTCL_MNG(CHC_ARTCL_SN)
+) COMMENT '검진상품선택항목';
+
+-- =================================================================================================
+-- Table: CKUP_TRGT (검진대상자)
+-- =================================================================================================
+CREATE TABLE CKUP_TRGT (
+    CKUP_TRGT_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진대상자일련번호',
+    CO_SN INT COMMENT '회사일련번호',
+    CKUP_YYYY VARCHAR(4) NOT NULL COMMENT '검진년도',
+    CKUP_NAME VARCHAR(50) NOT NULL COMMENT '수검자명',
+    NAME VARCHAR(50) NOT NULL COMMENT '직원명',
+    BUSINESS_NUM VARCHAR(30) COMMENT '사번',
+    BIRTHDAY VARCHAR(6) COMMENT '생년월일',
+    PSWD VARCHAR(50) COMMENT '비밀번호',
+    SEX CHAR(1) COMMENT '성별',
+    HANDPHONE VARCHAR(13) COMMENT '휴대폰',
+    SUPPORT_FUND VARCHAR(20) COMMENT '지원금',
+    FAMILY_SUPPORT_FUND VARCHAR(20) COMMENT '가족지원금',
+    EMAIL VARCHAR(50) COMMENT '이메일',
+    WORK_STATUS VARCHAR(20) COMMENT '재직상태',
+    ASSIGN_CODE VARCHAR(20) COMMENT '부서코드',
+    JOB VARCHAR(20) COMMENT '직급',
+    RELATION VARCHAR(20) COMMENT '관계',
+    CHECKUP_TARGET_YN CHAR(1) DEFAULT 'N' COMMENT '검진대상여부',
+    RSVT_STTS CHAR(1) DEFAULT 'N' COMMENT '예약상태',
+    CKUP_YN CHAR(1) DEFAULT 'N' COMMENT '검진여부',
+    REG_ID VARCHAR(20) COMMENT '등록아이디',
+    MDFCN_ID VARCHAR(20) COMMENT '수정아이디',
+    DEL_YN CHAR(1) NOT NULL DEFAULT 'N' COMMENT '삭제여부',
+    REG_YMD VARCHAR(8) COMMENT '등록일자',
+    MDFCN_YMD DATE COMMENT '수정일자',
+    PRIMARY KEY (CKUP_TRGT_SN),
+    FOREIGN KEY (CO_SN) REFERENCES CO_MNG(CO_SN)
+) COMMENT '검진대상자';
+
+-- =================================================================================================
+-- Table: CKUP_TRGT_MEMO (검진대상자메모)
+-- =================================================================================================
+CREATE TABLE CKUP_TRGT_MEMO (
+    CKUP_TRGT_MEMO_SN INT NOT NULL AUTO_INCREMENT COMMENT '검진대상자메모일련번호',
+    CKUP_TRGT_SN INT NOT NULL COMMENT '검진대상자일련번호',
+    MEMO TEXT COMMENT '메모',
+    PRIMARY KEY (CKUP_TRGT_MEMO_SN),
+    FOREIGN KEY (CKUP_TRGT_SN) REFERENCES CKUP_TRGT(CKUP_TRGT_SN)
+) COMMENT '검진대상자메모';

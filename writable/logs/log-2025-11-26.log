@@ -1,0 +1,135 @@
+DEBUG - 2025-11-26 15:03:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-26 15:03:10 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`END` ASC, `CT`.`RELATION` ASC' at line 7 in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CT`.*, ...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CT`.*, ...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CT`.*, ...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CT`.*, ...', Array, false)
+#4 E:\project\namuh\source\app\Controllers\UserAuthController.php(185): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserAuthController->rsvn()
+#6 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserAuthController))
+#7 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-11-26 15:03:10 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`END` ASC, `CT`.`RELATION` ASC' at line 7
+[Method: GET, Route: user/rsvn]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = :CT.BUSINESS_NUM:
+AND `CT`.`CKUP_YYYY` = :CT.CKUP_YYYY:
+AND `CT`.`DEL_YN` = :CT.DEL_YN:
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC', [...], false)
+ 2 APPPATH\Controllers\UserAuthController.php(185): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserAuthController->rsvn()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserAuthController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-26 15:03:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`END` ASC, `CT`.`RELATION` ASC' at line 7
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = \'12000007\'
+AND `CT`.`CKUP_YYYY` = \'2025\'
+AND `CT`.`DEL_YN` = \'N\'
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = \'12000007\'
+AND `CT`.`CKUP_YYYY` = \'2025\'
+AND `CT`.`DEL_YN` = \'N\'
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = :CT.BUSINESS_NUM:
+AND `CT`.`CKUP_YYYY` = :CT.CKUP_YYYY:
+AND `CT`.`DEL_YN` = :CT.DEL_YN:
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC', [...], false)
+ 4 APPPATH\Controllers\UserAuthController.php(185): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserAuthController->rsvn()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserAuthController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-26 15:03:10 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '`END` ASC, `CT`.`RELATION` ASC' at line 7
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = \'12000007\'
+AND `CT`.`CKUP_YYYY` = \'2025\'
+AND `CT`.`DEL_YN` = \'N\'
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = \'12000007\'
+AND `CT`.`CKUP_YYYY` = \'2025\'
+AND `CT`.`DEL_YN` = \'N\'
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = \'12000007\'
+AND `CT`.`CKUP_YYYY` = \'2025\'
+AND `CT`.`DEL_YN` = \'N\'
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CT`.*, `HM`.`HSPTL_NM`
+FROM `CKUP_TRGT` `CT`
+LEFT JOIN `HSPTL_MNG` `HM` ON `HM`.`HSPTL_SN` = `CT`.`CKUP_HSPTL_SN`
+WHERE `CT`.`BUSINESS_NUM` = :CT.BUSINESS_NUM:
+AND `CT`.`CKUP_YYYY` = :CT.CKUP_YYYY:
+AND `CT`.`DEL_YN` = :CT.DEL_YN:
+ORDER BY `CASE WHEN CT`.`RELATION = "S" THEN 0 ELSE 1` `END` ASC, `CT`.`RELATION` ASC', [...], false)
+ 5 APPPATH\Controllers\UserAuthController.php(185): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserAuthController->rsvn()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserAuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-26 15:04:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:06:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:12:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:12:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:12:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:21:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:21:57 --> User CO_SN: 1
+DEBUG - 2025-11-26 15:21:57 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-11-24","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$VjBGY8p10TZw2THnvLTV6.5.hufxhMNFxi.BFujYgigcX9au1TPkW","REG_ID":"SYSTEM","MDFCN_ID":"SYSTEM","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-11-23 00:00:00"}
+DEBUG - 2025-11-26 15:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:21:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:22:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:22:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-26 15:22:20 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: user/completeRegistration]
+in SYSTEMPATH\BaseModel.php on line 1014.
+ 1 SYSTEMPATH\BaseModel.php(1014): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(863): CodeIgniter\BaseModel->update(null, [])
+ 3 APPPATH\Controllers\UserAuthController.php(174): CodeIgniter\Model->update()
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserAuthController->completeRegistration()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserAuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-26 15:22:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:22:39 --> User CO_SN: 1
+DEBUG - 2025-11-26 15:22:39 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-11-24","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$VjBGY8p10TZw2THnvLTV6.5.hufxhMNFxi.BFujYgigcX9au1TPkW","REG_ID":"SYSTEM","MDFCN_ID":"SYSTEM","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-11-23 00:00:00"}
+DEBUG - 2025-11-26 15:22:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:22:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:49:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:50:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-26 15:50:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

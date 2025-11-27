@@ -1,0 +1,8 @@
+1. ChcArtclMngModel 모델에 관련된 테이블에 HSPTL_SN 컬럼이 추가됰
+2. /mngr/chcArtclMng 선택항목 목록에 HSPTL_SN 관련 해서 목록에서 검진병원을 추가 
+3. 등록폼에도 검진병원을 select box를 추가해서 등록할때 HSPTL_SN 등록폼에도
+4. `app/Views/mngr/ckup_artcl_mng/index.php` 파일의 class="card-header" 를 참조하여 `app/Views/mngr/chc_artcl_mng/index.php`
+5. datatable 에서 print 버튼 삭제
+6. `app/Views/mngr/ckup_artcl_mng/index.php` 의 datatable의 엑셀다운로드 버튼 참조하여 엑셀다운로드 버튼 수정
+
+1~6 번이 끝나면 변경된 소스 목록을 나열해줘 

@@ -1,0 +1,90 @@
+## 파일 수정 내역
+
+### 1. `C:\xampp\htdocs\namuh\source\app\Views\mngr\hsptl_mng\index.php`
+
+- **DataTables 초기화 스크립트 수정 (`initializeMainDataTable` 함수)**
+    - `dom` 설정에서 기본 검색창(`'f'`)을 제거하여 DataTables가 자체적으로 제공하는 검색 입력란을 숨겼습니다.
+    - `ajax` 설정에 `data` 속성을 추가하여, card-header에 있는 별도의 검색 입력 필드 (`#search-keyword`)의 값을 서버로 전송하도록 했습니다. 이를 통해 커스텀 검색창의 입력값이 AJAX 요청에 포함되어 서버 측에서 필터링 로직을 수행할 수 있습니다.
+
+### 2. `C:\xampp\htdocs\namuh\source\app\Controllers\HsptlMngController.php`
+
+- **`ajax_list` 메소드 수정**
+    - GET 파라미터로 전달된 `search_keyword` 값을 받도록 로직을 추가했습니다.
+    - `search_keyword` 값이 존재할 경우, CodeIgniter의 쿼리 빌더를 사용하여 `HSPTL_NM`(병원명), `RGN`(지역), `PIC_NM`(담당자명) 컬럼에 대해 `LIKE` 검색을 수행하는 조건문을 추가했습니다. 이를 통해 데이터베이스 조회 시 검색어가 포함된 결과만 필터링하여 반환합니다.
+
+### 3. 엑셀 다운로드 버튼 커스터마이징 방법 (`hsptl_mng/index.php`)
+
+- **`index.php` 파일 수정**
+    1. **새로운 엑셀 다운로드 버튼 추가:** `card-header` 내 '신규 등록' 버튼 앞에 새로운 버튼을 추가합니다.
+        ```html
+        <div class="col d-flex justify-content-end gap-2">
+            <button type="button" class="btn btn-success" id="custom-excel-btn">
+                <i class="ri-file-excel-2-line align-bottom me-1"></i> 엑셀 다운로드
+            </button>
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" id="create-item-btn" data-bs-target="#showModal">
+                <i class="ri-add-line align-bottom me-1"></i> 신규 등록
+            </button>
+        </div>
+        ```
+
+    2. **DataTables 초기화 설정 변경:** `initializeMainDataTable` 함수 내에서 `dom`과 `buttons` 설정을 수정하여 기존의 버튼들을 숨깁니다.
+        - `dom` 설정에서 `B` (buttons)를 제거합니다.
+        - `buttons` 설정은 그대로 두거나, `excelHtml5` 버튼 설정만 남겨둡니다.
+
+        ```javascript
+        // dom 설정에서 'B' 제거
+        dom: "<'row'<'col-sm-12 col-md-6'><'col-sm-12 col-md-6'>>" +
+             "<'row'<'col-sm-12'tr>>" +
+             "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
+
+        // buttons 설정은 유지
+        buttons: [
+            { extend: 'excelHtml5', text: 'Excel', className: 'btn btn-success btn-sm' }
+        ],
+        ```
+
+    3. **새로운 버튼에 이벤트 리스너 추가:** 새로 추가한 '엑셀 다운로드' 버튼 클릭 시 DataTables의 엑셀 내보내기 기능을 실행하도록 jQuery 코드를 추가합니다.
+
+        ```javascript
+        $(document).ready(function() {
+            // ... 기존 코드 ...
+
+            // 커스텀 엑셀 다운로드 버튼 이벤트
+            $('#custom-excel-btn').on('click', function() {
+                mainTable.button('.buttons-excel').trigger();
+            });
+        });
+        ```
+
+### 4. `ckup_artcl_mng/index.php` 엑셀 다운로드 버튼 수정 방법
+
+- **`index.php` 파일 분석**
+    - 이 파일은 `drawCallback` 함수 내에서 `$('.dt-buttons').prependTo($('#create-item-btn').parent());` 코드를 사용하여 이미 DataTables의 버튼 컨테이너(`.dt-buttons`)를 '신규 등록' 버튼 앞으로 이동시키고 있습니다.
+    - 따라서, 새로운 버튼을 만들고 이벤트를 바인딩하는 대신, 기존 로직을 수정하여 버튼의 스타일만 변경하고 원하는 위치에 있도록 조정하는 것이 더 효율적입니다.
+
+- **수정 계획**
+    1. **HTML 수정:** `card-header`에 별도의 버튼을 추가할 필요는 없습니다. 기존 로직이 버튼을 자동으로 이동시킵니다.
+
+    2. **JavaScript (`drawCallback` 함수) 수정:**
+        - 기존의 버튼 스타일링 및 이동 코드를 수정하여, 엑셀 버튼이 '신규 등록' 버튼 바로 앞에 위치하도록 하고, 원하는 스타일(예: `btn-success`)을 갖도록 합니다.
+        - DataTables의 `dom` 설정에서 버튼 컨테이너(`B`)가 이미 올바르게 설정되어 있으므로 이 부분은 수정할 필요가 없습니다.
+
+    3. **수정 코드 예시 (`drawCallback` 내):**
+        ```javascript
+        drawCallback: function (settings) {
+            // ... 기존 rowspan 관련 코드 ...
+
+            // 버튼 컨테이너를 card-header의 버튼 그룹으로 이동
+            var $buttonsContainer = this.api().buttons().container();
+            $buttonsContainer.appendTo($('#create-item-btn').parent());
+
+            // 버튼 스타일링 및 순서 조정
+            $buttonsContainer.find('.dt-button').each(function() {
+                $(this).removeClass('dt-button').addClass('btn btn-success'); // 기본 클래스 제거 및 Bootstrap 버튼 클래스 추가
+            });
+
+            // 불필요한 div 래퍼 제거 (DataTables가 생성하는 .dt-buttons div)
+            $buttonsContainer.contents().unwrap();
+        }
+        ```
+    4. **`dom` 설정 확인:** `dom` 설정에 `B`가 포함되어 있는지 확인합니다. (예: `dom: "<'row'<'col-sm-12 col-md-6'B>..."`)
