@@ -1,0 +1,54 @@
+DEBUG - 2025-11-28 00:34:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-28 00:35:05 --> Error connecting to the database: mysqli_sql_exception: Host '211.235.80.176' is not allowed to connect to this MariaDB server in E:\project\namuh\source\system\Database\MySQLi\Connection.php:201
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(201): mysqli->real_connect('sunwoo901.mycaf...', 'sunwoo901', Object(SensitiveParameterValue), 'sunwoo901', 3306, '', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(717): CodeIgniter\Model->doFirst()
+#6 E:\project\namuh\source\app\Models\MngrAuthModel.php(16): CodeIgniter\BaseModel->first()
+#7 E:\project\namuh\source\app\Controllers\MngrAuthController.php(33): App\Models\MngrAuthModel->getMngrByCredentials('vievisadmin', 'vievis01!')
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrAuthController->loginProc()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrAuthController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host '211.235.80.176' is not allowed to connect to this MariaDB server in E:\project\namuh\source\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 E:\project\namuh\source\system\Database\BaseConnection.php(421): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+#2 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 E:\project\namuh\source\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#4 E:\project\namuh\source\system\BaseModel.php(717): CodeIgniter\Model->doFirst()
+#5 E:\project\namuh\source\app\Models\MngrAuthModel.php(16): CodeIgniter\BaseModel->first()
+#6 E:\project\namuh\source\app\Controllers\MngrAuthController.php(33): App\Models\MngrAuthModel->getMngrByCredentials('vievisadmin', 'vievis01!')
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\MngrAuthController->loginProc()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrAuthController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-28 00:35:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Host '211.235.80.176' is not allowed to connect to this MariaDB server
+[Method: POST, Route: mngr/loginProc]
+in SYSTEMPATH\Database\BaseConnection.php on line 467.
+ 1 SYSTEMPATH\Database\BaseConnection.php(620): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `MNGR_MNG`
+WHERE `MNGR_ID` = :MNGR_ID:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(717): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Models\MngrAuthModel.php(16): CodeIgniter\BaseModel->first()
+ 6 APPPATH\Controllers\MngrAuthController.php(33): App\Models\MngrAuthModel->getMngrByCredentials('vievisadmin', 'vievis01!')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\MngrAuthController->loginProc()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\MngrAuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

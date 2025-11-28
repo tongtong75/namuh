@@ -79,6 +79,7 @@
                                             <tr>
                                                 <th>No.</th>
                                                 <th>회사명</th>
+                                                <th>회사관리자 아이디</th>
                                                 <th>담당자명</th>
                                                 <th>연락처</th>
                                                 <th>검진시작일</th>
@@ -268,6 +269,7 @@
                     columns: [
                         { data: 'no' },
                         { data: 'CO_NM' },
+                        { data: 'CO_MNGR_ID' },
                         { data: 'PIC_NM' },
                         { data: 'CNPL' },
                         { data: 'BGNG_YMD' },
@@ -296,7 +298,7 @@
                     },
                     order: [[0, 'desc']], 
                     columnDefs: [
-                        { orderable: false, targets: 7 } // '관리' column
+                        { orderable: false, targets: 8 } // '관리' column
                     ],
                     responsive: true,
                     pageLength: 20

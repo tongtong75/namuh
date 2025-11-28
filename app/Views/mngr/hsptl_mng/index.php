@@ -112,7 +112,7 @@
                                                 <th>No.</th>
                                                 <th>지역</th>
                                                 <th>병원명</th>
-                                                <th>담당자</th>
+                                                <th>홈페이지</th>
                                                 <th>연락처</th>
                                                 <th>등록일</th>
                                                 <th>관리</th>
@@ -152,9 +152,9 @@
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="PIC_NM_modal" class="form-label">담당자명</label>
-                                            <input type="text" id="PIC_NM_modal" name="PIC_NM" class="form-control" placeholder="담당자명을 입력하세요" required />
-                                            <div class="invalid-feedback">담당자명을 입력해 주세요!</div>
+                                            <label for="PIC_NM_modal" class="form-label">홈페이지</label>
+                                            <input type="text" id="PIC_NM_modal" name="PIC_NM" class="form-control" placeholder="홈페이지를 입력하세요" />
+                                            <div class="invalid-feedback">홈페이지를 입력해 주세요!</div>
                                         </div>
 
                                         <div class="mb-3">
@@ -236,7 +236,19 @@
                     { title: "No." },
                     { title: "지역" },
                     { title: "병원명" },
-                    { title: "담당자" },
+                    { 
+                        title: "홈페이지",
+                        render: function(data, type, row) {
+                            if (data) {
+                                let url = data;
+                                if (!url.match(/^https?:\/\//)) {
+                                    url = 'http://' + url;
+                                }
+                                return '<a href="' + url + '" target="_blank">' + data + '</a>';
+                            }
+                            return '';
+                        }
+                    },
                     { title: "연락처" },
                     { title: "등록일" },
                     { title: "관리", orderable: false }
@@ -260,7 +272,8 @@
                     }
                 },
                 responsive: true,
-                order: [[0, 'asc']]
+                order: [[0, 'asc']],
+                pageLength: 20
             });
         }
 

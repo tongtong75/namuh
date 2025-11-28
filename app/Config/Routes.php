@@ -5,7 +5,7 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->get('/', 'Home::index');
+$routes->addRedirect('/', 'user/login');
 
 //사용자
 $routes->group('user', static function ($routes) {

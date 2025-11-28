@@ -49,6 +49,7 @@ class CoMngController extends BaseController
                     'no'        => $no++,
                     'CO_SN'     => esc($row['CO_SN']),
                     'CO_NM'     => esc($row['CO_NM']),
+                    'CO_MNGR_ID'=> esc($row['CO_MNGR_ID']),
                     'PIC_NM'    => esc($row['PIC_NM']),
                     'CNPL'      => esc($row['CNPL']),
                     'BGNG_YMD'  => $row['BGNG_YMD'] ? date('Y-m-d', strtotime($row['BGNG_YMD'])) : '',
