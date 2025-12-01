@@ -149,6 +149,22 @@ $routes->group('mngr', static function ($routes) {
         $routes->post('delete/(:num)', 'CkupGdsController::delete/$1');
     });
 
+    // 검진상품 엑셀 관리 (CkupGdsExcelController)
+    $routes->group('ckupGdsExcel', static function ($routes) {
+        $routes->get('/', 'mngr\CkupGdsExcelController::index');
+        $routes->post('ajax_list', 'mngr\CkupGdsExcelController::ajax_list');
+        $routes->get('add', 'mngr\CkupGdsExcelController::add');
+        $routes->get('edit/(:num)', 'mngr\CkupGdsExcelController::edit/$1');
+        $routes->post('save', 'mngr\CkupGdsExcelController::save');
+        $routes->post('delete/(:num)', 'mngr\CkupGdsExcelController::delete/$1');
+        $routes->post('deleteItem/(:segment)/(:num)', 'mngr\CkupGdsExcelController::deleteItem/$1/$2');
+        $routes->post('deleteGroup/(:num)', 'mngr\CkupGdsExcelController::deleteGroup/$1');
+        $routes->post('deleteItems/(:segment)', 'mngr\CkupGdsExcelController::deleteItems/$1');
+        $routes->post('updateChoiceItem/(:num)', 'mngr\CkupGdsExcelController::updateChoiceItem/$1');
+        $routes->post('updateBasicItem/(:num)', 'mngr\CkupGdsExcelController::updateBasicItem/$1');
+        $routes->post('updateAddChoiceItem/(:num)', 'mngr\CkupGdsExcelController::updateAddChoiceItem/$1');
+    });
+
     // 요일별 검진 인원 관리 (DayCkupMngController)
     $routes->group('dayCkupMng', static function ($routes) {
         $routes->get('/', 'DayCkupMngController::index');

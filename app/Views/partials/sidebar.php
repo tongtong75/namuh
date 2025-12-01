@@ -1,7 +1,7 @@
 <?php
     $current_uri = "/" . uri_string();
 
-    $goods_uris = ["/mngr/ckupArtclMng", "/mngr/chcArtclMng", "/mngr/ckupGdsMng"];
+    $goods_uris = ["/mngr/ckupArtclMng", "/mngr/chcArtclMng", "/mngr/ckupGdsMng", "/mngr/ckupGdsExcel"];
     $target_uris = ["/mngr/ckupTrgt"];
     $reservation_uris = ["#sidebarCalendar", "apps-chat.html"];
 
@@ -70,6 +70,9 @@
                             </l-->
                             <li class="nav-item">
                                 <a href="/mngr/ckupGdsMng" class="nav-link <?= $current_uri == '/mngr/ckupGdsMng' ? 'active' : '' ?>"> 검진상품 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="/mngr/ckupGdsExcel" class="nav-link <?= $current_uri == '/mngr/ckupGdsExcel' ? 'active' : '' ?>"> 검진상품엑셀 </a>
                             </li>
                         </ul>
                     </div>

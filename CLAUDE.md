@@ -129,13 +129,20 @@ $routes->group('mngr', static function ($routes) {
 
 URL pattern: `/mngr/{feature}/{action}`
 
+**Dual Route Structure**: The application has two separate route hierarchies:
+- `/mngr/*` - Manager/admin interface (managed by hospital administrators)
+- `/user/*` - User/patient interface (for checkup targets to view and manage their own data)
+
+Both hierarchies may have similarly named controllers (e.g., `CkupTrgtController` vs `UserCkupTrgtController`) but serve different purposes and user types.
+
 ### Authentication & Authorization
 
-**Session-based authentication** using `AuthController` and `AuthGuard` filter:
+**Session-based authentication** using `MngrAuthController`/`UserAuthController` and `AuthGuard` filter:
 - Login creates session with: `is_logged_in`, `user_id`, `mngr_sn`, `hsptl_sn`, `user_type`
-- `user_type` values: `'S'` (super admin) or `'M'` (hospital manager)
+- `user_type` values: `'S'` (super admin), `'H'` (hospital manager), or `'M'` (regular user/patient)
 - Protected routes use `AuthGuard` filter (configured in `app/Config/Filters.php`)
 - Passwords hashed with `password_hash()` and verified with `password_verify()`
+- Two separate authentication flows: manager (`/mngr/login`) and user (`/user/login`)
 
 **IMPORTANT**: All AJAX requests must:
 1. Include CSRF token in POST data
@@ -146,6 +153,9 @@ URL pattern: `/mngr/{feature}/{action}`
 
 - **jQuery** for AJAX and DOM manipulation
 - **DataTables** for listing pages with server-side processing
+  - List pages use `ajax_list` controller methods that return JSON data arrays
+  - Typical pattern: Controller renders initial view → DataTable calls `ajax_list` → Returns rows as nested arrays
+  - Action buttons rendered via partial views (e.g., `action_buttons.php`)
 - **Bootstrap** for UI components (Velzon admin template v4.3.0)
 - **SweetAlert2** for confirmations and alerts
 - **FullCalendar** for calendar views (see `DayCkupMngController`)
@@ -153,7 +163,7 @@ URL pattern: `/mngr/{feature}/{action}`
 
 ### Soft Delete Pattern
 
-Tables use `DEL_YN` column instead of CI4's built-in soft deletes:
+**IMPORTANT**: Most tables use `DEL_YN` column instead of CI4's built-in soft deletes:
 
 ```php
 // Query only active records
@@ -162,6 +172,8 @@ $this->model->where('DEL_YN', 'N')->findAll();
 // Soft delete
 $this->model->update($id, ['DEL_YN' => 'Y']);
 ```
+
+**Exception**: `MNGR_MNG` table uses **physical deletion** (permanent delete without soft delete).
 
 ### Join Pattern for Related Data
 
@@ -198,6 +210,11 @@ Checkup products (`CKUP_GDS_MNG`) have complex selection hierarchy:
 - Additional choices (`CKUP_GDS_ADD_CHC`) for supplementary options
 - See `CkupGdsController` for implementation
 
+**Excel-based Checkup Goods**: A newer Excel-focused variant exists at `/mngr/ckupGdsExcel/*`:
+- Uses separate models: `CkupGdsExcelMngModel`, `CkupGdsExcelArtclModel`, `CkupGdsExcelChcGroupModel`, etc.
+- Designed for Excel import/export workflows
+- Managed via `mngr\CkupGdsExcelController` (note: uses namespace separator in routes)
+
 ### Daily Checkup Management
 `DayCkupMngController` implements two views:
 - List view with search/filter
@@ -216,11 +233,13 @@ Checkup products (`CKUP_GDS_MNG`) have complex selection hierarchy:
 ## Common Gotchas
 
 1. **Database column case**: ALL database columns are UPPERCASE. `$row['mngr_id']` will fail; use `$row['MNGR_ID']`
-2. **Soft deletes**: Don't use CI4's `$useSoftDeletes = true`. Use `DEL_YN` column pattern
+2. **Soft deletes**: Don't use CI4's `$useSoftDeletes = true`. Use `DEL_YN` column pattern (except `MNGR_MNG`)
 3. **CSRF in AJAX**: Always return `csrf_hash()` in AJAX responses and update the hidden input
 4. **Primary keys**: Named `{TABLE}_SN`, not `id`
 5. **Type hinting**: PHP 8.1+ features required. Use typed properties and union types (`array|false`)
 6. **Korean comments**: This project uses Korean comments extensively - this is intentional
+7. **User types**: Check session `user_type` carefully - `'S'` = super admin, `'H'` = hospital manager, `'M'` = patient/user
+8. **Route groups**: Manager routes use `/mngr/*` prefix, user routes use `/user/*` prefix
 
 ## Code Style Requirements
 
