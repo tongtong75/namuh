@@ -61,10 +61,10 @@
                                             <!-- 필터 영역 -->
                                             <div class="col-md-1">
                                                 <label for="co_sn_filter" class="form-label">회사</label>
-                                                <select id="co_sn_filter" name="co_sn_filter" class="form-select">
+                                                <select id="co_sn_filter" name="co_sn_filter" class="form-select" <?= !empty($userCoSn) ? 'disabled' : '' ?>>
                                                     <option value="">전체 회사</option>
                                                     <?php foreach ($companies as $company): ?>
-                                                        <option value="<?= esc($company['CO_SN']) ?>"><?= esc($company['CO_NM']) ?></option>
+                                                        <option value="<?= esc($company['CO_SN']) ?>" <?= (!empty($userCoSn) && $userCoSn == $company['CO_SN']) ? 'selected' : '' ?>><?= esc($company['CO_NM']) ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -156,10 +156,10 @@
                                         <div class="row">
                                             <div class="col-md-3 mb-3">
                                                 <label for="CO_SN_modal" class="form-label">회사 <span class="text-danger">*</span></label>
-                                                <select id="CO_SN_modal" name="CO_SN" class="form-select" required>
+                                                <select id="CO_SN_modal" name="CO_SN" class="form-select" required <?= !empty($userCoSn) ? 'disabled' : '' ?>>
                                                     <option value="">회사를 선택하세요</option>
                                                     <?php foreach ($companies as $company): ?>
-                                                        <option value="<?= esc($company['CO_SN']) ?>"><?= esc($company['CO_NM']) ?></option>
+                                                        <option value="<?= esc($company['CO_SN']) ?>" <?= (!empty($userCoSn) && $userCoSn == $company['CO_SN']) ? 'selected' : '' ?>><?= esc($company['CO_NM']) ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                                 <div class="invalid-feedback">회사를 선택해주세요.</div>
@@ -172,105 +172,77 @@
                                             <div class="col-md-3 mb-3">
                                                 <label for="BUSINESS_NUM_modal" class="form-label">사번 <span class="text-danger">*</span></label>
                                                 <input type="text" id="BUSINESS_NUM_modal" name="BUSINESS_NUM" class="form-control" required placeholder="사번을 입력하세요">
-                                               
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label for="PSWD_modal" class="form-label">비밀번호</label>
-                                                <input type="password" id="PSWD_modal" name="PSWD" class="form-control" placeholder="수정 시에만 입력">
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3 mb-3">
-                                                <label for="RELATION_modal" class="form-label">관계 <span class="text-danger">*</span></label>
-                                                <select id="RELATION_modal" name="RELATION" class="form-select" required>
-                                                    <option value="S">본인</option>
-                                                    <option value="W">배우자</option>
-                                                    <option value="C">자녀</option>
-                                                    <option value="P">부모</option>
-                                                    <option value="O">기타</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label for="CKUP_NAME_modal" class="form-label">수검자명 <span class="text-danger">*</span></label>
-                                                <input type="text" id="CKUP_NAME_modal" name="CKUP_NAME" class="form-control" placeholder="수검자명을 입력하세요" required>
-                                                <div class="invalid-feedback">수검자명을 입력해주세요.</div>
+                                                <div class="invalid-feedback">사번을 입력해주세요.</div>
                                             </div>
                                             <div class="col-md-3 mb-3">
                                                 <label for="NAME_modal" class="form-label">직원명 <span class="text-danger">*</span></label>
                                                 <input type="text" id="NAME_modal" name="NAME" class="form-control" placeholder="성명을 입력하세요" required>
                                                 <div class="invalid-feedback">성명을 입력해주세요.</div>
                                             </div>
+                                            <!-- Password field removed -->
+                                            
+                                        </div>
+                                        <div class="row">
+                                            
+                                            <div class="col-md-3 mb-3">
+                                                <label for="CKUP_NAME_modal" class="form-label">수검자명 <span class="text-danger">*</span></label>
+                                                <input type="text" id="CKUP_NAME_modal" name="CKUP_NAME" class="form-control" placeholder="수검자명을 입력하세요" required>
+                                                <div class="invalid-feedback">수검자명을 입력해주세요.</div>
+                                            </div>
                                             <div class="col-md-3 mb-3">
                                                 <label for="BIRTHDAY_modal" class="form-label">생년월일 <span class="text-danger">*</span></label>
                                                 <input type="text" id="BIRTHDAY_modal" name="BIRTHDAY" class="form-control" placeholder="YYMMDD 형식 (예: 800101)" required>
                                                 <div class="invalid-feedback">생년월일을 YYMMDD 형식으로 입력해주세요.</div>
                                             </div>
-                                            
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-3 mb-3">
-                                                <label for="SEX_modal" class="form-label">성별 <span class="text-danger">*</span></label>
-                                                <select id="SEX_modal" name="SEX" class="form-select" required>
-                                                    <option value="">선택안함</option>
-                                                    <option value="M">남</option>
-                                                    <option value="F">여</option>
-                                                </select>
-                                            </div>
                                             <div class="col-md-3 mb-3">
                                                 <label for="HANDPHONE_modal" class="form-label">핸드폰번호 <span class="text-danger">*</span></label>
                                                 <input type="text" id="HANDPHONE_modal" name="HANDPHONE" class="form-control" placeholder="010-1234-5678" required>
                                             </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-3 mb-3">
+                                                <label class="form-label">성별 <span class="text-danger">*</span></label>
+                                                <div class="d-flex gap-3 mt-1">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="SEX" id="SEX_M" value="M">
+                                                        <label class="form-check-label" for="SEX_M">남</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="SEX" id="SEX_F" value="F">
+                                                        <label class="form-check-label" for="SEX_F">여</label>
+                                                    </div>
+                                                </div>
+                                            </div>
                                             <div class="col-md-6 mb-3">
-                                                <label for="EMAIL_modal" class="form-label">이메일</label>
-                                                <input type="email" id="EMAIL_modal" name="EMAIL" class="form-control" placeholder="이메일을 입력하세요">
-                                                <div class="invalid-feedback">유효한 이메일 주소를 입력해주세요.</div>
+                                                <label class="form-label">관계 <span class="text-danger">*</span></label>
+                                                <div class="d-flex gap-3 mt-1">
+                                                    <div class="form-check" id="relation-self-wrapper">
+                                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_S" value="S">
+                                                        <label class="form-check-label" for="RELATION_S">본인</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_W" value="W">
+                                                        <label class="form-check-label" for="RELATION_W">배우자</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_C" value="C">
+                                                        <label class="form-check-label" for="RELATION_C">자녀</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_P" value="P">
+                                                        <label class="form-check-label" for="RELATION_P">부모</label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_O" value="O">
+                                                        <label class="form-check-label" for="RELATION_O">기타</label>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            
+                                            
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-3 mb-3">
-                                                <label for="CHECKUP_TARGET_YN_modal" class="form-label">검진대상</label>
-                                                <select id="CHECKUP_TARGET_YN_modal" name="CHECKUP_TARGET_YN" class="form-select">
-                                                    <option value="Y">대상</option>
-                                                    <option value="N">비대상</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label for="RSVT_STTS_modal" class="form-label">예약상태</label>
-                                                <select id="RSVT_STTS_modal" name="RSVT_STTS" class="form-select">
-                                                    <option value="N">미예약</option>
-                                                    <option value="R">예약</option>
-                                                    <option value="C">예약확정</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-3 mb-3">
-                                                <label for="CKUP_YN_modal" class="form-label">수검여부</label>
-                                                <select id="CKUP_YN_modal" name="CKUP_YN" class="form-select">
-                                                    <option value="N">미수검</option>
-                                                    <option value="Y">수검완료</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                             
-                                            <div class="col-md-4 mb-3">
-                                                <label for="WORK_STATUS_modal" class="form-label">재직상태</label>
-                                                <select id="WORK_STATUS_modal" name="WORK_STATUS" class="form-select">
-                                                     <option value="">선택</option>
-                                                     <option value="Y">재직</option>
-                                                     <option value="N">퇴사</option>
-                                                     <option value="H">휴직</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="JOB_modal" class="form-label">직책</label>
-                                                <input type="text" id="JOB_modal" name="JOB" class="form-control">
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label for="ASSIGN_CODE_modal" class="form-label">소속코드/부서</label>
-                                                <input type="text" id="ASSIGN_CODE_modal" name="ASSIGN_CODE" class="form-control">
-                                            </div>
-                                        </div>
+                                        <!-- Checkup Target, Reservation Status, Checkup Status removed -->
+                                        <!-- Employment Status, Job Title, Department removed -->
                                         
 
                                         <div class="mb-3">
@@ -279,10 +251,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <div class="hstack gap-2 justify-content-end">
-                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">닫기</button>
-                                            <button type="submit" class="btn btn-success" id="main-add-btn">등록</button>
-                                        </div>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                                        <button type="submit" class="btn btn-primary" id="main-add-btn">등록</button>
                                     </div>
                                 </form>
                             </div>
@@ -372,6 +342,85 @@
             <?= $this->include('partials/footer') ?>
         </div>
     </div>
+
+<!-- Family Registration Modal -->
+<div class="modal fade" id="familyModal" tabindex="-1" aria-labelledby="familyModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm"> <!-- Use modal-lg for vertical layout -->
+        <div class="modal-content">
+            <div class="modal-header bg-light p-3">
+                <h5 class="modal-title" id="familyModalLabel">가족 등록</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="family-item-form" class="needs-validation" novalidate>
+                <div class="modal-body">
+                    <input type="hidden" id="CKUP_TRGT_SN_modal_family" name="CKUP_TRGT_SN">
+                    <input type="hidden" id="CO_SN_modal_family" name="CO_SN">
+                    <input type="hidden" id="CKUP_YYYY_modal_family" name="CKUP_YYYY">
+                    <input type="hidden" id="BUSINESS_NUM_modal_family" name="BUSINESS_NUM">
+                    <input type="hidden" id="NAME_modal_family" name="NAME">
+                    <?= csrf_field() ?>
+                    
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label for="CKUP_NAME_modal_family" class="form-label">수검자명 <span class="text-danger">*</span></label>
+                            <input type="text" id="CKUP_NAME_modal_family" name="CKUP_NAME" class="form-control" placeholder="수검자명" required>
+                            <div class="invalid-feedback">수검자명을 입력해주세요.</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="BIRTHDAY_modal_family" class="form-label">생년월일 <span class="text-danger">*</span></label>
+                            <input type="text" id="BIRTHDAY_modal_family" name="BIRTHDAY" class="form-control" placeholder="YYMMDD" required>
+                            <div class="invalid-feedback">생년월일을 입력해주세요.</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label">관계 <span class="text-danger">*</span></label>
+                            <div class="d-flex gap-3 mt-2">
+                                <!-- Self option hidden for family modal -->
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="RELATION" id="RELATION_W_family" value="W" required>
+                                    <label class="form-check-label" for="RELATION_W_family">배우자</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="RELATION" id="RELATION_C_family" value="C">
+                                    <label class="form-check-label" for="RELATION_C_family">자녀</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="RELATION" id="RELATION_P_family" value="P">
+                                    <label class="form-check-label" for="RELATION_P_family">부모</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="RELATION" id="RELATION_O_family" value="O">
+                                    <label class="form-check-label" for="RELATION_O_family">기타</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label">성별 <span class="text-danger">*</span></label>
+                            <div class="d-flex gap-3 mt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="SEX" id="SEX_M_family" value="M" required>
+                                    <label class="form-check-label" for="SEX_M_family">남</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="SEX" id="SEX_F_family" value="F">
+                                    <label class="form-check-label" for="SEX_F_family">여</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label for="HANDPHONE_modal_family" class="form-label">핸드폰번호 <span class="text-danger">*</span></label>
+                            <input type="text" id="HANDPHONE_modal_family" name="HANDPHONE" class="form-control" placeholder="010-1234-5678" required>
+                            <div class="invalid-feedback">핸드폰번호를 입력해주세요.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                    <button type="submit" class="btn btn-primary" id="family-add-btn">등록</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
     <?= $this->include('partials/customizer') ?>
     <?= $this->include('partials/vendor-scripts') ?>
 
@@ -452,6 +501,8 @@
             formElement.find('select.form-select').each(function() {
                  $(this).val($(this).find('option:first').val());
             });
+            // Reset radio buttons
+            formElement.find('input[type="radio"]').prop('checked', false);
         }
 
         function showAjaxMessageGlobal(message, type = 'success') {
@@ -608,9 +659,18 @@
                 $('#mainModalLabel').text('신규 대상자 등록');
                 $('#main-add-btn').text('등록');
                 $('#CKUP_TRGT_SN_modal').val('');
-                $('#PSWD_modal').attr('placeholder', '미입력 시 생년월일');
                 $('#main-item-form input[name="' + CSRF_TOKEN_NAME + '"]').val(CSRF_HASH);
                 $('#MEMO_modal_main').val('');
+
+                // 필드 상태 초기화
+                $('#CKUP_YYYY_modal').val('<?= date('Y') ?>');
+                $('#BUSINESS_NUM_modal').val('');
+                $('#NAME_modal').val('');
+                
+                // 회사 정보가 고정된 경우 다시 설정
+                <?php if (!empty($userCoSn)): ?>
+                    $('#CO_SN_modal').val('<?= $userCoSn ?>');
+                <?php endif; ?>
             });
 
             // 대상자 정보 수정 버튼 클릭 (이벤트 위임)
@@ -630,23 +690,25 @@
                         if (response.status === 'success' && response.data) {
                             const d = response.data;
                             $('#CKUP_TRGT_SN_modal').val(d.CKUP_TRGT_SN);
-                            $('#CO_SN_modal').val(d.CO_SN); // Standard select update
+                            
+                            $('#CO_SN_modal').val(d.CO_SN); 
+                            
                             $('#CKUP_YYYY_modal').val(d.CKUP_YYYY);
                             $('#NAME_modal').val(d.NAME);
                             $('#CKUP_NAME_modal').val(d.CKUP_NAME);
                             $('#BUSINESS_NUM_modal').val(d.BUSINESS_NUM);
+                            $('#BUSINESS_NUM_modal').val(d.BUSINESS_NUM);
                             $('#BIRTHDAY_modal').val(d.BIRTHDAY);
-                            $('#SEX_modal').val(d.SEX);
+                            
+                            // Radio buttons for SEX
+                            $('#main-item-form input[name="SEX"][value="' + d.SEX + '"]').prop('checked', true);
+                            
                             $('#HANDPHONE_modal').val(d.HANDPHONE);
-                            $('#EMAIL_modal').val(d.EMAIL);
-                            $('#WORK_STATUS_modal').val(d.WORK_STATUS);
-                            $('#ASSIGN_CODE_modal').val(d.ASSIGN_CODE);
-                            $('#JOB_modal').val(d.JOB);
-                            $('#RELATION_modal').val(d.RELATION);
-                            $('#CHECKUP_TARGET_YN_modal').val(d.CHECKUP_TARGET_YN);
-                            $('#RSVT_STTS_modal').val(d.RSVT_STTS);
-                            $('#CKUP_YN_modal').val(d.CKUP_YN);
-                            $('#PSWD_modal').val('');
+                            
+                            // Radio buttons for RELATION
+                            $('#main-item-form input[name="RELATION"][value="' + d.RELATION + '"]').prop('checked', true);
+                            
+                            // Password field removed
 
                             $.ajax({
                                 url: BASE_URL + 'mngr/ckupTrgt/ajax_get_memo/' + itemId,
@@ -794,6 +856,94 @@
                         complete: function() { $button.prop('disabled', false).removeClass('btn-loading').text('삭제'); }
                     });
                 }
+            });
+
+            // 가족 추가 버튼 클릭
+            $('#ckupTrgtList').on('click', '.add-family-btn', function() {
+                clearFormAndValidation('family-item-form');
+                // $('#familyModalLabel').text('가족 등록'); // Already set in HTML
+                $('#family-add-btn').text('등록');
+                $('#CKUP_TRGT_SN_modal_family').val(''); 
+                
+                // 부모 데이터 가져오기
+                const coSn = $(this).data('co-sn');
+                const ckupYyyy = $(this).data('ckup-yyyy');
+                const businessNum = $(this).data('business-num');
+                const name = $(this).data('name');
+
+                // 필드 값 설정 (Hidden inputs in family modal)
+                $('#CO_SN_modal_family').val(coSn);
+                $('#CKUP_YYYY_modal_family').val(ckupYyyy);
+                $('#BUSINESS_NUM_modal_family').val(businessNum);
+                $('#NAME_modal_family').val(name);
+
+                // 나머지 필드 초기화
+                $('#CKUP_NAME_modal_family').val('');
+                $('#BIRTHDAY_modal_family').val('');
+                $('input[name="SEX"]').prop('checked', false); // Targets all sex radios, ok since family modal ones are unique IDs but name shared? No, name is SEX. 
+                // Wait, if name is SEX in both forms, checking one might affect other if in same DOM? 
+                // Radio buttons with same name in different forms are treated as same group by browser if forms are not isolated?
+                // Actually, HTML5 spec says radios with same name are in same group unless they are in different forms. 
+                // But here they are in different form elements, so it should be fine.
+                // However, jquery selector `input[name="SEX"]` selects ALL.
+                // Better to scope to form.
+                $('#family-item-form input[name="SEX"]').prop('checked', false);
+                $('#family-item-form input[name="RELATION"]').prop('checked', false);
+                $('#HANDPHONE_modal_family').val('');
+
+                // 모달 표시
+                $('#familyModal').modal('show');
+            });
+
+            // 가족 등록 폼 제출
+            $('#family-add-btn').on('click', function() {
+                const form = $('#family-item-form')[0];
+                if (!form.checkValidity()) {
+                    form.classList.add('was-validated');
+                    return;
+                }
+
+                const formData = new FormData(form);
+                // CSRF token is already in the form via csrf_field()
+
+                $.ajax({
+                    url: BASE_URL + 'mngr/ckupTrgt/ajax_add', // Reusing the same add endpoint
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $('#family-add-btn').prop('disabled', true).addClass('btn-loading').text('처리중...');
+                    },
+                    success: function(response) {
+                        updateCsrfTokenOnPage(response.csrf_hash);
+                        if (response.status === 'success') {
+                            showAjaxMessageGlobal(response.message, 'success');
+                            $('#familyModal').modal('hide');
+                            mainDataTable.ajax.reload(null, false);
+                        } else {
+                            if (response.errors) {
+                                let errorMsg = '';
+                                $.each(response.errors, function(key, value) {
+                                    errorMsg += value + '<br>';
+                                    $('#family-item-form #' + key + '_modal_family').addClass('is-invalid');
+                                    $('#family-item-form #' + key + '_modal_family').next('.invalid-feedback').text(value).show();
+                                });
+                                showAjaxMessageGlobal(errorMsg, 'error');
+                            } else {
+                                showAjaxMessageGlobal(response.message, 'error');
+                            }
+                        }
+                    },
+                    error: function(xhr) {
+                        showAjaxMessageGlobal('서버 오류 발생.', 'error');
+                        handleAjaxError(xhr);
+                    },
+                    complete: function() {
+                        $('#family-add-btn').prop('disabled', false).removeClass('btn-loading').text('등록');
+                    }
+                });
             });
 
             // 메모 관리 버튼 클릭

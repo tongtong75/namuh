@@ -42,6 +42,7 @@ class UserCkupTrgtController extends BaseController
 
         $currentYear = date('Y');
         $data['years'] = range($currentYear + 1, $currentYear - 1);
+        $data['userCoSn'] = $coSn; // Pass user's company SN to view
         return view('user/ckup_trgt/index', $data);
     }
 

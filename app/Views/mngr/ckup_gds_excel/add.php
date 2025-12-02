@@ -390,6 +390,7 @@ $buttonText = $isEditMode ? '수정' : '저장';
                 </div>
                 <div class="col-md-3">
                     <input type="text" name="GROUP_NM[]" class="form-control" required placeholder="선택항목명을 입력하세요">
+                    <input type="hidden" name="CKUP_GDS_EXCEL_CHC_GROUP_SN[]" value="">
                 </div>
                 <div class="col-auto">
                     <label class="form-label mb-0">선택갯수<span class="text-danger">*</span></label>
@@ -1228,10 +1229,48 @@ $buttonText = $isEditMode ? '수정' : '저장';
                     rightTable.row($(this).closest('tr')).remove().draw();
                 });
 
+
                 $(document).on(`click${eventNamespace}`, `${groupSelector} .delete-choice-group-btn`, function() {
-                    if (confirm('이 그룹을 삭제하시겠습니까?')) {
+                    if (!confirm('이 그룹을 삭제하시겠습니까?')) return;
+                    
+                    const groupElement = $(this).closest(groupSelector);
+                    const groupIdInput = groupElement.find('input[name="CKUP_GDS_EXCEL_CHC_GROUP_SN[]"]');
+                    const groupId = groupIdInput.val();
+                    
+                    console.log('그룹 삭제 시도 - 그룹 ID:', groupId);
+                    
+                    if (groupId && groupId !== 'undefined' && groupId !== '') {
+                        // Existing group - delete from server
+                        console.log('기존 그룹 삭제 - 서버에 요청 전송:', groupId);
+                        $.ajax({
+                            url: BASE_URL + 'mngr/ckupGdsExcel/deleteGroup/' + groupId,
+                            type: 'POST',
+                            data: {
+                                [CSRF_TOKEN_NAME]: CSRF_HASH
+                            },
+                            success: function(response) {
+                                console.log('서버 응답:', response);
+                                if (response.success) {
+                                    console.log('그룹 삭제 성공 - 그룹 ID:', groupId);
+                                    $(document).off(eventNamespace);
+                                    groupElement.remove();
+                                    alert('그룹이 삭제되었습니다.');
+                                } else {
+                                    console.log('그룹 삭제 실패 - 그룹 ID:', groupId, '메시지:', response.message);
+                                    alert('삭제 실패: ' + response.message);
+                                }
+                                if (response.csrf_hash) CSRF_HASH = response.csrf_hash;
+                            },
+                            error: function(xhr, status, error) {
+                                console.log('서버 오류 발생 - 그룹 ID:', groupId, 'Error:', error);
+                                alert('서버 오류가 발생했습니다.');
+                            }
+                        });
+                    } else {
+                        // New group - just remove from DOM
+                        console.log('새 그룹 삭제 - DOM에서만 제거 (ID 없음)');
                         $(document).off(eventNamespace);
-                        $(this).closest(groupSelector).remove();
+                        groupElement.remove();
                     }
                 });
                 
@@ -1267,6 +1306,7 @@ $buttonText = $isEditMode ? '수정' : '저장';
                         const groupContainer = $(`.choice-item-group[data-group-index="${currentGroupIndex}"]`);
                         
                         groupContainer.find('input[name="GROUP_NM[]"]').val(groupData.GROUP_NM);
+                        groupContainer.find('input[name="CKUP_GDS_EXCEL_CHC_GROUP_SN[]"]').val(groupData.CKUP_GDS_EXCEL_CHC_GROUP_SN || '');
                         groupContainer.find('input[name="CHC_ARTCL_CNT[]"]').val(groupData.CHC_ARTCL_CNT);
                         groupContainer.find('input[name="CHC_ARTCL_CNT2[]"]').val(groupData.CHC_ARTCL_CNT2 || 0);
                         

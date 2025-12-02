@@ -433,4 +433,99 @@ class CkupGdsExcelController extends BaseController
             return $this->response->setJSON(['success' => false, 'message' => 'Update failed', 'csrf_hash' => csrf_hash()]);
         }
     }
+        public function copy($id = null)
+    {
+        if (!$this->request->isAJAX() || !$id || !is_numeric($id)) {
+            return $this->response->setStatusCode(403)->setJSON(['success' => false, 'message' => '잘못된 요청입니다.', 'csrf_hash' => csrf_hash()]);
+        }
+
+        $this->db->transStart();
+
+        try {
+            // 1. Get existing data
+            $originalData = $this->ckupGdsExcelMngModel->getCkupGdsExcelWithDetail($id);
+            if (!$originalData) {
+                throw new \Exception('원본 데이터를 찾을 수 없습니다.');
+            }
+
+            // 2. Prepare new Basic Info
+            $newBasicInfo = $originalData['basicInfo'];
+            unset($newBasicInfo['CKUP_GDS_EXCEL_MNG_SN']); // Clear ID for new insert
+            $newBasicInfo['CKUP_GDS_NM'] = $newBasicInfo['CKUP_GDS_NM'] . ' 복사';
+            $newBasicInfo['REG_ID'] = session()->get('user_id');
+            $newBasicInfo['REG_YMD'] = date('Y-m-d H:i:s');
+            $newBasicInfo['MDFCN_ID'] = null;
+            $newBasicInfo['MDFCN_YMD'] = null;
+
+            $this->ckupGdsExcelMngModel->insert($newBasicInfo);
+            $newId = $this->ckupGdsExcelMngModel->getInsertID();
+
+            // 3. Copy Basic Items
+            if (!empty($originalData['basicItems'])) {
+                $this->insertBasicItems($newId, $originalData['basicItems']);
+            }
+
+            // 4. Copy Choice Groups and Items
+            if (!empty($originalData['choiceGroups'])) {
+                // We need to adapt the structure for insertChoiceItems
+                // insertChoiceItems expects: 
+                // [ 
+                //    'GROUP_NM' => ..., 
+                //    'CHC_ARTCL_CNT' => ..., 
+                //    'CHC_ARTCL_CNT2' => ..., 
+                //    'newItems' => [ ... ] 
+                // ]
+                
+                $groupsToInsert = [];
+                foreach ($originalData['choiceGroups'] as $group) {
+                    $newGroup = [
+                        'GROUP_NM' => $group['GROUP_NM'],
+                        'CHC_ARTCL_CNT' => $group['CHC_ARTCL_CNT'],
+                        'CHC_ARTCL_CNT2' => $group['CHC_ARTCL_CNT2'],
+                        'newItems' => []
+                    ];
+                    
+                    if (!empty($group['items'])) {
+                        foreach ($group['items'] as $item) {
+                            $newGroup['newItems'][] = [
+                                'CKUP_SE' => $item['CKUP_SE'],
+                                'CKUP_TYPE' => $item['CKUP_TYPE'],
+                                'CKUP_ARTCL' => $item['CKUP_ARTCL'],
+                                'DSS' => $item['DSS'],
+                                'GNDR_SE' => $item['GNDR_SE'],
+                                'RMRK' => $item['RMRK']
+                            ];
+                        }
+                    }
+                    $groupsToInsert[] = $newGroup;
+                }
+                $this->insertChoiceItems($newId, $groupsToInsert);
+            }
+
+            // 5. Copy Additional Choice Items
+            if (!empty($originalData['addChoiceItems'])) {
+                $this->insertAddChoiceItems($newId, $originalData['addChoiceItems']);
+            }
+
+            $this->db->transComplete();
+
+            if ($this->db->transStatus() === false) {
+                throw new \Exception('복사 중 데이터베이스 오류가 발생했습니다.');
+            }
+
+            return $this->response->setJSON([
+                'success' => true,
+                'message' => '복사가 완료되었습니다.',
+                'csrf_hash' => csrf_hash()
+            ]);
+
+        } catch (\Exception $e) {
+            return $this->response->setStatusCode(500)->setJSON([
+                'success' => false,
+                'message' => '오류: ' . $e->getMessage(),
+                'csrf_hash' => csrf_hash()
+            ]);
+        }
+    }
 }
+

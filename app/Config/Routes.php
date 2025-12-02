@@ -163,6 +163,7 @@ $routes->group('mngr', static function ($routes) {
         $routes->post('updateChoiceItem/(:num)', 'mngr\CkupGdsExcelController::updateChoiceItem/$1');
         $routes->post('updateBasicItem/(:num)', 'mngr\CkupGdsExcelController::updateBasicItem/$1');
         $routes->post('updateAddChoiceItem/(:num)', 'mngr\CkupGdsExcelController::updateAddChoiceItem/$1');
+        $routes->post('copy/(:num)', 'mngr\CkupGdsExcelController::copy/$1');
     });
 
     // 요일별 검진 인원 관리 (DayCkupMngController)

@@ -7,6 +7,12 @@
         data-id="<?= esc($item['CKUP_TRGT_SN']) ?>" data-name="<?= esc($item['NAME']) ?>">비밀번호 초기화</button>
 
 
+    <button type="button" class="btn btn-sm btn-info add-family-btn"
+            data-co-sn="<?= esc($item['CO_SN'] ?? '') ?>"
+            data-ckup-yyyy="<?= esc($item['CKUP_YYYY']) ?>"
+            data-business-num="<?= esc($item['BUSINESS_NUM']) ?>"
+            data-name="<?= esc($item['NAME']) ?>">가족추가</button>
+
     <button type="button" class="btn btn-sm btn-outline-info manage-memo-btn"
             data-id="<?= esc($item['CKUP_TRGT_SN']) ?>"
             data-name="<?= esc($item['NAME']) ?>"

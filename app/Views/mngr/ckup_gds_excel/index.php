@@ -197,7 +197,40 @@
                     deleteCheckupProduct(id);
                 }
             });
+
+            $(document).on('click', '.copy-item-btn', function() {
+                const id = $(this).data('id');
+                
+                if (confirm('이 검진상품을 복사하시겠습니까?')) {
+                    copyCheckupProduct(id);
+                }
+            });
         });
+
+        function copyCheckupProduct(id) {
+            $.ajax({
+                url: BASE_URL + 'mngr/ckupGdsExcel/copy/' + id,
+                type: 'POST',
+                data: {
+                    [CSRF_TOKEN_NAME]: CSRF_HASH
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        alert('복사가 완료되었습니다.');
+                        $('#mngrListTable').DataTable().draw();
+                    } else {
+                        alert('복사 중 오류가 발생했습니다: ' + response.message);
+                    }
+                    if (response.csrf_hash) {
+                        updateCsrfTokenOnPage(response.csrf_hash);
+                    }
+                },
+                error: function() {
+                    alert('서버 오류가 발생했습니다.');
+                }
+            });
+        }
 
         function deleteCheckupProduct(id) {
             $.ajax({
