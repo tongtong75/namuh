@@ -308,13 +308,15 @@
                 }
 
                 // AJAX로 비밀번호 변경 처리
+                const requestBody = 'password=' + encodeURIComponent(newPassword) + '&agree_yn=Y';
+                
                 fetch('<?= site_url('user/updatePassword') ?>', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded',
                         'X-Requested-With': 'XMLHttpRequest'
                     },
-                    body: 'password=' + encodeURIComponent(newPassword)
+                    body: requestBody
                 })
                 .then(response => response.json())
                 .then(data => {

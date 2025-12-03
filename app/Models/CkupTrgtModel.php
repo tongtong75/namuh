@@ -15,7 +15,7 @@ class CkupTrgtModel extends Model
 
     // CKUP_TRGT 테이블의 모든 컬럼 (REG_YMD제외 - 콜백에서 처리)
     protected $allowedFields    = [
-        'CO_SN', 'CKUP_YYYY', 'CKUP_NAME','NAME', 'BUSINESS_NUM', 'BIRTHDAY', 'PSWD',
+        'CO_SN', 'CKUP_YYYY', 'CKUP_NAME','NAME', 'BUSINESS_NUM', 'BIRTHDAY', 'PSWD','AGREE_YN',
         'SEX', 'HANDPHONE', 'SUPPORT_FUND', 'FAMILY_SUPPORT_FUND', 'EMAIL',
         'WORK_STATUS', 'ASSIGN_CODE', 'JOB', 'RELATION',
         'CHECKUP_TARGET_YN', 'RSVT_STTS',  'CKUP_YN',
@@ -158,6 +158,8 @@ class CkupTrgtModel extends Model
                 'CKUP_YYYY' => 'CT.CKUP_YYYY',
                 'NAME' => 'CT.NAME',
                 'CKUP_NAME' => 'CT.CKUP_NAME',
+                'SUPPORT_FUND' => 'CT.SUPPORT_FUND',
+                'FAMILY_SUPPORT_FUND' => 'CT.FAMILY_SUPPORT_FUND',
                 'BUSINESS_NUM' => 'CT.BUSINESS_NUM',
                 'BIRTHDAY' => 'CT.BIRTHDAY',
                 'SEX' => 'CT.SEX',
@@ -167,6 +169,11 @@ class CkupTrgtModel extends Model
             ];
             if (array_key_exists($orderColumnName, $columnMap)) {
                  $builder->orderBy($columnMap[$orderColumnName], strtoupper($orderDir));
+                 
+                 // [FIX] 사번 정렬 시 본인(S) 우선 정렬 추가
+                 if ($orderColumnName === 'BUSINESS_NUM') {
+                     $builder->orderBy("CASE WHEN CT.RELATION = 'S' THEN 0 ELSE 1 END", 'ASC');
+                 }
             } else if ($orderColumnName !== 'no' && $orderColumnName !== 'action') { // 'no', 'action' 등은 정렬 대상 아님
                 $builder->orderBy('CT.' . $orderColumnName, strtoupper($orderDir)); // 기본적으로 CT 테이블의 컬럼으로 가정
             } else {
@@ -175,8 +182,6 @@ class CkupTrgtModel extends Model
         } else {
             $builder->orderBy('CT.CKUP_TRGT_SN', 'DESC'); // 기본 정렬
         }
-
-
         // 페이징 처리
         if (isset($requestData['start']) && $requestData['length'] != -1) {
             $builder->limit($requestData['length'], $requestData['start']);

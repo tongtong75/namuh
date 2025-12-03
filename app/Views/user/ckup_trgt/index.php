@@ -39,6 +39,12 @@
             margin-bottom: 10px;
         }
 
+        /* Read-only field styling */
+        input[readonly] {
+            background-color: #e9ecef !important;
+            cursor: not-allowed;
+        }
+
     </style>
 </head>
 
@@ -125,6 +131,8 @@
                                                     <th>관계</th>
                                                     <th>수검자명</th>
                                                     <th class="name-col-width">직원명</th>
+                                                    <th>지원금</th>
+                                                    <th>가족지원금</th>
                                                     <th>성별</th>
                                                     <th>생년월일</th>
                                                     <th>핸드폰</th>
@@ -351,7 +359,7 @@
                 <h5 class="modal-title" id="familyModalLabel">가족 등록</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form id="family-item-form" class="needs-validation" novalidate>
+            <form id="family-item-form" class="needs-validation">
                 <div class="modal-body">
                     <input type="hidden" id="CKUP_TRGT_SN_modal_family" name="CKUP_TRGT_SN">
                     <input type="hidden" id="CO_SN_modal_family" name="CO_SN">
@@ -534,7 +542,7 @@
                 processing: true,
                 serverSide: true,
                 ajax: {
-                    url: BASE_URL + 'mngr/ckupTrgt/ajax_list',
+                    url: BASE_URL + 'user/ckupTrgt/ajax_list',
                     type: 'POST',
                     data: function (d) {
                         d[CSRF_TOKEN_NAME] = CSRF_HASH;
@@ -562,7 +570,9 @@
                     { data: 'RELATION' },
                     { data: 'CKUP_NAME' },
                     { data: 'NAME', className: 'name-col-width' },
-                    { data: 'SEX' },
+                    { data: 'SUPPORT_FUND' },
+                    { data: 'FAMILY_SUPPORT_FUND' },
+                    { data: 'SEX' },                    
                     { data: 'BIRTHDAY' },
                     { data: 'HANDPHONE' },
                     { data: 'memo_status', orderable: false, searchable: false },
@@ -591,7 +601,7 @@
                             // CSRF 토큰은 GET 요청에서는 일반적으로 URL 파라미터로 보내지 않지만,
                             // 만약 서버에서 GET 요청에도 CSRF 검증을 한다면 추가해야 합니다.
                             // 여기서는 간단하게 필터 값만 전달합니다.
-                            let exportUrl = BASE_URL + 'mngr/ckupTrgt/excel_download?';
+                            let exportUrl = BASE_URL + 'user/ckupTrgt/excel_download?';
                             exportUrl += 'co_sn_filter=' + encodeURIComponent(co_sn_filter);
                             exportUrl += '&ckup_yyyy_filter=' + encodeURIComponent(ckup_yyyy_filter);
 
@@ -621,7 +631,7 @@
                     "zeroRecords": "일치하는 레코드를 찾을 수 없습니다.",
                     "paginate": { "first": "처음", "last": "마지막", "next": "다음", "previous": "이전" }
                 },
-                order: [[2, 'desc'], [3, 'asc']],
+                order: [[3, 'asc']],
                 responsive: false,
                 autoWidth: false,
                 drawCallback: function(settings) {
@@ -662,6 +672,11 @@
                 $('#main-item-form input[name="' + CSRF_TOKEN_NAME + '"]').val(CSRF_HASH);
                 $('#MEMO_modal_main').val('');
 
+                // [FIX] 신규 등록 시에는 수정 가능하도록 설정
+                $('#CKUP_YYYY_modal').prop('readonly', false);
+                $('#BUSINESS_NUM_modal').prop('readonly', false);
+                $('#NAME_modal').prop('readonly', false);
+
                 // 필드 상태 초기화
                 $('#CKUP_YYYY_modal').val('<?= date('Y') ?>');
                 $('#BUSINESS_NUM_modal').val('');
@@ -681,8 +696,13 @@
                 $('#main-add-btn').text('수정');
                 $('#PSWD_modal').attr('placeholder', '변경 시에만 입력');
 
+                // [FIX] 수정 시에는 검진년도, 사번, 직원명 수정 불가
+                $('#CKUP_YYYY_modal').prop('readonly', true);
+                $('#BUSINESS_NUM_modal').prop('readonly', true);
+                $('#NAME_modal').prop('readonly', true);
+
                 $.ajax({
-                    url: BASE_URL + 'mngr/ckupTrgt/ajax_get_ckup_trgt/' + itemId,
+                    url: BASE_URL + 'user/ckupTrgt/ajax_get_ckup_trgt/' + itemId,
                     type: 'GET',
                     dataType: 'json',
                     success: function(response) {
@@ -711,7 +731,7 @@
                             // Password field removed
 
                             $.ajax({
-                                url: BASE_URL + 'mngr/ckupTrgt/ajax_get_memo/' + itemId,
+                                url: BASE_URL + 'user/ckupTrgt/ajax_get_memo/' + itemId,
                                 type: 'GET',
                                 dataType: 'json',
                                 success: function(memoResponse) {
@@ -751,11 +771,11 @@
                 // itemId의 존재 여부에 따라 URL 및 버튼 텍스트 설정
                 if (itemId) {
                     // 수정 작업 시: ID는 URL에 포함되지 않고, 폼 데이터로 전송됨
-                    url = BASE_URL + 'mngr/ckupTrgt/ajax_update'; // 대상자 ID(itemId)가 URL 경로에 포함되지 않음
+                    url = BASE_URL + 'user/ckupTrgt/ajax_update'; // 대상자 ID(itemId)가 URL 경로에 포함되지 않음
                     originalButtonText = '수정';
                 } else {
                     // 신규 등록 작업 시
-                    url = BASE_URL + 'mngr/ckupTrgt/ajax_create';
+                    url = BASE_URL + 'user/ckupTrgt/ajax_create';
                     originalButtonText = '등록';
                 }
                 const $submitButton = $('#main-add-btn'); // 제출 버튼 jQuery 객체
@@ -766,6 +786,12 @@
                     obj[item.name] = item.value;
                     return obj;
                 }, {});
+
+                // [FIX] Disabled select box value is not included in serializeArray, so add it manually
+                if ($('#CO_SN_modal').prop('disabled')) {
+                    formData['CO_SN'] = $('#CO_SN_modal').val();
+                }
+
                 formData[CSRF_TOKEN_NAME] = CSRF_HASH; // CSRF 토큰 추가
 
                 // AJAX 요청 시작
@@ -835,7 +861,7 @@
 
                 if (confirm(`'${itemName}' 대상자 정보를 정말로 삭제하시겠습니까? 관련 메모도 함께 삭제됩니다.`)) {
                     $.ajax({
-                        url: BASE_URL + 'mngr/ckupTrgt/ajax_delete/' + itemId,
+                        url: BASE_URL + 'user/ckupTrgt/ajax_delete/' + itemId,
                         type: 'POST',
                         data: { [CSRF_TOKEN_NAME]: CSRF_HASH },
                         dataType: 'json',
@@ -880,13 +906,7 @@
                 // 나머지 필드 초기화
                 $('#CKUP_NAME_modal_family').val('');
                 $('#BIRTHDAY_modal_family').val('');
-                $('input[name="SEX"]').prop('checked', false); // Targets all sex radios, ok since family modal ones are unique IDs but name shared? No, name is SEX. 
-                // Wait, if name is SEX in both forms, checking one might affect other if in same DOM? 
-                // Radio buttons with same name in different forms are treated as same group by browser if forms are not isolated?
-                // Actually, HTML5 spec says radios with same name are in same group unless they are in different forms. 
-                // But here they are in different form elements, so it should be fine.
-                // However, jquery selector `input[name="SEX"]` selects ALL.
-                // Better to scope to form.
+                $('input[name="SEX"]').prop('checked', false); 
                 $('#family-item-form input[name="SEX"]').prop('checked', false);
                 $('#family-item-form input[name="RELATION"]').prop('checked', false);
                 $('#HANDPHONE_modal_family').val('');
@@ -896,18 +916,18 @@
             });
 
             // 가족 등록 폼 제출
-            $('#family-add-btn').on('click', function() {
-                const form = $('#family-item-form')[0];
-                if (!form.checkValidity()) {
-                    form.classList.add('was-validated');
-                    return;
-                }
+            $('#family-item-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                // 폼 유효성 검사 (브라우저 기본 동작 활용)
+                // submit 이벤트가 발생했다는 것은 이미 브라우저의 required 체크를 통과했다는 의미입니다.
 
+                const form = this;
                 const formData = new FormData(form);
                 // CSRF token is already in the form via csrf_field()
 
                 $.ajax({
-                    url: BASE_URL + 'mngr/ckupTrgt/ajax_add', // Reusing the same add endpoint
+                    url: BASE_URL + 'user/ckupTrgt/ajax_create', // Reusing the same add endpoint
                     type: 'POST',
                     data: formData,
                     processData: false,
@@ -962,7 +982,7 @@
                 if (memoSn) {
                     $('#delete-memo-btn').show().data('memo-sn', memoSn);
                     $.ajax({
-                        url: BASE_URL + 'mngr/ckupTrgt/ajax_get_memo/' + targetSn,
+                        url: BASE_URL + 'user/ckupTrgt/ajax_get_memo/' + targetSn,
                         type: 'GET',
                         dataType: 'json',
                         success: function(response) {
@@ -1007,7 +1027,7 @@
                 const originalButtonText = '저장';
 
                 $.ajax({
-                    url: BASE_URL + 'mngr/ckupTrgt/ajax_save_memo',
+                    url: BASE_URL + 'user/ckupTrgt/ajax_save_memo',
                     type: 'POST',
                     data: formData,
                     dataType: 'json',
@@ -1047,7 +1067,7 @@
                     const $button = $(this);
                     const originalButtonText = $button.text();
                     $.ajax({
-                        url: BASE_URL + 'mngr/ckupTrgt/ajax_delete_memo/' + memoSnToDelete,
+                        url: BASE_URL + 'user/ckupTrgt/ajax_delete_memo/' + memoSnToDelete,
                         type: 'POST',
                         data: { [CSRF_TOKEN_NAME]: CSRF_HASH },
                         dataType: 'json',
@@ -1141,7 +1161,7 @@
 
                 if (confirm(`'${itemName}' 님의 비밀번호를 생년월일로 초기화하시겠습니까?`)) {
                     $.ajax({
-                        url: BASE_URL + 'mngr/ckupTrgt/ajax_reset_password/' + itemId,
+                        url: BASE_URL + 'user/ckupTrgt/ajax_reset_password/' + itemId,
                         type: 'POST',
                         data: { [CSRF_TOKEN_NAME]: CSRF_HASH },
                         dataType: 'json',

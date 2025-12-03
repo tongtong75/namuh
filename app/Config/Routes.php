@@ -18,6 +18,11 @@ $routes->group('user', static function ($routes) {
     
     // 예약 관련
     $routes->get('rsvn', 'UserAuthController::rsvn');           // 예약 페이지
+    $routes->get('rsvnSel', 'UserRsvnController::index');       // 예약 선택 페이지
+    $routes->get('rsvnSel/getCalendarEvents', 'UserRsvnController::getCalendarEvents'); // 달력 이벤트
+    $routes->get('rsvnSel/getProducts', 'UserRsvnController::getProducts'); // 검진상품 목록
+    $routes->get('rsvnSel/getCheckupItems', 'UserRsvnController::getCheckupItems'); // 검사항목 조회
+    $routes->get('rsvnSel/getProductChoiceItems', 'UserRsvnController::getProductChoiceItems'); // 상품선택 항목 조회
     $routes->post('makeReservation', 'UserAuthController::makeReservation');     // 예약 처리
     $routes->post('cancelReservation', 'UserAuthController::cancelReservation'); // 예약 취소
     

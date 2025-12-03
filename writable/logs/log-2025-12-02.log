@@ -11,3 +11,307 @@ DEBUG - 2025-12-02 00:49:34 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-12-02 00:51:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-02 00:55:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-12-02 00:56:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 12:58:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-02 12:58:41 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-02 12:58:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 12:58:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 12:58:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 12:59:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:00:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:01:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:07:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:07:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:08:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:08:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:12:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:35:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:35:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:36:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:43:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:44:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:55:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:57:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-02 13:59:22 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-02 13:59:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:59:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 13:59:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:00:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:01:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:08:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:09:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:09:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:09:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 14:09:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:30:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-02 20:31:04 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-02 20:31:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:31:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:31:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:31:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:31:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:31:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:37:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:37:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:37:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:37:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:43:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:43:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:46:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:46:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:49:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:50:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:51:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:51:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:51:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:51:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:52:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-02 20:54:43 --> mysqli_sql_exception: Unknown column 'TEL_NO' in 'field list' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_YY...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_YY...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_YY...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YY...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-12-02 20:54:43 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'TEL_NO' in 'field list'
+[Method: GET, Route: user/ckupTrgt/excel_download]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = :CKUP_YYYY:
+AND `CO_SN` = :CO_SN:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-02 20:54:43 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'TEL_NO' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = :CKUP_YYYY:
+AND `CO_SN` = :CO_SN:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-02 20:54:43 --> [Caused by] mysqli_sql_exception: Unknown column 'TEL_NO' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = :CKUP_YYYY:
+AND `CO_SN` = :CO_SN:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-02 20:54:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:54:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:54:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-02 20:54:55 --> mysqli_sql_exception: Unknown column 'TEL_NO' in 'field list' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_YY...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_YY...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_YY...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YY...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\app\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+#8 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+#9 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+#10 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#12 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-12-02 20:54:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'TEL_NO' in 'field list'
+[Method: GET, Route: user/ckupTrgt/excel_download]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = :CKUP_YYYY:
+AND `CO_SN` = :CO_SN:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-02 20:54:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'TEL_NO' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = :CKUP_YYYY:
+AND `CO_SN` = :CO_SN:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-02 20:54:55 --> [Caused by] mysqli_sql_exception: Unknown column 'TEL_NO' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = \'2025\'
+AND `CO_SN` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_YYYY`, `CO_SN`, `BUSINESS_NUM`, `CKUP_NAME`, `NAME`, `RELATION`, `SEX`, `TEL_NO`, `HANDPHONE`, `ADDR`, `RSVT_STTS`, `CKUP_YN`
+FROM `CKUP_TRGT`
+WHERE `CKUP_YYYY` = :CKUP_YYYY:
+AND `CO_SN` = :CO_SN:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\CkupTrgtModel.php(206): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\UserCkupTrgtController.php(581): App\Models\CkupTrgtModel->getExcelData('2025', '1')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserCkupTrgtController->excel_download()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserCkupTrgtController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-02 20:55:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 20:55:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:01:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:01:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:02:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:02:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:02:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:02:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:08:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:08:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:10:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:10:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:11:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-02 21:11:06 --> Excel Upload: Invalid file.
+DEBUG - 2025-12-02 21:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:16:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:17:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:19:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:20:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:24:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 21:24:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:31:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-02 23:31:28 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-02 23:31:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:33:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:33:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:34:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:39:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:39:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-02 23:40:11 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-02 23:40:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:40:25 --> User CO_SN: 1
+DEBUG - 2025-12-02 23:40:25 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-02 23:40:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:40:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:41:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:41:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:48:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:48:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:48:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:49:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:49:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-02 23:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

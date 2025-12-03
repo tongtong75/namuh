@@ -1,0 +1,1164 @@
+DEBUG - 2025-12-03 00:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:00:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-03 00:00:38 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-03 00:00:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:00:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:00:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:00:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:00:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:01:01 --> User CO_SN: 1
+DEBUG - 2025-12-03 00:01:01 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 00:01:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:01:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:02:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:02:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:02:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:02:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:02:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:02:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:02:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:03:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-03 00:03:20 --> mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPT...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPT...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPT...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPT...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-03 00:03:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+[Method: GET, Route: user/rsvnSel]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:
+AND `CO_HSPTL_LNKNG`.`USE_YN` = :CO_HSPTL_LNKNG.USE_YN:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:03:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:
+AND `CO_HSPTL_LNKNG`.`USE_YN` = :CO_HSPTL_LNKNG.USE_YN:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:03:20 --> [Caused by] mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:
+AND `CO_HSPTL_LNKNG`.`USE_YN` = :CO_HSPTL_LNKNG.USE_YN:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-03 00:03:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:03:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-03 00:03:36 --> mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPT...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPT...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPT...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPT...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-03 00:03:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+[Method: GET, Route: user/rsvnSel]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:
+AND `CO_HSPTL_LNKNG`.`USE_YN` = :CO_HSPTL_LNKNG.USE_YN:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:03:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:
+AND `CO_HSPTL_LNKNG`.`USE_YN` = :CO_HSPTL_LNKNG.USE_YN:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:03:36 --> [Caused by] mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'
+AND `CO_HSPTL_LNKNG`.`USE_YN` = \'Y\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:
+AND `CO_HSPTL_LNKNG`.`USE_YN` = :CO_HSPTL_LNKNG.USE_YN:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-03 00:04:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-03 00:04:37 --> mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPT...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPT...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPT...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPT...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-03 00:04:37 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+[Method: GET, Route: user/rsvnSel]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:04:37 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:04:37 --> [Caused by] mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-03 00:04:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:04:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-12-03 00:04:44 --> mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPT...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPT...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPT...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPT...', Array, false)
+#4 E:\project\namuh\source\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+#6 E:\project\namuh\source\app\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+#7 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+#8 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+#9 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#11 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-12-03 00:04:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+[Method: GET, Route: user/rsvnSel]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:04:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 00:04:44 --> [Caused by] mysqli_sql_exception: Unknown column 'HSPTL_MNG.TEL' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CO_HSPTL_LNKNG`.*, `HSPTL_MNG`.`HSPTL_NM`, `HSPTL_MNG`.`RGN`, `HSPTL_MNG`.`TEL`, `HSPTL_MNG`.`ADDR`
+FROM `CO_HSPTL_LNKNG`
+JOIN `HSPTL_MNG` ON `HSPTL_MNG`.`HSPTL_SN` = `CO_HSPTL_LNKNG`.`HSPTL_SN`
+WHERE `CO_HSPTL_LNKNG`.`CO_SN` = :CO_HSPTL_LNKNG.CO_SN:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(679): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\UserRsvnController.php(53): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-03 00:07:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:09:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:12:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:12:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:13:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:13:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:13:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:13:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:13:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:13:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:14:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:14:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:14:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:14:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:19:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:32:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:33:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:33:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:33:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:33:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:33:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:34:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:34:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:35:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:57:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:57:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:57:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 00:57:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:11:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:12:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:12:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:12:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:12:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:12:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:20:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:20:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:20:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:20:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:20:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:21:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:23:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:24:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:24:25 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:24:25 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:24:25 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:24:25 --> RELATION: S
+DEBUG - 2025-12-03 01:24:25 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:24:25 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:24:25 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:24:25 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:24:25 --> Products found: 1
+DEBUG - 2025-12-03 01:24:25 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:24:25 --> =========================
+DEBUG - 2025-12-03 01:25:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:25:50 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:25:50 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:25:50 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:25:50 --> RELATION: S
+DEBUG - 2025-12-03 01:25:50 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:25:50 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:25:50 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:25:50 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:25:50 --> Products found: 1
+DEBUG - 2025-12-03 01:25:50 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:25:50 --> =========================
+DEBUG - 2025-12-03 01:29:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:29:56 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:29:56 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:29:56 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:29:56 --> RELATION: S
+DEBUG - 2025-12-03 01:29:56 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:29:56 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:29:56 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:29:56 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:29:56 --> Products found: 1
+DEBUG - 2025-12-03 01:29:56 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:29:56 --> =========================
+DEBUG - 2025-12-03 01:33:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:33:04 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:33:04 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:33:04 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:33:04 --> RELATION: S
+DEBUG - 2025-12-03 01:33:04 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:33:04 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:33:04 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:33:04 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:33:04 --> Products found: 1
+DEBUG - 2025-12-03 01:33:04 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:33:04 --> =========================
+DEBUG - 2025-12-03 01:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:33:17 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:33:17 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:33:17 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:33:17 --> RELATION: S
+DEBUG - 2025-12-03 01:33:17 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:33:17 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:33:17 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:33:17 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:33:17 --> Products found: 1
+DEBUG - 2025-12-03 01:33:17 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:33:17 --> =========================
+DEBUG - 2025-12-03 01:34:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:34:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:35:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:35:58 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:35:58 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:35:58 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:35:58 --> RELATION: S
+DEBUG - 2025-12-03 01:35:58 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:35:58 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:35:58 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:35:58 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:35:58 --> Products found: 1
+DEBUG - 2025-12-03 01:35:58 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:35:58 --> =========================
+DEBUG - 2025-12-03 01:36:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:36:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:36:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:44:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:44:49 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:44:49 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:44:49 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:44:49 --> RELATION: S
+DEBUG - 2025-12-03 01:44:49 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:44:49 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:44:49 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:44:49 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:44:49 --> Products found: 1
+DEBUG - 2025-12-03 01:44:49 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:44:49 --> =========================
+DEBUG - 2025-12-03 01:45:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:45:13 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:45:13 --> HSPTL_SN: 1
+DEBUG - 2025-12-03 01:45:13 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:45:13 --> RELATION: S
+DEBUG - 2025-12-03 01:45:13 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:45:13 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:45:13 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:45:13 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:45:13 --> Products found: 1
+DEBUG - 2025-12-03 01:45:13 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '1'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:45:13 --> =========================
+DEBUG - 2025-12-03 01:48:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:48:02 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:48:02 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:48:02 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:48:02 --> RELATION: S
+DEBUG - 2025-12-03 01:48:02 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:48:02 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:48:02 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:48:02 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:48:02 --> Products found: 1
+DEBUG - 2025-12-03 01:48:02 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:48:02 --> =========================
+DEBUG - 2025-12-03 01:49:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:49:07 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:49:07 --> HSPTL_SN: 1
+DEBUG - 2025-12-03 01:49:07 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:49:07 --> RELATION: S
+DEBUG - 2025-12-03 01:49:07 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:49:07 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:49:07 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:49:07 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:49:07 --> Products found: 1
+DEBUG - 2025-12-03 01:49:07 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '1'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:49:07 --> =========================
+DEBUG - 2025-12-03 01:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:49:57 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:49:57 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:49:57 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:49:57 --> RELATION: S
+DEBUG - 2025-12-03 01:49:57 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:49:57 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:49:57 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:49:57 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:49:57 --> Products found: 1
+DEBUG - 2025-12-03 01:49:57 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:49:57 --> =========================
+DEBUG - 2025-12-03 01:50:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:50:21 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:50:21 --> HSPTL_SN: 1
+DEBUG - 2025-12-03 01:50:21 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:50:21 --> RELATION: S
+DEBUG - 2025-12-03 01:50:21 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:50:21 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:50:21 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:50:21 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:50:21 --> Products found: 1
+DEBUG - 2025-12-03 01:50:21 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '1'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:50:21 --> =========================
+DEBUG - 2025-12-03 01:50:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:50:40 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:50:40 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:50:40 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:50:40 --> RELATION: S
+DEBUG - 2025-12-03 01:50:40 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:50:40 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:50:40 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:50:40 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:50:40 --> Products found: 1
+DEBUG - 2025-12-03 01:50:40 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:50:40 --> =========================
+DEBUG - 2025-12-03 01:50:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:51:59 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:51:59 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:51:59 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:51:59 --> RELATION: S
+DEBUG - 2025-12-03 01:51:59 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:51:59 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:51:59 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:51:59 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:51:59 --> Products found: 1
+DEBUG - 2025-12-03 01:51:59 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:51:59 --> =========================
+DEBUG - 2025-12-03 01:52:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:52:22 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:52:22 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:52:22 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:52:22 --> RELATION: S
+DEBUG - 2025-12-03 01:52:22 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:52:22 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:52:22 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:52:22 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:52:22 --> Products found: 1
+DEBUG - 2025-12-03 01:52:22 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:52:22 --> =========================
+DEBUG - 2025-12-03 01:52:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:52:35 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:52:35 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:52:35 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:52:35 --> RELATION: S
+DEBUG - 2025-12-03 01:52:35 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:52:35 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:52:35 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:52:35 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:52:35 --> Products found: 1
+DEBUG - 2025-12-03 01:52:35 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:52:35 --> =========================
+DEBUG - 2025-12-03 01:53:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:53:59 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:53:59 --> HSPTL_SN: 1
+DEBUG - 2025-12-03 01:53:59 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:53:59 --> RELATION: S
+DEBUG - 2025-12-03 01:53:59 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:53:59 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:53:59 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:53:59 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:53:59 --> Products found: 1
+DEBUG - 2025-12-03 01:53:59 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '1'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:53:59 --> =========================
+DEBUG - 2025-12-03 01:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 01:56:24 --> === Product Query Debug ===
+DEBUG - 2025-12-03 01:56:24 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 01:56:24 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 01:56:24 --> RELATION: S
+DEBUG - 2025-12-03 01:56:24 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 01:56:24 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 01:56:24 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 01:56:24 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 01:56:24 --> Products found: 1
+DEBUG - 2025-12-03 01:56:24 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 01:56:24 --> =========================
+INFO - 2025-12-03 10:09:51 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-03 10:09:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:10:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:10:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:10:34 --> User CO_SN: 1
+DEBUG - 2025-12-03 10:10:34 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 10:10:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:10:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:23:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:23:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:23:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:23:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:23:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:23:53 --> User CO_SN: 1
+DEBUG - 2025-12-03 10:23:53 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 10:23:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:23:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:24:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:24:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:24:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:24:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:26:25 --> User CO_SN: 1
+DEBUG - 2025-12-03 10:26:25 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 10:26:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:26:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:26:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:26:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:27:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:27:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:27:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:27:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:27:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:27:44 --> User CO_SN: 1
+DEBUG - 2025-12-03 10:27:44 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 10:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:27:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:33:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:33:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:33:41 --> updatePassword called - agree_yn: Y
+DEBUG - 2025-12-03 10:33:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:33:41 --> Session - user_id: 10000501, ckup_yyyy: 2025
+DEBUG - 2025-12-03 10:33:41 --> AGREE_YN will be updated to Y
+DEBUG - 2025-12-03 10:33:41 --> Update data: {"PSWD":"$2y$10$UTm.VeqjlnKcsxP6h003NehyCAZ8RpC1Cqm8BAknN7CUU.dr6ouAi","AGREE_YN":"Y"}
+DEBUG - 2025-12-03 10:33:41 --> Update result: SUCCESS
+DEBUG - 2025-12-03 10:43:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:43:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:43:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:43:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:43:59 --> User CO_SN: 1
+DEBUG - 2025-12-03 10:43:59 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 10:43:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:43:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:44:18 --> updatePassword called - agree_yn: Y
+DEBUG - 2025-12-03 10:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:44:18 --> Session - user_id: 10000501, ckup_yyyy: 2025
+DEBUG - 2025-12-03 10:44:18 --> User found - CKUP_TRGT_SN: 38, Current AGREE_YN: N
+DEBUG - 2025-12-03 10:44:18 --> AGREE_YN will be updated to Y
+DEBUG - 2025-12-03 10:44:18 --> Update data: {"PSWD":"$2y$10$w1eNsrp5P3XLr93lS6L7AOUnAv8AzSY4eyDCREN2VM.yLis5afQHy","AGREE_YN":"Y"}
+DEBUG - 2025-12-03 10:44:18 --> Update result: SUCCESS, Affected rows: 1
+DEBUG - 2025-12-03 10:55:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:55:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:55:53 --> User CO_SN: 1
+DEBUG - 2025-12-03 10:55:53 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 10:55:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:55:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:56:09 --> updatePassword called - agree_yn: Y
+DEBUG - 2025-12-03 10:56:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 10:56:09 --> Session - user_id: 10000501, ckup_yyyy: 2025
+DEBUG - 2025-12-03 10:56:09 --> User found - CKUP_TRGT_SN: 38, Current AGREE_YN: N
+DEBUG - 2025-12-03 10:56:09 --> AGREE_YN will be updated to Y
+DEBUG - 2025-12-03 10:56:09 --> Update data: {"PSWD":"$2y$10$8J3AZRc2rgah.Y8I\/lbQAesa56.M2TPwKsTUmyp.pomrQSFZUMBWy","AGREE_YN":"Y"}
+DEBUG - 2025-12-03 10:56:09 --> Update result: SUCCESS, Affected rows: 1
+DEBUG - 2025-12-03 11:01:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:01:53 --> User CO_SN: 1
+DEBUG - 2025-12-03 11:01:53 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 11:01:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:01:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:02:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:02:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:02:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:02:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:02:59 --> User CO_SN: 1
+DEBUG - 2025-12-03 11:02:59 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 11:02:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:03:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:14 --> User CO_SN: 1
+DEBUG - 2025-12-03 11:04:14 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 11:04:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:28 --> updatePassword called - agree_yn: Y
+DEBUG - 2025-12-03 11:04:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:28 --> Session - ckup_trgt_sn: 38, user_id: 10000501, ckup_yyyy: 2025
+DEBUG - 2025-12-03 11:04:29 --> User found - CKUP_TRGT_SN: 38, Current AGREE_YN: N
+DEBUG - 2025-12-03 11:04:29 --> AGREE_YN will be updated to Y
+DEBUG - 2025-12-03 11:04:29 --> Update data: {"PSWD":"$2y$10$KwBitqiRn8I9Ft2u5zAsFuk.q9vJp62GktG6HygSAxt53nrFY9.q.","AGREE_YN":"Y"}
+DEBUG - 2025-12-03 11:04:29 --> Update result: SUCCESS, Affected rows: 1
+DEBUG - 2025-12-03 11:04:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:47 --> User CO_SN: 1
+DEBUG - 2025-12-03 11:04:47 --> Company data: {"CO_SN":"1","CO_NM":"\ud050\ub809\uc18c","PIC_NM":"\ud050\ub809\uc18c\ub2f4\ub2f9\uc790","CNPL":"01012341234","BGNG_YMD":"2025-11-22","END_YMD":"2025-12-31","CO_MNGR_ID":"qtest","CO_MNGR_PSWD":"$2y$10$DRiLqSX5gdY7m0orAuWOU.RKWthFVjWfVpoy6G\/xOFSHDHZt6RXN2","REG_ID":"SYSTEM","MDFCN_ID":"vievisadmin","DEL_YN":"N","REG_YMD":"2025-11-20 00:00:00","MDFCN_YMD":"2025-12-01 00:00:00"}
+DEBUG - 2025-12-03 11:04:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:04:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:06:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:06:45 --> === Product Query Debug ===
+DEBUG - 2025-12-03 11:06:45 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 11:06:45 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 11:06:45 --> RELATION: S
+DEBUG - 2025-12-03 11:06:45 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 11:06:45 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 11:06:45 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 11:06:45 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 11:06:45 --> Products found: 1
+DEBUG - 2025-12-03 11:06:45 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 11:06:45 --> =========================
+INFO - 2025-12-03 11:25:58 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-03 11:25:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:26:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:26:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:26:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:26:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:31:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:31:53 --> === Product Query Debug ===
+DEBUG - 2025-12-03 11:31:53 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 11:31:53 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 11:31:53 --> RELATION: S
+DEBUG - 2025-12-03 11:31:53 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 11:31:53 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 11:31:53 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 11:31:53 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 11:31:53 --> Products found: 1
+DEBUG - 2025-12-03 11:31:53 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 11:31:53 --> =========================
+DEBUG - 2025-12-03 11:32:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:32:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:32:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:32:13 --> === Product Query Debug ===
+DEBUG - 2025-12-03 11:32:13 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 11:32:13 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 11:32:13 --> RELATION: S
+DEBUG - 2025-12-03 11:32:13 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 11:32:13 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 11:32:13 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 11:32:13 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 11:32:13 --> Products found: 1
+DEBUG - 2025-12-03 11:32:13 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 11:32:13 --> =========================
+DEBUG - 2025-12-03 11:51:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:51:20 --> === Product Query Debug ===
+DEBUG - 2025-12-03 11:51:20 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 11:51:20 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 11:51:20 --> RELATION: S
+DEBUG - 2025-12-03 11:51:20 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 11:51:20 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 11:51:20 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 11:51:20 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 11:51:20 --> Products found: 1
+DEBUG - 2025-12-03 11:51:20 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 11:51:20 --> =========================
+DEBUG - 2025-12-03 11:53:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:53:08 --> === Product Query Debug ===
+DEBUG - 2025-12-03 11:53:08 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 11:53:08 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 11:53:08 --> RELATION: S
+DEBUG - 2025-12-03 11:53:08 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 11:53:08 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 11:53:08 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 11:53:08 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 11:53:08 --> Products found: 1
+DEBUG - 2025-12-03 11:53:08 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 11:53:08 --> =========================
+ERROR - 2025-12-03 11:53:10 --> mysqli_sql_exception: Unknown column 'CKUP_GDS_SN' in 'where clause' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_SE...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_SE...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_SE...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE...', Array, false)
+#4 E:\project\namuh\source\app\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+#6 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+#7 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-12-03 11:53:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'CKUP_GDS_SN' in 'where clause'
+[Method: GET, Route: user/rsvnSel/getCheckupItems]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = :CKUP_GDS_SN:
+ORDER BY `CKUP_SE` ASC', [...], false)
+ 2 APPPATH\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 11:53:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'CKUP_GDS_SN' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = :CKUP_GDS_SN:
+ORDER BY `CKUP_SE` ASC', [...], false)
+ 4 APPPATH\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 11:53:10 --> [Caused by] mysqli_sql_exception: Unknown column 'CKUP_GDS_SN' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = :CKUP_GDS_SN:
+ORDER BY `CKUP_SE` ASC', [...], false)
+ 5 APPPATH\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-12-03 11:53:24 --> mysqli_sql_exception: Unknown column 'CKUP_GDS_SN' in 'where clause' in E:\project\namuh\source\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 E:\project\namuh\source\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_SE...', 0)
+#1 E:\project\namuh\source\system\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_SE...')
+#2 E:\project\namuh\source\system\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_SE...')
+#3 E:\project\namuh\source\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE...', Array, false)
+#4 E:\project\namuh\source\app\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+#5 E:\project\namuh\source\system\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+#6 E:\project\namuh\source\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+#7 E:\project\namuh\source\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 E:\project\namuh\source\system\Boot.php(334): CodeIgniter\CodeIgniter->run()
+#9 E:\project\namuh\source\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 E:\project\namuh\source\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-12-03 11:53:24 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'CKUP_GDS_SN' in 'where clause'
+[Method: GET, Route: user/rsvnSel/getCheckupItems]
+in SYSTEMPATH\Database\BaseConnection.php on line 692.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = :CKUP_GDS_SN:
+ORDER BY `CKUP_SE` ASC', [...], false)
+ 2 APPPATH\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+ 4 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 5 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 11:53:24 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'CKUP_GDS_SN' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = :CKUP_GDS_SN:
+ORDER BY `CKUP_SE` ASC', [...], false)
+ 4 APPPATH\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-12-03 11:53:24 --> [Caused by] mysqli_sql_exception: Unknown column 'CKUP_GDS_SN' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(738): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(652): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = \'undefined\'
+ORDER BY `CKUP_SE` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT `CKUP_SE`, `CKUP_ARTCL`, `DSS`
+FROM `CKUP_GDS_EXCEL_ARTCL`
+WHERE `CKUP_GDS_SN` = :CKUP_GDS_SN:
+ORDER BY `CKUP_SE` ASC', [...], false)
+ 5 APPPATH\Controllers\UserRsvnController.php(172): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserRsvnController->getCheckupItems()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRsvnController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(334): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-12-03 11:55:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 11:55:28 --> === Product Query Debug ===
+DEBUG - 2025-12-03 11:55:28 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 11:55:28 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 11:55:28 --> RELATION: S
+DEBUG - 2025-12-03 11:55:28 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 11:55:28 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 11:55:28 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 11:55:28 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 11:55:28 --> Products found: 1
+DEBUG - 2025-12-03 11:55:28 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 11:55:28 --> =========================
+DEBUG - 2025-12-03 12:01:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:01:46 --> === Product Query Debug ===
+DEBUG - 2025-12-03 12:01:46 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 12:01:46 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 12:01:46 --> RELATION: S
+DEBUG - 2025-12-03 12:01:46 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 12:01:46 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 12:01:46 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 12:01:46 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 12:01:46 --> Products found: 1
+DEBUG - 2025-12-03 12:01:46 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 12:01:46 --> =========================
+DEBUG - 2025-12-03 12:36:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:37:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:37:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:38:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:38:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:38:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:39:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:40:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:40:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:41:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:42:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:42:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:42:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:51:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:51:11 --> === Product Query Debug ===
+DEBUG - 2025-12-03 12:51:11 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 12:51:11 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 12:51:11 --> RELATION: S
+DEBUG - 2025-12-03 12:51:11 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 12:51:11 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 12:51:11 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 12:51:11 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 12:51:11 --> Products found: 1
+DEBUG - 2025-12-03 12:51:11 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 12:51:11 --> =========================
+DEBUG - 2025-12-03 12:56:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-03 12:56:42 --> === Product Query Debug ===
+DEBUG - 2025-12-03 12:56:42 --> HSPTL_SN: 3
+DEBUG - 2025-12-03 12:56:42 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-03 12:56:42 --> RELATION: S
+DEBUG - 2025-12-03 12:56:42 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-03 12:56:42 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-03 12:56:42 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-03 12:56:42 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-03 12:56:42 --> Products found: 1
+DEBUG - 2025-12-03 12:56:42 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-03 12:56:42 --> =========================

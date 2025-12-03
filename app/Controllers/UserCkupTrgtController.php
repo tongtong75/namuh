@@ -126,6 +126,8 @@ class UserCkupTrgtController extends BaseController
                     'CKUP_YYYY'    => esc($row['CKUP_YYYY']),
                     'NAME'         => esc($row['NAME']),
                     'CKUP_NAME'    => $ckupNameText,
+                    'SUPPORT_FUND' => esc(($row['SUPPORT_FUND'] ?? null) ? rtrim($row['SUPPORT_FUND'], '원') . '원' : '0원'),
+'FAMILY_SUPPORT_FUND' => esc(($row['FAMILY_SUPPORT_FUND'] ?? null) ? rtrim($row['FAMILY_SUPPORT_FUND'], '원') . '원' : '0원'),
                     'BUSINESS_NUM' => esc($row['BUSINESS_NUM'] ?? '-'),
                     'BIRTHDAY'     => esc($row['BIRTHDAY']),
                     'RELATION'     => $relationText,
@@ -133,7 +135,7 @@ class UserCkupTrgtController extends BaseController
                     'HANDPHONE'    => esc($row['HANDPHONE'] ?? '-'),
                     'CKUP_YN'      => $row['CKUP_YN'] === 'Y' ? '<span class="badge bg-success">완료</span>' : '<span class="badge bg-warning text-dark">미수검</span>',
                     'memo_status'  => $memoStatus,
-                    'action'       => view('mngr/ckup_trgt/action_buttons', [
+                    'action'       => view('user/ckup_trgt/action_buttons', [
                                             'item' => $row,
                                             'has_memo' => !empty($memoData),
                                             'memo_sn' => $memoSn

@@ -127,7 +127,7 @@ class DayCkupMngModel extends Model
 
         $results = $builder->get()->getResultArray();
 
-        // Sort results to have TOTAL last for each day
+        // Sort results to have TOTAL first for each day
         usort($results, function($a, $b) {
             // First, sort by date
             if ($a['start'] !== $b['start']) {
@@ -136,10 +136,10 @@ class DayCkupMngModel extends Model
 
             // If dates are the same, then apply custom sort for items
             if ($a['item_name'] === 'TOTAL') {
-                return 1; // a is TOTAL, should come after b
+                return -1; // a is TOTAL, should come before b
             }
             if ($b['item_name'] === 'TOTAL') {
-                return -1; // b is TOTAL, should come after a
+                return 1; // b is TOTAL, should come before a
             }
             return strcmp($a['item_name'], $b['item_name']);
         });
@@ -171,13 +171,17 @@ class DayCkupMngModel extends Model
         foreach ($results as $row) {
             $itemName = $row['item_name'];
             $titleText = $textMap[$itemName] ?? $itemName;
+            
+            // TOTAL을 맨 위에 표시하기 위한 순서 값
+            $order = ($itemName === 'TOTAL') ? 0 : 1;
 
             $finalEvents[] = [
                 'start'     => $row['start'],
                 'allDay'    => true,
                 'title'     => $titleText . ': ' . $row['chc_cnt'] . '/' . $row['person_count'],
                 'color'     => $colorMap[$itemName] ?? '#e9ecef',
-                'textColor' => '#212529'
+                'textColor' => '#212529',
+                'order'     => $order
             ];
         }
 

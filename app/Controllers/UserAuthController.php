@@ -127,31 +127,71 @@ class UserAuthController extends BaseController
     {
         $request = service('request');
         $password = $request->getPost('password');
+        $agreeYn = $request->getPost('agree_yn');
+
+        log_message('debug', 'updatePassword called - agree_yn: ' . ($agreeYn ?? 'NULL'));
 
         if (!$password) {
             return $this->response->setJSON(['success' => false, 'message' => '비밀번호를 입력해주세요.']);
         }
 
-        $ckupTrgtModel = new CkupTrgtModel();
+        // 세션에서 사용자 정보 가져오기
+        $ckupTrgtSn = session()->get('ckup_trgt_sn');
         $userId = session()->get('user_id');
         $ckupYyyy = session()->get('ckup_yyyy');
+
+        log_message('debug', 'Session - ckup_trgt_sn: ' . $ckupTrgtSn . ', user_id: ' . $userId . ', ckup_yyyy: ' . $ckupYyyy);
+
+        if (!$ckupTrgtSn) {
+            log_message('error', 'ckup_trgt_sn not found in session');
+            return $this->response->setJSON(['success' => false, 'message' => '사용자 정보를 찾을 수 없습니다.']);
+        }
+
+        $ckupTrgtModel = new CkupTrgtModel();
+
+        // 보안 확인: 세션의 SN이 실제로 본인의 것인지 확인
+        $existingUser = $ckupTrgtModel->find($ckupTrgtSn);
+        
+        if (!$existingUser) {
+            log_message('error', 'User not found - CKUP_TRGT_SN: ' . $ckupTrgtSn);
+            return $this->response->setJSON(['success' => false, 'message' => '사용자 정보를 찾을 수 없습니다.']);
+        }
+
+        // 보안 확인: 본인의 레코드인지 확인
+        if ($existingUser['BUSINESS_NUM'] !== $userId || $existingUser['RELATION'] !== 'S') {
+            log_message('error', 'Security check failed - Session user_id does not match record');
+            return $this->response->setJSON(['success' => false, 'message' => '권한이 없습니다.']);
+        }
+
+        log_message('debug', 'User found - CKUP_TRGT_SN: ' . $ckupTrgtSn . ', Current AGREE_YN: ' . ($existingUser['AGREE_YN'] ?? 'NULL'));
 
         // 비밀번호 해싱
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // 업데이트
-        $result = $ckupTrgtModel->where('BUSINESS_NUM', $userId)
-                                ->where('CKUP_YYYY', $ckupYyyy)
-                                ->where('RELATION', 'S') // 본인만 변경 가능
-                                ->set([
-                                    'PSWD' => $hashedPassword,
-                                    'AGREE_YN' => 'Y'
-                                ])
-                                ->update();
+        // 업데이트할 데이터 준비
+        $updateData = ['PSWD' => $hashedPassword];
+        
+        // agree_yn 파라미터가 'Y'인 경우에만 AGREE_YN 업데이트
+        if ($agreeYn === 'Y') {
+            $updateData['AGREE_YN'] = 'Y';
+            log_message('debug', 'AGREE_YN will be updated to Y');
+        }
 
-        if ($result) {
+        log_message('debug', 'Update data: ' . json_encode($updateData));
+
+        // 업데이트 (CKUP_TRGT_SN으로 직접 업데이트)
+        $result = $ckupTrgtModel->update($ckupTrgtSn, $updateData);
+        
+        // 영향받은 행 수 확인
+        $db = \Config\Database::connect();
+        $affectedRows = $db->affectedRows();
+        
+        log_message('debug', 'Update result: ' . ($result ? 'SUCCESS' : 'FAILED') . ', Affected rows: ' . $affectedRows);
+
+        if ($result && $affectedRows > 0) {
             return $this->response->setJSON(['success' => true, 'message' => '비밀번호가 변경되었습니다.']);
         } else {
+            log_message('error', 'Update failed - result: ' . ($result ? 'true' : 'false') . ', affected rows: ' . $affectedRows);
             return $this->response->setJSON(['success' => false, 'message' => '비밀번호 변경에 실패했습니다.']);
         }
     }
