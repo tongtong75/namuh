@@ -205,7 +205,7 @@ class UserRsvnController extends BaseController
         $result = [];
         foreach ($groups as $group) {
             $itemBuilder = $db->table('CKUP_GDS_EXCEL_CHC_ARTCL');
-            $items = $itemBuilder->select('CKUP_GDS_EXCEL_CHC_ARTCL_SN, CKUP_ARTCL, GNDR_SE')
+            $items = $itemBuilder->select('CKUP_GDS_EXCEL_CHC_ARTCL_SN, CKUP_TYPE, CKUP_ARTCL, GNDR_SE')
                                  ->where('CKUP_GDS_EXCEL_CHC_GROUP_SN', $group['CKUP_GDS_EXCEL_CHC_GROUP_SN'])
                                  ->where('DEL_YN', 'N')
                                  ->orderBy('CKUP_GDS_EXCEL_CHC_ARTCL_SN', 'ASC')
@@ -220,6 +220,32 @@ class UserRsvnController extends BaseController
         return $this->response->setJSON([
             'success' => true,
             'groups' => $result
+        ]);
+    }
+
+    public function getAdditionalCheckups()
+    {
+        $ckupGdsSn = $this->request->getGet('ckup_gds_sn');
+
+        if (!$ckupGdsSn) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Invalid parameters']);
+        }
+
+        $db = \Config\Database::connect();
+        
+        // CKUP_GDS_EXCEL_ADD_CHC 테이블에서 직접 조회
+        // ckup_gds_sn은 실제로 CKUP_GDS_EXCEL_MNG_SN입니다
+        $builder = $db->table('CKUP_GDS_EXCEL_ADD_CHC');
+        $items = $builder->select('CKUP_GDS_EXCEL_ADD_CHC_SN, CKUP_ARTCL, GNDR_SE, CKUP_CST')
+                         ->where('CKUP_GDS_EXCEL_SN', $ckupGdsSn)
+                         ->where('DEL_YN', 'N')
+                         ->orderBy('CKUP_GDS_EXCEL_ADD_CHC_SN', 'ASC')
+                         ->get()
+                         ->getResultArray();
+
+        return $this->response->setJSON([
+            'success' => true,
+            'items' => $items
         ]);
     }
 }

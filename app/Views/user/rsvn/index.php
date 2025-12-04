@@ -51,7 +51,29 @@
                                     </div>
 
                                     <!-- 예약현황 -->
-                                    <h6 class="mb-3"><i class="ri-file-list-3-line"></i> 예약현황</h6>
+                                    <div class="d-flex align-items-center justify-content-between mb-3">
+                                        <h6 class="mb-0"><i class="ri-file-list-3-line"></i> 예약현황</h6>
+                                        <?php
+                                            $selfInfo = null;
+                                            if (isset($familyMembers) && !empty($familyMembers)) {
+                                                foreach ($familyMembers as $member) {
+                                                    if ($member['RELATION'] === 'S') {
+                                                        $selfInfo = $member;
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        ?>
+                                        <?php if ($selfInfo): ?>
+                                            <button type="button" class="btn btn-sm btn-success add-family-btn"
+                                                data-co-sn="<?= $selfInfo['CO_SN'] ?>"
+                                                data-ckup-yyyy="<?= $selfInfo['CKUP_YYYY'] ?>"
+                                                data-business-num="<?= $selfInfo['BUSINESS_NUM'] ?>"
+                                                data-name="<?= $selfInfo['NAME'] ?>">
+                                                <i class="ri-add-line align-bottom me-1"></i> 가족추가
+                                            </button>
+                                        <?php endif; ?>
+                                    </div>
                                     <div class="table-responsive">
                                         <table class="reservation-table table table-bordered">
                                             <thead>
@@ -78,7 +100,7 @@
                                                 <?php if (isset($familyMembers) && !empty($familyMembers)): ?>
                                                     <?php foreach ($familyMembers as $member): ?>
                                                         <tr>
-                                                            <td><?= $member['NAME'] ?? 'N/A' ?></td>
+                                                            <td><?= $member['CKUP_NAME'] ?? '' ?></td>
                                                             <td><?= $relationMap[$member['RELATION']] ?? $member['RELATION'] ?></td>
                                                             <td><?= $member['HSPTL_NM'] ?? '-' ?></td>
                                                             <td>
@@ -138,10 +160,116 @@
             <?= $this->include('partials/footer') ?>
         </div>
     </div>
+
+    <!-- Family Registration Modal -->
+    <div class="modal fade" id="familyModal" tabindex="-1" aria-labelledby="familyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header bg-light p-3">
+                    <h5 class="modal-title" id="familyModalLabel">가족 등록</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="family-item-form" class="needs-validation">
+                    <div class="modal-body">
+                        <input type="hidden" id="CKUP_TRGT_SN_modal_family" name="CKUP_TRGT_SN">
+                        <input type="hidden" id="CO_SN_modal_family" name="CO_SN">
+                        <input type="hidden" id="CKUP_YYYY_modal_family" name="CKUP_YYYY">
+                        <input type="hidden" id="BUSINESS_NUM_modal_family" name="BUSINESS_NUM">
+                        <input type="hidden" id="NAME_modal_family" name="NAME">
+                        <?= csrf_field() ?>
+                        
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <label for="CKUP_NAME_modal_family" class="form-label">수검자명 <span class="text-danger">*</span></label>
+                                <input type="text" id="CKUP_NAME_modal_family" name="CKUP_NAME" class="form-control" placeholder="수검자명" required>
+                                <div class="invalid-feedback">수검자명을 입력해주세요.</div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="BIRTHDAY_modal_family" class="form-label">생년월일 <span class="text-danger">*</span></label>
+                                <input type="text" id="BIRTHDAY_modal_family" name="BIRTHDAY" class="form-control" placeholder="YYMMDD" required>
+                                <div class="invalid-feedback">생년월일을 입력해주세요.</div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">관계 <span class="text-danger">*</span></label>
+                                <div class="d-flex gap-3 mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_W_family" value="W" required>
+                                        <label class="form-check-label" for="RELATION_W_family">배우자</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_C_family" value="C">
+                                        <label class="form-check-label" for="RELATION_C_family">자녀</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_P_family" value="P">
+                                        <label class="form-check-label" for="RELATION_P_family">부모</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="RELATION" id="RELATION_O_family" value="O">
+                                        <label class="form-check-label" for="RELATION_O_family">기타</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="form-label">성별 <span class="text-danger">*</span></label>
+                                <div class="d-flex gap-3 mt-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="SEX" id="SEX_M_family" value="M" required>
+                                        <label class="form-check-label" for="SEX_M_family">남</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="SEX" id="SEX_F_family" value="F">
+                                        <label class="form-check-label" for="SEX_F_family">여</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="HANDPHONE_modal_family" class="form-label">핸드폰번호 <span class="text-danger">*</span></label>
+                                <input type="text" id="HANDPHONE_modal_family" name="HANDPHONE" class="form-control" placeholder="010-1234-5678" required>
+                                <div class="invalid-feedback">핸드폰번호를 입력해주세요.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                        <button type="submit" class="btn btn-primary" id="family-add-btn">등록</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <?= $this->include('partials/customizer') ?>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <?= $this->include('partials/vendor-scripts') ?>
     
     <script>
+        const BASE_URL = '<?= rtrim(site_url(), '/') . '/' ?>';
+        const CSRF_TOKEN_NAME = '<?= csrf_token() ?>';
+        let CSRF_HASH = '<?= csrf_hash() ?>';
+
+        function updateCsrfTokenOnPage(newHash) {
+            CSRF_HASH = newHash;
+            $('input[name="' + CSRF_TOKEN_NAME + '"]').val(newHash);
+        }
+
+        function showAjaxMessageGlobal(message, type = 'success') {
+            alert(message); // Simple alert for now, or implement a custom toast
+        }
+
+        function handleAjaxError(xhr) {
+            console.error(xhr);
+            alert('오류가 발생했습니다.');
+        }
+
+        function clearFormAndValidation(formId) {
+            const formElement = $('#' + formId);
+            formElement.trigger('reset');
+            formElement.find('.form-control, .form-select').removeClass('is-invalid');
+            formElement.find('.invalid-feedback').hide().text('');
+            formElement.find('input[type="radio"]').prop('checked', false);
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // 예약하기 버튼 (이벤트 위임)
             document.addEventListener('click', function(e) {
@@ -188,6 +316,75 @@
                         alert('오류가 발생했습니다. 다시 시도해주세요.');
                     });
                 }
+            });
+
+            // 가족 추가 버튼 클릭
+            $(document).on('click', '.add-family-btn', function() {
+                clearFormAndValidation('family-item-form');
+                $('#family-add-btn').text('등록');
+                $('#CKUP_TRGT_SN_modal_family').val(''); 
+                
+                // 부모 데이터 가져오기
+                const coSn = $(this).data('co-sn');
+                const ckupYyyy = $(this).data('ckup-yyyy');
+                const businessNum = $(this).data('business-num');
+                const name = $(this).data('name');
+
+                // 필드 값 설정
+                $('#CO_SN_modal_family').val(coSn);
+                $('#CKUP_YYYY_modal_family').val(ckupYyyy);
+                $('#BUSINESS_NUM_modal_family').val(businessNum);
+                $('#NAME_modal_family').val(name);
+
+                // 모달 표시
+                $('#familyModal').modal('show');
+            });
+
+            // 가족 등록 폼 제출
+            $('#family-item-form').on('submit', function(e) {
+                e.preventDefault();
+                
+                const form = this;
+                const formData = new FormData(form);
+
+                $.ajax({
+                    url: BASE_URL + 'user/ckupTrgt/ajax_create',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        $('#family-add-btn').prop('disabled', true).text('처리중...');
+                    },
+                    success: function(response) {
+                        updateCsrfTokenOnPage(response.csrf_hash);
+                        if (response.status === 'success') {
+                            alert(response.message);
+                            $('#familyModal').modal('hide');
+                            location.reload(); // Reload to show new family member
+                        } else {
+                            if (response.errors) {
+                                let errorMsg = '';
+                                $.each(response.errors, function(key, value) {
+                                    errorMsg += value + '\n';
+                                    $('#family-item-form #' + key + '_modal_family').addClass('is-invalid');
+                                    $('#family-item-form #' + key + '_modal_family').next('.invalid-feedback').text(value).show();
+                                });
+                                alert(errorMsg);
+                            } else {
+                                alert(response.message);
+                            }
+                        }
+                    },
+                    error: function(xhr) {
+                        alert('서버 오류 발생.');
+                        handleAjaxError(xhr);
+                    },
+                    complete: function() {
+                        $('#family-add-btn').prop('disabled', false).text('등록');
+                    }
+                });
             });
         });
     </script>

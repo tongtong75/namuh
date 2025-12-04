@@ -3,6 +3,8 @@
 <head>
     <?php echo view('partials/title-meta', array('title'=>'검진예약')); ?>
     <?= $this->include('partials/head-css') ?>
+    <!-- SweetAlert2 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- FullCalendar CSS -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <!-- 예약 페이지 전용 CSS (필요시 추가) -->
@@ -31,7 +33,6 @@
             padding: 3px 2px !important;
             margin-bottom: 1px !important;
             white-space: normal !important;
-            line-height: 1.2 !important;
         }
         
         .fc-event-title {
@@ -46,6 +47,28 @@
         
         .fc-daygrid-day-frame {
             min-height: 100px;
+        }
+        
+        /* Calendar event cursor */
+        .fc-event {
+            cursor: pointer !important;
+        }
+        
+        .fc-daygrid-day {
+            cursor: pointer !important;
+        }
+        
+        /* Sticky cost display */
+        .sticky-cost-display {
+            position: sticky;
+            top: 70px; /* Adjust based on your header height */
+            z-index: 100;
+            background-color: #f0fff0; /* Light green background */
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .sticky-cost-display.stuck {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
@@ -79,14 +102,14 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <th>검진기관</th>
-                                                    <td><!-- 선택된 병원 표시 --></td>
+                                                    <th>검진병원</th>
+                                                    <td id="selectedHospitalDisplay"><!-- 선택된 병원 표시 --></td>
                                                     <th>검진희망일</th>
-                                                    <td><!-- 선택된 날짜 표시 --></td>
+                                                    <td id="selectedDateDisplay"><!-- 선택된 날짜 표시 --></td>
                                                 </tr>
                                                 <tr>
                                                     <th>검진상품</th>
-                                                    <td><!-- 선택된 상품 표시 --></td>
+                                                    <td id="selectedProductDisplay"><!-- 선택된 상품 표시 --></td>
                                                     <th>추가검사</th>
                                                     <td><!-- 선택된 추가검사 표시 --></td>
                                                 </tr>
@@ -196,16 +219,68 @@
                                                     <div id="product-list" class="table-responsive">
                                                         <p class="text-muted">병원을 먼저 선택해주세요.</p>
                                                     </div>
-                                                    <div class="mt-3">
-                                                        <button type="button" class="btn btn-primary" onclick="alert('준비중입니다.')">
-                                                            <i class="ri-check-line"></i> 선택완료
-                                                        </button>
+                                                    
+                                                    <!-- 상품선택 섹션 (인라인) -->
+                                                    <div id="productChoiceSection" class="mt-4" style="display: none;">
+                                                        <div class="card border">
+                                                            <div class="card-header bg-light d-flex justify-content-between align-items-center">
+                                                                <h6 class="card-title mb-0"><i class="ri-shopping-cart-2-line"></i> 상품 선택</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                 <div class="alert alert-info mb-3">
+                                                                    <i class="ri-information-line me-1"></i> 선택한 검진상품 내에 포함된 기본선택항목입니다.
+                                                                </div>
+                                                                <div id="productChoiceContent">
+                                                                    <div class="text-center">
+                                                                        <div class="spinner-border text-primary" role="status">
+                                                                            <span class="visually-hidden">Loading...</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer text-end">
+                                                                 <button type="button" class="btn btn-primary" id="btnConfirmSelection">선택완료</button>
+                                                            </div>
+                                                        </div>
                                                     </div>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="step3" role="tabpanel">
-                                            <p class="mb-0">추가검사 선택 화면 (준비중)</p>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="alert alert-info" role="alert">
+                                                        선택한 검진상품 외에 추가로 받고 싶은 항목이 있을 경우 선택해 주세요. 단, 회사지원금이 초과될 경우 본인이 부담하셔야 합니다.
+                                                    </div>
+                                                    <h5 class="card-title mb-3">▶ 추가검사 항목</h5>
+                                                    <p class="text-muted mb-3">* 특수검사(대장내시경, 수면위내시경 등)는 병원사정에 따라 검사일자가 별도로 지정될 수 있습니다.</p>
+                                                    
+                                                    <!-- 본인부담 발생금액 표시 (sticky) -->
+                                                    <div class="sticky-cost-display p-3 bg-white border rounded shadow-sm mb-3">
+                                                        <div class="row">
+                                                            <div class="col-md-6">
+                                                                <h6 class="mb-0">본인부담 발생금액(누적)</h6>
+                                                            </div>
+                                                            <div class="col-md-6 text-end">
+                                                                <h5 class="mb-0 text-primary">
+                                                                    <strong><span id="totalAdditionalCost">0</span>원</strong>
+                                                                </h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div id="additionalCheckupList">
+                                                        <!-- 추가검사 리스트가 여기에 로드됩니다 -->
+                                                    </div>
+                                                    
+                                                    <div class="mt-4 text-end">
+                                                        <button type="button" class="btn btn-primary" id="btnConfirmAdditional">
+                                                            다음 단계 <i class="ri-arrow-right-line"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="tab-pane" id="step4" role="tabpanel">
                                             <p class="mb-0">예약자 정보 확인 화면 (준비중)</p>
@@ -247,33 +322,7 @@
         </div>
     </div>
 
-    <!-- 상품선택 모달 -->
-    <div class="modal fade" id="productChoiceModal" tabindex="-1" aria-labelledby="productChoiceModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="productChoiceModalLabel"><i class="ri-shopping-cart-2-line"></i> 상품 선택</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-info mb-3">
-                        <i class="ri-information-line me-1"></i> 선택한 검진상품 내에 포함된 기본선택항목입니다.
-                    </div>
-                    <div id="productChoiceContent">
-                        <div class="text-center">
-                            <div class="spinner-border text-primary" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                    <button type="button" class="btn btn-primary" id="btnConfirmSelection">선택완료</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <?= $this->include('partials/customizer') ?>
     <?= $this->include('partials/vendor-scripts') ?>
@@ -281,7 +330,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const ckupTrgtSn = new URLSearchParams(window.location.search).get('ckup_trgt_sn');
+            const userGender = '<?= $targetInfo['SEX'] ?>'; // Get user's gender from PHP
             let selectedHospitalSn = null;
+            let selectedDate = null;
             let calendar = null;
 
             // 병원 선택 버튼
@@ -289,26 +340,42 @@
                 btn.addEventListener('click', function() {
                     const hospitalSn = this.getAttribute('data-id');
                     const hospitalName = this.getAttribute('data-name');
-                    
-                    selectedHospitalSn = hospitalSn;
-                    
-                    // 병원 선택 표시
-                    document.querySelectorAll('.btnSelectHospital').forEach(b => {
-                        b.classList.remove('btn-primary');
-                        b.classList.add('btn-outline-primary');
+                    const self = this; // Store reference to button
+
+                    Swal.fire({
+                        title: hospitalName + " 병원을 선택하셨습니다.",
+                        text: "다음 단계로 이동하시겠습니까?",
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: '예',
+                        cancelButtonText: '아니오'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            selectedHospitalSn = hospitalSn;
+                            
+                            // 병원 선택 표시 (상단 테이블)
+                            document.getElementById('selectedHospitalDisplay').textContent = hospitalName;
+
+                            // 병원 선택 버튼 스타일 업데이트
+                            document.querySelectorAll('.btnSelectHospital').forEach(b => {
+                                b.classList.remove('btn-primary');
+                                b.classList.add('btn-outline-primary');
+                            });
+                            self.classList.remove('btn-outline-primary');
+                            self.classList.add('btn-primary');
+                            
+                            // 달력 초기화 및 로드
+                            loadCalendar(hospitalSn);
+                            
+                            // 상품 목록 로드
+                            loadProducts(hospitalSn, ckupTrgtSn);
+                            
+                            // 다음 탭으로 이동
+                            const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
+                            step2Tab.show();
+                        }
                     });
-                    this.classList.remove('btn-outline-primary');
-                    this.classList.add('btn-primary');
-                    
-                    // 달력 초기화 및 로드
-                    loadCalendar(hospitalSn);
-                    
-                    // 상품 목록 로드
-                    loadProducts(hospitalSn, ckupTrgtSn);
-                    
-                    // 다음 탭으로 이동
-                    const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
-                    step2Tab.show();
                 });
             });
 
@@ -349,7 +416,30 @@
                         }
                     },
                     dateClick: function(info) {
-                        alert('준비중입니다.');
+                        handleDateSelection(info.dateStr, info.dayEl);
+                    },
+                    eventClick: function(info) {
+                        info.jsEvent.preventDefault();
+                        const dateStr = info.event.startStr;
+                        const eventTitle = info.event.title;
+                        
+                        // Check if this specific event is full
+                        /*const capacityMatch = eventTitle.match(/(\d+)\/(\d+)/);
+                        if (capacityMatch) {
+                            const current = parseInt(capacityMatch[1]);
+                            const total = parseInt(capacityMatch[2]);
+                            if (current >= total) {
+                                Swal.fire({
+                                    title: '검진마감',
+                                    text: '해당 검진유형은 마감되었습니다.',
+                                    icon: 'warning',
+                                    confirmButtonText: '확인'
+                                });
+                                return;
+                            }
+                        }*/
+                        
+                        handleDateSelection(dateStr, info.el);
                     }
                 });
                 calendar.render();
@@ -363,6 +453,68 @@
                         }
                     });
                 }
+            }
+
+            function handleDateSelection(dateStr, element) {
+                // Get all events for this date
+                const events = calendar.getEvents().filter(event => {
+                    return event.startStr === dateStr;
+                });
+                
+                // Check if there are any events for this date
+                if (events.length === 0) {
+                    Swal.fire({
+                        title: '선택 불가',
+                        text: '해당 날짜는 검진 일정이 없습니다.',
+                        icon: 'info',
+                        confirmButtonText: '확인'
+                    });
+                    return;
+                }
+                
+                // Check if any "전체" event is full
+                let isFull = false;
+                for (const event of events) {
+                    if (event.title.includes('전체')) {
+                        const capacityMatch = event.title.match(/(\d+)\/(\d+)/);
+                        if (capacityMatch) {
+                            const current = parseInt(capacityMatch[1]);
+                            const total = parseInt(capacityMatch[2]);
+                            if (current >= total) {
+                                isFull = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+                
+                if (isFull) {
+                    Swal.fire({
+                        title: '검진마감',
+                        text: '해당 날짜는 검진 인원이 마감되었습니다.',
+                        icon: 'warning',
+                        confirmButtonText: '확인'
+                    });
+                    return;
+                }
+                
+                // Format and display the selected date
+                const date = new Date(dateStr);
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const formattedDate = `${year}-${month}-${day}`;
+                
+                selectedDate = dateStr;
+                document.getElementById('selectedDateDisplay').textContent = formattedDate;
+                
+                // Show confirmation alert
+                Swal.fire({
+                    title: `${year}년 ${month}월 ${day}일을 선택하셨습니다.`,
+                    icon: 'success',
+                    confirmButtonText: '확인',
+                    timer: 2000
+                });
             }
 
             function loadProducts(hsptlSn, ckupTrgtSn) {
@@ -500,18 +652,38 @@
             }
 
             // 상품선택 버튼 클릭 이벤트 (이벤트 위임)
+            // 상품선택 버튼 클릭 이벤트 (이벤트 위임)
             document.getElementById('product-list').addEventListener('click', function(e) {
                 const btn = e.target.closest('.btnSelectProduct');
                 if (btn) {
+                    // Check if date is selected first
+                    if (!selectedDate) {
+                        Swal.fire({
+                            title: '검진희망일 미선택',
+                            text: '검진희망일을 먼저 선택해주세요.',
+                            icon: 'warning',
+                            confirmButtonText: '확인'
+                        });
+                        return;
+                    }
+                    
                     const ckupGdsSn = btn.getAttribute('data-ckup-gds-sn');
                     if (ckupGdsSn) {
+                        // 버튼 스타일 토글
+                        document.querySelectorAll('.btnSelectProduct').forEach(b => {
+                            b.classList.remove('btn-primary');
+                            b.classList.add('btn-outline-primary');
+                        });
+                        btn.classList.remove('btn-outline-primary');
+                        btn.classList.add('btn-primary');
+
                         showProductChoice(ckupGdsSn);
                     }
                 }
             });
 
             function showProductChoice(ckupGdsSn) {
-                const modal = new bootstrap.Modal(document.getElementById('productChoiceModal'));
+                const section = document.getElementById('productChoiceSection');
                 const contentDiv = document.getElementById('productChoiceContent');
                 
                 // 로딩 표시
@@ -523,7 +695,8 @@
                     </div>
                 `;
                 
-                modal.show();
+                section.style.display = 'block';
+                section.scrollIntoView({ behavior: 'smooth' });
                 
                 // AJAX로 상품선택 항목 데이터 가져오기
                 fetch(`<?= site_url('user/rsvnSel/getProductChoiceItems') ?>?ckup_gds_sn=${ckupGdsSn}`, {
@@ -546,26 +719,49 @@
             function renderProductChoiceTable(groups, container) {
                 let html = '<div class="table-responsive">';
                 html += '<table class="table table-bordered table-hover align-middle text-center">';
-                html += '<thead class="table-light"><tr><th>번호</th><th>검사항목</th><th>남녀구분</th><th>선택</th><th>선택갯수</th><th>비고</th></tr></thead>';
+                html += '<thead class="table-light"><tr><th>번호</th><th>검사유형</th><th>검사항목</th><th>남녀구분</th><th>선택</th><th>선택갯수</th><th>비고</th></tr></thead>';
                 html += '<tbody>';
                 
                 groups.forEach((group, groupIndex) => {
-                    const items = group.items;
-                    const rowspan = items.length;
+                    // Filter items based on user's gender
+                    const filteredItems = group.items.filter(item => {
+                        // Show items that are common (C) or match user's gender
+                        return item.GNDR_SE === 'C' || item.GNDR_SE === userGender;
+                    });
+                    
+                    // Skip this group if no items match the gender filter
+                    if (filteredItems.length === 0) {
+                        return;
+                    }
+                    
+                    const rowspan = filteredItems.length;
                     
                     // 선택갯수 표시 텍스트 생성
                     let countText = group.CHC_ARTCL_CNT;
-                    if (group.CHC_ARTCL_CNT2) {
+                    if (group.CHC_ARTCL_CNT2 && group.CHC_ARTCL_CNT2 > 0) {
                         countText += ` 또는 ${group.CHC_ARTCL_CNT2}`;
                     }
                     
-                    items.forEach((item, itemIndex) => {
+                    filteredItems.forEach((item, itemIndex) => {
                         html += `<tr>`;
                         
                         // 첫 번째 항목일 때 그룹 정보 표시 (Rowspan)
                         if (itemIndex === 0) {
                             html += `<td rowspan="${rowspan}" class="fw-bold">${group.GROUP_NM}</td>`;
                         }
+                        
+                        // 검사유형 표시
+                        const ckupTypeMap = {
+                            'GS': '위내시경',
+                            'CS': '대장내시경',
+                            'CT': 'CT',
+                            'UT': '초음파',
+                            'BU': '유방초음파',
+                            'PU': '골반초음파',
+                            'ET': '일반'
+                        };
+                        const ckupTypeText = ckupTypeMap[item.CKUP_TYPE] || item.CKUP_TYPE || '-';
+                        html += `<td>${ckupTypeText}</td>`;
                         
                         html += `<td class="text-start ps-3">${item.CKUP_ARTCL}</td>`;
                         
@@ -582,7 +778,8 @@
                                            value="${item.CKUP_GDS_EXCEL_CHC_ARTCL_SN}"
                                            data-group-id="${group.CKUP_GDS_EXCEL_CHC_GROUP_SN}"
                                            data-max-count="${group.CHC_ARTCL_CNT}"
-                                           data-max-count2="${group.CHC_ARTCL_CNT2 || ''}">
+                                           data-max-count2="${group.CHC_ARTCL_CNT2 || ''}"
+                                           data-ckup-type="${item.CKUP_TYPE}">
                                  </td>`;
                         
                         // 첫 번째 항목일 때 선택갯수 및 비고 표시 (Rowspan)
@@ -607,29 +804,115 @@
                 
                 checkboxes.forEach(checkbox => {
                     checkbox.addEventListener('change', function() {
-                        const groupId = this.getAttribute('data-group-id');
-                        const maxCount = parseInt(this.getAttribute('data-max-count'));
-                        const maxCount2 = this.getAttribute('data-max-count2') ? parseInt(this.getAttribute('data-max-count2')) : null;
+                        if (this.checked) {
+                            // 1. Check capacity for this checkup type on the selected date
+                            const ckupType = this.getAttribute('data-ckup-type');
+                            
+                            // Map CKUP_TYPE code to the title used in calendar
+                            const ckupTypeMap = {
+                                'GS': '위내시경',
+                                'CS': '대장내시경',
+                                'CT': 'CT',
+                                'UT': '초음파',
+                                'BU': '유방초음파',
+                                'PU': '골반초음파',
+                                'ET': '일반'
+                            };
+                            const ckupTypeName = ckupTypeMap[ckupType];
+
+                            if (ckupTypeName && selectedDate && calendar) {
+                                const events = calendar.getEvents().filter(event => {
+                                    return event.startStr === selectedDate && event.title.startsWith(ckupTypeName);
+                                });
+
+                                if (events.length > 0) {
+                                    const event = events[0];
+                                    const capacityMatch = event.title.match(/(\d+)\/(\d+)/);
+                                    if (capacityMatch) {
+                                        const current = parseInt(capacityMatch[1]);
+                                        const total = parseInt(capacityMatch[2]);
+                                        if (current >= total) {
+                                            Swal.fire({
+                                                title: '마감 안내',
+                                                text: `검진희망일에 ${ckupTypeName} 검사가 마감되었습니다.`,
+                                                icon: 'warning',
+                                                confirmButtonText: '확인'
+                                            });
+                                            this.checked = false;
+                                            return; // Stop further processing
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        // 2. Cross-Group Selection Validation Logic
+                        // Collect all groups and their current states
+                        const allGroups = {};
+                        const groupElements = container.querySelectorAll('.choice-item-checkbox');
                         
-                        // 해당 그룹의 체크된 항목 수 계산
-                        const groupCheckboxes = container.querySelectorAll(`.choice-item-checkbox[data-group-id="${groupId}"]:checked`);
-                        const checkedCount = groupCheckboxes.length;
+                        groupElements.forEach(cb => {
+                            const gId = cb.getAttribute('data-group-id');
+                            if (!allGroups[gId]) {
+                                allGroups[gId] = {
+                                    id: gId,
+                                    maxCount1: parseInt(cb.getAttribute('data-max-count')),
+                                    maxCount2: cb.getAttribute('data-max-count2') ? parseInt(cb.getAttribute('data-max-count2')) : null,
+                                    checkedCount: 0
+                                };
+                            }
+                            if (cb.checked) {
+                                allGroups[gId].checkedCount++;
+                            }
+                        });
+
+                        // Check if current state is valid for EITHER Option 1 OR Option 2
+                        // Option 1: All groups satisfy maxCount1
+                        let isValidOption1 = true;
+                        for (const gId in allGroups) {
+                            if (allGroups[gId].checkedCount > allGroups[gId].maxCount1) {
+                                isValidOption1 = false;
+                                break;
+                            }
+                        }
+
+                        // Option 2: All groups satisfy maxCount2 (if maxCount2 exists, otherwise use maxCount1)
+                        // Note: If any group doesn't have maxCount2, we assume it stays with maxCount1 for this option set too?
+                        // Or does the requirement imply that IF maxCount2 exists, we check that set?
+                        // Based on "Group 1: 3 or 2, Group 2: 1 or 3", it implies coupled sets:
+                        // Set A: G1=3, G2=1 (using CNT1 of G1 and CNT1 of G2?) -> Wait, the example is tricky.
+                        // G1: 3 or 2. G2: 1 or 3.
+                        // If G1 selects 3 (CNT1), G2 must be 1 (CNT1).
+                        // If G1 selects 2 (CNT2), G2 must be 3 (CNT2).
+                        // So we check if (All <= CNT1) OR (All <= CNT2).
                         
-                        // 최대 선택 가능 수 결정 로직
-                        // CNT2가 있으면 더 큰 값을 기준으로 일단 허용하되, 최종 확인 시 검증하거나
-                        // 여기서는 단순하게 CNT 또는 CNT2 중 큰 값까지만 선택 가능하게 하고, 
-                        // 정확한 갯수 매칭은 "선택완료" 시점에 검증하는 것이 사용자 경험상 좋을 수 있음.
-                        // 하지만 요구사항은 "선택갯수 만큼만 선택가능"이므로, 
-                        // CNT2가 있는 경우 로직이 복잡해질 수 있음 (예: 1개 또는 3개 선택 가능).
-                        // 일단 더 큰 값(maxLimit)을 기준으로 체크를 막고, 완료 시점에 정확한 갯수인지 확인하도록 구현.
+                        let isValidOption2 = true;
+                        let hasOption2 = false; // Check if any group actually has a second option
                         
-                        let maxLimit = maxCount;
-                        if (maxCount2 && maxCount2 > maxLimit) {
-                            maxLimit = maxCount2;
+                        for (const gId in allGroups) {
+                            const limit = allGroups[gId].maxCount2 !== null ? allGroups[gId].maxCount2 : allGroups[gId].maxCount1;
+                            if (allGroups[gId].maxCount2 !== null) hasOption2 = true;
+                            
+                            if (allGroups[gId].checkedCount > limit) {
+                                isValidOption2 = false;
+                                break;
+                            }
                         }
                         
-                        if (checkedCount > maxLimit) {
-                            alert(`이 그룹은 최대 ${maxLimit}개까지만 선택할 수 있습니다.`);
+                        if (!hasOption2) isValidOption2 = false; // If no group has option 2, this path is invalid/irrelevant
+
+                        // If neither option set is valid, revert the change
+                        if (!isValidOption1 && !isValidOption2) {
+                            // Determine which limit was violated to show a helpful message
+                            // This is complex because it depends on which "mode" the user was implicitly in.
+                            // We can simply say "Selection limit exceeded for the current combination."
+                            
+                            Swal.fire({
+                                title: '선택 불가',
+                                text: '선택 가능한 갯수 조합을 초과했습니다.',
+                                icon: 'warning',
+                                confirmButtonText: '확인'
+                            });
                             this.checked = false;
                         }
                     });
@@ -638,11 +921,181 @@
 
             // 선택완료 버튼 클릭 이벤트
             document.getElementById('btnConfirmSelection').addEventListener('click', function() {
-                // 선택된 항목 검증 및 처리 로직 (추후 구현)
-                alert('선택이 완료되었습니다. (기능 준비중)');
-                const modal = bootstrap.Modal.getInstance(document.getElementById('productChoiceModal'));
-                modal.hide();
+                const container = document.getElementById('productChoiceContent');
+                const checkboxes = container.querySelectorAll('.choice-item-checkbox');
+                
+                // Collect all groups and their current states
+                const allGroups = {};
+                checkboxes.forEach(cb => {
+                    const gId = cb.getAttribute('data-group-id');
+                    if (!allGroups[gId]) {
+                        allGroups[gId] = {
+                            id: gId,
+                            maxCount1: parseInt(cb.getAttribute('data-max-count')),
+                            maxCount2: cb.getAttribute('data-max-count2') ? parseInt(cb.getAttribute('data-max-count2')) : null,
+                            checkedCount: 0
+                        };
+                    }
+                    if (cb.checked) {
+                        allGroups[gId].checkedCount++;
+                    }
+                });
+
+                // Validate selections
+                // Logic: For each group, checkedCount MUST be equal to maxCount1 OR maxCount2
+                // (Assuming user must select exactly the allowed number, or up to? 
+                // Requirement says "선택갯수에 맞게 선택했는지 확인". Usually implies exact match or valid option match.
+                // Based on "Group 1: 3 or 2", if they select 1, is it valid? Probably not if they need to fill the quota.
+                // Let's assume they must match one of the options exactly.)
+                
+                // Wait, the cross-group logic was:
+                // Option 1: All groups <= CNT1
+                // Option 2: All groups <= CNT2
+                // But "Selection Complete" usually enforces the *target* count.
+                // Let's check if the current state matches Option 1 (All == CNT1) OR Option 2 (All == CNT2).
+                // Or maybe just "Is Valid" based on the previous logic (<=) but also "Is Complete" (>=)?
+                // Let's enforce Exact Match for one of the options.
+                
+                let isOption1Complete = true;
+                for (const gId in allGroups) {
+                    if (allGroups[gId].checkedCount !== allGroups[gId].maxCount1) {
+                        isOption1Complete = false;
+                        break;
+                    }
+                }
+                
+                let isOption2Complete = true;
+                let hasOption2 = false;
+                for (const gId in allGroups) {
+                    if (allGroups[gId].maxCount2 !== null) hasOption2 = true;
+                    const target = allGroups[gId].maxCount2 !== null ? allGroups[gId].maxCount2 : allGroups[gId].maxCount1;
+                    if (allGroups[gId].checkedCount !== target) {
+                        isOption2Complete = false;
+                        break;
+                    }
+                }
+                if (!hasOption2) isOption2Complete = false;
+
+                if (!isOption1Complete && !isOption2Complete) {
+                    Swal.fire({
+                        title: '선택 확인',
+                        text: '선택갯수에 맞게 선택해주세요.',
+                        icon: 'warning',
+                        confirmButtonText: '확인'
+                    });
+                    return;
+                }
+
+                // Valid selection
+                // 1. Display selected product name
+                const selectedProductBtn = document.querySelector('.btnSelectProduct.btn-primary');
+                if (selectedProductBtn) {
+                    const productName = selectedProductBtn.getAttribute('data-product-name'); // Need to ensure this attr exists or get text
+                    // Actually, the button text might contain the name. Let's use the button's text content or add data-name.
+                    // The button HTML: <button ...>${product.CKUP_GDS_NM}</button>
+                    document.getElementById('selectedProductDisplay').textContent = selectedProductBtn.textContent.trim();
+                }
+
+                // 2. Switch to Additional Checkup Tab
+                const step3Tab = new bootstrap.Tab(document.querySelector('[href="#step3"]'));
+                step3Tab.show();
+                
+                // 3. Load Additional Checkups
+                const ckupGdsSn = selectedProductBtn.getAttribute('data-ckup-gds-sn');
+                loadAdditionalCheckups(ckupGdsSn);
             });
+            
+            function loadAdditionalCheckups(ckupGdsSn) {
+                const container = document.getElementById('additionalCheckupList');
+                container.innerHTML = `
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                `;
+                
+                fetch(`<?= site_url('user/rsvnSel/getAdditionalCheckups') ?>?ckup_gds_sn=${ckupGdsSn}`, {
+                    headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.items) {
+                        renderAdditionalCheckupTable(data.items, container);
+                    } else {
+                        container.innerHTML = '<p class="text-muted text-center">추가 선택 가능한 항목이 없습니다.</p>';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    container.innerHTML = '<p class="text-danger text-center">데이터 로드에 실패했습니다.</p>';
+                });
+            }
+            
+            function renderAdditionalCheckupTable(items, container) {
+                let html = '<div class="table-responsive">';
+                html += '<table class="table table-bordered table-hover align-middle text-center">';
+                html += '<thead class="table-light"><tr><th>No</th><th>검사항목</th><th>남녀구분</th><th>검사비용(원)</th><th>선택</th></tr></thead>';
+                html += '<tbody>';
+                
+                // Filter by gender
+                const filteredItems = items.filter(item => {
+                    return item.GNDR_SE === 'C' || item.GNDR_SE === userGender;
+                });
+                
+                if (filteredItems.length === 0) {
+                    container.innerHTML = '<p class="text-muted text-center">선택 가능한 추가 항목이 없습니다.</p>';
+                    return;
+                }
+                
+                filteredItems.forEach((item, index) => {
+                    html += `<tr>`;
+                    html += `<td>${index + 1}</td>`;
+                    html += `<td class="text-start ps-3">${item.CKUP_ARTCL}</td>`;
+                    
+                    let genderText = '공통';
+                    if (item.GNDR_SE === 'M') genderText = '남성';
+                    else if (item.GNDR_SE === 'F') genderText = '여성';
+                    html += `<td>${genderText}</td>`;
+                    
+                    // Format cost with comma
+                    const cost = parseInt(item.CKUP_CST).toLocaleString();
+                    html += `<td class="text-end pe-3">${cost}</td>`;
+                    
+                    html += `<td>
+                                <input type="checkbox" class="form-check-input additional-item-checkbox" 
+                                       value="${item.CKUP_GDS_EXCEL_ADD_CHC_SN}"
+                                       data-cost="${item.CKUP_CST}">
+                             </td>`;
+                    html += `</tr>`;
+                });
+                
+                html += '</tbody></table></div>';
+                container.innerHTML = html;
+                
+                // Add event listeners for cost calculation
+                addAdditionalCheckupListeners();
+            }
+            
+            function addAdditionalCheckupListeners() {
+                const checkboxes = document.querySelectorAll('.additional-item-checkbox');
+                checkboxes.forEach(checkbox => {
+                    checkbox.addEventListener('change', updateTotalAdditionalCost);
+                });
+            }
+            
+            function updateTotalAdditionalCost() {
+                const checkboxes = document.querySelectorAll('.additional-item-checkbox:checked');
+                let total = 0;
+                
+                checkboxes.forEach(checkbox => {
+                    const cost = parseInt(checkbox.getAttribute('data-cost'));
+                    total += cost;
+                });
+                
+                // Update display with comma formatting
+                document.getElementById('totalAdditionalCost').textContent = total.toLocaleString();
+            }
         });
     </script>
     <script src="<?= base_url('public/assets/js/app.js') ?>"></script>
