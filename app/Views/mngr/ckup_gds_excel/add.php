@@ -979,7 +979,7 @@ $buttonText = $isEditMode ? '수정' : '저장';
                             <td>${row[0] || ''}</td>
                             <td>${row[1] || ''}</td>
                             <td>
-                                <input type="text" class="form-control form-control-sm add-cost-input" value="${row[2] || ''}">
+                                <input type="text" class="form-control form-control-sm add-cost-input" value="${(row[2] || '').replace(/[^0-9]/g, '')}">
                             </td>
                             <td>
                                 <select class="form-select form-select-sm add-gndr-select">

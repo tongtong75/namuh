@@ -229,6 +229,36 @@ class UserAuthController extends BaseController
         
         $familyMembers = $builder->get()->getResultArray();
 
+        foreach ($familyMembers as &$member) {
+            // 상품명 조회
+            $member['CKUP_GDS_NM'] = '-';
+            if (!empty($member['CKUP_GDS_SN'])) {
+                $product = $db->table('CKUP_GDS_EXCEL_MNG')
+                    ->select('CKUP_GDS_NM')
+                    ->where('CKUP_GDS_EXCEL_MNG_SN', $member['CKUP_GDS_SN'])
+                    ->get()
+                    ->getRowArray();
+                if ($product) {
+                    $member['CKUP_GDS_NM'] = $product['CKUP_GDS_NM'];
+                }
+            }
+
+            // 본인부담금 계산 (RSVN_CKUP_GDS_ADD_CHC + CKUP_GDS_EXCEL_ADD_CHC)
+            $member['TOTAL_COST'] = 0;
+            if (!empty($member['CKUP_TRGT_SN'])) {
+                $costRow = $db->table('RSVN_CKUP_GDS_ADD_CHC R')
+                    ->join('CKUP_GDS_EXCEL_ADD_CHC C', 'C.CKUP_GDS_EXCEL_ADD_CHC_SN = R.CKUP_GDS_EXCEL_ADD_ARTCL_SN')
+                    ->where('R.CKUP_TRGT_SN', $member['CKUP_TRGT_SN'])
+                    ->selectSum('C.CKUP_CST', 'total_cost')
+                    ->get()
+                    ->getRow();
+                
+                if ($costRow && $costRow->total_cost) {
+                    $member['TOTAL_COST'] = $costRow->total_cost;
+                }
+            }
+        }
+
         return view('user/rsvn/index', [
             'companyInfo' => $companyInfo,
             'familyMembers' => $familyMembers

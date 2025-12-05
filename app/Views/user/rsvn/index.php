@@ -112,15 +112,25 @@
                                                                 }
                                                                 ?>
                                                             </td>
-                                                            <td>-</td>
-                                                            <td>-</td>
                                                             <td>
-                                                                <?php if (($member['RSVT_STTS'] ?? 'N') == 'Y'): ?>
-                                                                    <button type="button" class="btn btn-danger btn-sm btnCancelReservation" 
-                                                                            data-id="<?= $member['CKUP_TRGT_SN'] ?>" 
-                                                                            data-name="<?= $member['NAME'] ?>">
-                                                                        <i class="ri-close-circle-line"></i> 예약취소
+                                                                <?php if (($member['CKUP_GDS_NM'] ?? '-') !== '-'): ?>
+                                                                    <button type="button" class="btn btn-outline-primary btn-sm btnViewReservationDetails" 
+                                                                       data-id="<?= $member['CKUP_TRGT_SN'] ?>" 
+                                                                       data-product-name="<?= $member['CKUP_GDS_NM'] ?>">
+                                                                        보기
                                                                     </button>
+                                                                <?php else: ?>
+                                                                    <?= $member['CKUP_GDS_NM'] ?? '-' ?>
+                                                                <?php endif; ?>
+                                                            </td>
+                                                            <td><?= number_format($member['TOTAL_COST']) ?>원</td>
+                                                            <td>
+                                                                <?php 
+                                                                $rsvtStts = $member['RSVT_STTS'] ?? 'N';
+                                                                if ($rsvtStts == 'C'): ?>
+                                                                    <span class="text-danger fw-bold fs-6">예약확정</span>
+                                                                <?php elseif ($rsvtStts == 'Y'): ?>
+                                                                    <span class="text-success fw-bold fs-6">예약완료</span>
                                                                 <?php else: ?>
                                                                     <button type="button" class="btn btn-primary btn-sm btnMakeReservation" 
                                                                             data-id="<?= $member['CKUP_TRGT_SN'] ?>" 
@@ -192,10 +202,10 @@
                             <div class="col-12 mb-3">
                                 <label class="form-label">관계 <span class="text-danger">*</span></label>
                                 <div class="d-flex gap-3 mt-2">
-                                    <div class="form-check">
+                                    <!--div class="form-check">
                                         <input class="form-check-input" type="radio" name="RELATION" id="RELATION_W_family" value="W" required>
                                         <label class="form-check-label" for="RELATION_W_family">배우자</label>
-                                    </div>
+                                    </div-->
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="RELATION" id="RELATION_C_family" value="C">
                                         <label class="form-check-label" for="RELATION_C_family">자녀</label>
@@ -239,6 +249,63 @@
         </div>
     </div>
 
+    <!-- Reservation Details Modal -->
+    <div class="modal fade" id="reservationDetailsModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-light p-3">
+                    <h5 class="modal-title">예약 상세 내역</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-4">
+                        <h6 class="fs-15 mb-3 fw-bold">신청 상품</h6>
+                        <div class="p-3 bg-light rounded border">
+                            <span id="modalProductName" class="fs-16 fw-bold text-primary"></span>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="fs-15 mb-3 fw-bold">선택 항목</h6>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm align-middle">
+                                <thead class="table-light text-center">
+                                    <tr>
+                                        <th>검사구분</th>
+                                        <th>검사항목</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modalChoiceItems">
+                                    <!-- Items will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6 class="fs-15 mb-3 fw-bold">추가 검사 항목</h6>
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sm align-middle">
+                                <thead class="table-light text-center">
+                                    <tr>
+                                        <th>검사항목</th>
+                                        <th>비용</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="modalAddItems">
+                                    <!-- Items will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?= $this->include('partials/customizer') ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <?= $this->include('partials/vendor-scripts') ?>
@@ -271,6 +338,74 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            // 예약 상세 내역 보기 (상품명 클릭)
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.btnViewReservationDetails')) {
+                    e.preventDefault();
+                    const btn = e.target.closest('.btnViewReservationDetails');
+                    const ckupTrgtSn = btn.getAttribute('data-id');
+                    const productName = btn.getAttribute('data-product-name');
+
+                    // Set product name
+                    document.getElementById('modalProductName').textContent = productName;
+                    
+                    // Clear previous data
+                    document.getElementById('modalChoiceItems').innerHTML = '<tr><td colspan="3" class="text-center py-3">로딩중...</td></tr>';
+                    document.getElementById('modalAddItems').innerHTML = '<tr><td colspan="2" class="text-center py-3">로딩중...</td></tr>';
+
+                    // Show modal
+                    const modal = new bootstrap.Modal(document.getElementById('reservationDetailsModal'));
+                    modal.show();
+
+                    // Fetch details
+                    fetch(`<?= site_url('user/rsvn/getReservationDetails') ?>?ckup_trgt_sn=${ckupTrgtSn}`, {
+                        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Render Choice Items
+                            const choiceTbody = document.getElementById('modalChoiceItems');
+                            if (data.choiceItems && data.choiceItems.length > 0) {
+                                let html = '';
+                                data.choiceItems.forEach(item => {
+                                    html += `<tr>
+                                        <td class="text-center">${item.CKUP_SE || '-'}</td>
+                                        <td class="text-center">${item.CKUP_ARTCL}</td>
+                                    </tr>`;
+                                });
+                                choiceTbody.innerHTML = html;
+                            } else {
+                                choiceTbody.innerHTML = '<tr><td colspan="3" class="text-center text-muted">선택된 항목이 없습니다.</td></tr>';
+                            }
+
+                            // Render Additional Items
+                            const addTbody = document.getElementById('modalAddItems');
+                            if (data.addItems && data.addItems.length > 0) {
+                                let html = '';
+                                data.addItems.forEach(item => {
+                                    const cost = parseInt(item.CKUP_CST).toLocaleString();
+                                    html += `<tr>
+                                        <td class="text-center">${item.CKUP_ARTCL}</td>
+                                        <td class="text-center">${cost}원</td>
+                                    </tr>`;
+                                });
+                                addTbody.innerHTML = html;
+                            } else {
+                                addTbody.innerHTML = '<tr><td colspan="2" class="text-center text-muted">선택된 추가 항목이 없습니다.</td></tr>';
+                            }
+                        } else {
+                            alert(data.message || '데이터를 불러오는데 실패했습니다.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        document.getElementById('modalChoiceItems').innerHTML = '<tr><td colspan="3" class="text-center text-danger">오류가 발생했습니다.</td></tr>';
+                        document.getElementById('modalAddItems').innerHTML = '<tr><td colspan="2" class="text-center text-danger">오류가 발생했습니다.</td></tr>';
+                    });
+                }
+            });
+
             // 예약하기 버튼 (이벤트 위임)
             document.addEventListener('click', function(e) {
                 if (e.target.closest('.btnMakeReservation')) {

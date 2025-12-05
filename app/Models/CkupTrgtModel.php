@@ -16,9 +16,10 @@ class CkupTrgtModel extends Model
     // CKUP_TRGT 테이블의 모든 컬럼 (REG_YMD제외 - 콜백에서 처리)
     protected $allowedFields    = [
         'CO_SN', 'CKUP_YYYY', 'CKUP_NAME','NAME', 'BUSINESS_NUM', 'BIRTHDAY', 'PSWD','AGREE_YN',
-        'SEX', 'HANDPHONE', 'SUPPORT_FUND', 'FAMILY_SUPPORT_FUND', 'EMAIL',
+        'SEX', 'TEL', 'HANDPHONE', 'SUPPORT_FUND', 'FAMILY_SUPPORT_FUND', 'EMAIL',
         'WORK_STATUS', 'ASSIGN_CODE', 'JOB', 'RELATION',
         'CHECKUP_TARGET_YN', 'RSVT_STTS',  'CKUP_YN',
+        'CKUP_RSVN_YMD', 'CKUP_HSPTL_SN','CKUP_GDS_SN',
         'REG_ID', 'MDFCN_ID','DEL_YN'
     ];
 
@@ -120,8 +121,10 @@ class CkupTrgtModel extends Model
         $builder = $this->db->table($this->table . ' CT'); // Alias 'CT' for CKUP_TRGT
 
         // Select fields (회사명 등 JOIN 필요시 추가)
-        $builder->select('CT.*, CM.CO_NM'); // 예시: 회사명 가져오기
-        $builder->join('CO_MNG CM', 'CM.CO_SN = CT.CO_SN', 'left'); // 예시: 회사 테이블 JOIN
+        $builder->select('CT.*, CM.CO_NM, HM.HSPTL_NM, CGM.CKUP_GDS_NM as GDS_NM'); 
+        $builder->join('CO_MNG CM', 'CM.CO_SN = CT.CO_SN', 'left'); 
+        $builder->join('HSPTL_MNG HM', 'CT.CKUP_HSPTL_SN = HM.HSPTL_SN', 'left');
+        $builder->join('CKUP_GDS_EXCEL_MNG CGM', 'CT.CKUP_GDS_SN = CGM.CKUP_GDS_EXCEL_MNG_SN', 'left');
 
         $builder->where('CT.DEL_YN', 'N');
 
@@ -165,6 +168,10 @@ class CkupTrgtModel extends Model
                 'SEX' => 'CT.SEX',
                 'HANDPHONE' => 'CT.HANDPHONE',
                 'CKUP_YN' => 'CT.CKUP_YN',
+                'HSPTL_NM' => 'HM.HSPTL_NM',
+                'GDS_NM' => 'CGEM.GDS_NM',
+                'CKUP_RSVN_YMD' => 'CT.CKUP_RSVN_YMD',
+                'RSVT_STTS' => 'CT.RSVT_STTS',
                 // 'no'는 실제 DB 컬럼이 아님
             ];
             if (array_key_exists($orderColumnName, $columnMap)) {
@@ -177,10 +184,12 @@ class CkupTrgtModel extends Model
             } else if ($orderColumnName !== 'no' && $orderColumnName !== 'action') { // 'no', 'action' 등은 정렬 대상 아님
                 $builder->orderBy('CT.' . $orderColumnName, strtoupper($orderDir)); // 기본적으로 CT 테이블의 컬럼으로 가정
             } else {
-                 $builder->orderBy('CT.CKUP_TRGT_SN', 'DESC'); // 기본 정렬
+                 $builder->orderBy('CT.CKUP_TRGT_SN', 'ASC'); 
+                 $builder->orderBy('CT.BUSINESS_NUM', 'ASC');
             }
         } else {
-            $builder->orderBy('CT.CKUP_TRGT_SN', 'DESC'); // 기본 정렬
+            $builder->orderBy('CT.CKUP_TRGT_SN', 'ASC'); 
+            $builder->orderBy('CT.BUSINESS_NUM', 'ASC');
         }
         // 페이징 처리
         if (isset($requestData['start']) && $requestData['length'] != -1) {
@@ -205,7 +214,7 @@ class CkupTrgtModel extends Model
     }
     public function getExcelData($ckupYYYY, $coSn)
     {
-        return $this->select('CKUP_YYYY, CO_SN, BUSINESS_NUM, CKUP_NAME, NAME, RELATION, SEX, TEL_NO, HANDPHONE, ADDR, RSVT_STTS, CKUP_YN')
+        return $this->select('CKUP_YYYY, CO_SN, BUSINESS_NUM, CKUP_NAME, NAME, RELATION, SEX, TEL, HANDPHONE, ADDR, RSVT_STTS, CKUP_YN')
             ->where('CKUP_YYYY', $ckupYYYY)
             ->where('CO_SN', $coSn)
             ->findAll();

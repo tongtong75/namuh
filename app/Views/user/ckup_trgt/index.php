@@ -125,17 +125,18 @@
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
-                                                    <th>회사명</th>
-                                                    <th>검진년도</th>
-                                                    <th>사번</th>
-                                                    <th>관계</th>
                                                     <th>수검자명</th>
+                                                    <th>생년월일</th>
+                                                    <th>관계</th>
+                                                    <th>사번</th>
                                                     <th class="name-col-width">직원명</th>
                                                     <th>지원금</th>
                                                     <th>가족지원금</th>
-                                                    <th>성별</th>
-                                                    <th>생년월일</th>
-                                                    <th>핸드폰</th>
+                                                    <th>검진병원</th>
+                                                    <th>검진상품</th>
+                                                    <th>예약일</th>
+                                                    <th>예약상태</th>
+                                                    <th>예약</th>
                                                     <th>메모</th>
                                                     <th class="action-col-width">관리</th>
                                                 </tr>
@@ -564,17 +565,27 @@
                 },
                 columns: [
                     { data: 'no', orderable: false, searchable: false },
-                    { data: 'CO_NM' },
-                    { data: 'CKUP_YYYY' },
-                    { data: 'BUSINESS_NUM' },
-                    { data: 'RELATION' },
                     { data: 'CKUP_NAME' },
+                    { 
+                        data: 'BIRTHDAY',
+                        render: function(data, type, row) {
+                            let sexStr = '';
+                            if (row.SEX === 'M') sexStr = '남';
+                            else if (row.SEX === 'F') sexStr = '여';
+                            else sexStr = row.SEX;
+                            return data + (sexStr ? ' (' + sexStr + ')' : '');
+                        }
+                    },
+                    { data: 'RELATION' },
+                    { data: 'BUSINESS_NUM' },
                     { data: 'NAME', className: 'name-col-width' },
                     { data: 'SUPPORT_FUND' },
                     { data: 'FAMILY_SUPPORT_FUND' },
-                    { data: 'SEX' },                    
-                    { data: 'BIRTHDAY' },
-                    { data: 'HANDPHONE' },
+                    { data: 'HSPTL_NM' },
+                    { data: 'GDS_NM' },
+                    { data: 'CKUP_RSVN_YMD' },
+                    { data: 'RSVT_STTS' },
+                    { data: 'rsvn_button', orderable: false, searchable: false },
                     { data: 'memo_status', orderable: false, searchable: false },
                     { data: 'action', orderable: false, searchable: false, className: 'action-col-width' }
                 ],
@@ -631,7 +642,7 @@
                     "zeroRecords": "일치하는 레코드를 찾을 수 없습니다.",
                     "paginate": { "first": "처음", "last": "마지막", "next": "다음", "previous": "이전" }
                 },
-                order: [[3, 'asc']],
+                order: [],
                 responsive: false,
                 autoWidth: false,
                 drawCallback: function(settings) {

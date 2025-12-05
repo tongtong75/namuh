@@ -94,7 +94,7 @@
                                             <tbody>
                                                 <tr>
                                                     <th>검진자명</th>
-                                                    <td><?= $targetInfo['NAME'] ?></td>
+                                                    <td><?= $targetInfo['CKUP_NAME'] ?></td>
                                                     <th>생년월일(성별)</th>
                                                     <td>
                                                         <?= $targetInfo['BIRTHDAY'] ?>
@@ -115,7 +115,7 @@
                                                 </tr>
                                                 <tr>
                                                     <th>본인부담금</th>
-                                                    <td>0원</td>
+                                                    <td id="selectedAdditionalCostDisplay"></td>
                                                     <th>관계</th>
                                                     <td>
                                                         <?php
@@ -239,7 +239,8 @@
                                                                 </div>
                                                             </div>
                                                             <div class="card-footer text-end">
-                                                                 <button type="button" class="btn btn-primary" id="btnConfirmSelection">선택완료</button>
+                                                                 <button type="button" class="btn btn-light border me-1" id="btnPrevToHospital">이전</button>
+                                                                 <button type="button" class="btn btn-primary" id="btnConfirmSelection">다음 <i class="ri-arrow-right-line"></i></button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -252,12 +253,13 @@
                                                 <div class="col-12">
                                                     <div class="alert alert-info" role="alert">
                                                         선택한 검진상품 외에 추가로 받고 싶은 항목이 있을 경우 선택해 주세요. 단, 회사지원금이 초과될 경우 본인이 부담하셔야 합니다.
+                                                        <br/><br/>
+                                                        * 특수검사(대장내시경, 수면위내시경 등)는 병원사정에 따라 검사일자가 별도로 지정될 수 있습니다.
                                                     </div>
-                                                    <h5 class="card-title mb-3">▶ 추가검사 항목</h5>
-                                                    <p class="text-muted mb-3">* 특수검사(대장내시경, 수면위내시경 등)는 병원사정에 따라 검사일자가 별도로 지정될 수 있습니다.</p>
+                                                    <h5 class="card-title mb-3"><i class="ri-shopping-bag-line"></i>추가검사 항목</h5>
                                                     
                                                     <!-- 본인부담 발생금액 표시 (sticky) -->
-                                                    <div class="sticky-cost-display p-3 bg-white border rounded shadow-sm mb-3">
+                                                    <div class="sticky-cost-display alert alert-success border-1 material-shadow"  role="alert">
                                                         <div class="row">
                                                             <div class="col-md-6">
                                                                 <h6 class="mb-0">본인부담 발생금액(누적)</h6>
@@ -275,15 +277,69 @@
                                                     </div>
                                                     
                                                     <div class="mt-4 text-end">
+                                                        <button type="button" class="btn btn-light border me-1" id="btnPrevToProduct">이전</button>
                                                         <button type="button" class="btn btn-primary" id="btnConfirmAdditional">
-                                                            다음 단계 <i class="ri-arrow-right-line"></i>
+                                                            다음 <i class="ri-arrow-right-line"></i>
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="tab-pane" id="step4" role="tabpanel">
-                                            <p class="mb-0">예약자 정보 확인 화면 (준비중)</p>
+                                            <h6 class="mb-3"><i class="ri-file-user-line"></i> 예약자 정보 확인</h6>
+                                            <div class="card border">
+                                                <div class="card-body p-0">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered mb-0 align-middle">
+                                                            <colgroup>
+                                                                <col style="width: 15%; background-color: #f8f9fa;">
+                                                                <col style="width: 35%;">
+                                                                <col style="width: 15%; background-color: #f8f9fa;">
+                                                                <col style="width: 35%;">
+                                                            </colgroup>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th class="text-center">검진자</th>
+                                                                    <td class="ps-3"><?= $targetInfo['CKUP_NAME'] ?></td>
+                                                                    <th class="text-center">생년월일(성별)</th>
+                                                                    <td class="ps-3"><?= $targetInfo['BIRTHDAY'] ?>(<?= $targetInfo['SEX'] == 'M' ? '남자' : ($targetInfo['SEX'] == 'F' ? '여자' : '') ?>)</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="text-center">일반전화</th>
+                                                                    <td class="p-2">
+                                                                        <input type="text" class="form-control" id="tel" placeholder="예: 02-3468-0314">
+                                                                    </td>
+                                                                    <th class="text-center">핸드폰<span class="text-danger">*</span></th>
+                                                                    <td class="p-2">
+                                                                        <input type="text" class="form-control" id="handphone" placeholder="예: 010-3468-0314">
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th class="text-center align-middle">주소<span class="text-danger">*</span></th>
+                                                                    <td colspan="3" class="p-2">
+                                                                        <div class="d-flex gap-2 mb-2" style="max-width: 400px;">
+                                                                            <input type="text" class="form-control" id="zipCode" placeholder="우편번호" readonly>
+                                                                            <button type="button" class="btn btn-primary text-nowrap" id="btnFindZip">우편번호 찾기</button>
+                                                                        </div>
+                                                                        <div class="d-flex gap-2">
+                                                                            <input type="text" class="form-control" id="address1" placeholder="기본주소" readonly>
+                                                                            <input type="text" class="form-control" id="address2" placeholder="상세주소">
+                                                                        </div>
+                                                                        <div class="mt-2 text-warning small">
+                                                                            * 검진 준비물품 배송 등에 이용되므로 정확히 입력하여 주시기 바랍니다.
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="mt-4 text-end">
+                                                <button type="button" class="btn btn-primary" id="btnCompleteReservation">완료</button>
+                                                <button type="button" class="btn btn-light border" id="btnCancelReservation">취소</button>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -370,6 +426,9 @@
                             
                             // 상품 목록 로드
                             loadProducts(hospitalSn, ckupTrgtSn);
+                            
+                            // 추가검사 항목 로드
+                            loadAdditionalCheckups(hospitalSn);
                             
                             // 다음 탭으로 이동
                             const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
@@ -999,13 +1058,9 @@
                 // 2. Switch to Additional Checkup Tab
                 const step3Tab = new bootstrap.Tab(document.querySelector('[href="#step3"]'));
                 step3Tab.show();
-                
-                // 3. Load Additional Checkups
-                const ckupGdsSn = selectedProductBtn.getAttribute('data-ckup-gds-sn');
-                loadAdditionalCheckups(ckupGdsSn);
             });
             
-            function loadAdditionalCheckups(ckupGdsSn) {
+            function loadAdditionalCheckups(hsptlSn) {
                 const container = document.getElementById('additionalCheckupList');
                 container.innerHTML = `
                     <div class="text-center py-5">
@@ -1015,7 +1070,7 @@
                     </div>
                 `;
                 
-                fetch(`<?= site_url('user/rsvnSel/getAdditionalCheckups') ?>?ckup_gds_sn=${ckupGdsSn}`, {
+                fetch(`<?= site_url('user/rsvnSel/getAdditionalCheckups') ?>?hsptl_sn=${hsptlSn}`, {
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
                 })
                 .then(response => response.json())
@@ -1095,9 +1150,168 @@
                 
                 // Update display with comma formatting
                 document.getElementById('totalAdditionalCost').textContent = total.toLocaleString();
+                
+                // 예약정보 테이블의 본인부담금도 함께 업데이트
+                document.getElementById('selectedAdditionalCostDisplay').textContent = total.toLocaleString() + '원';
             }
+
+            // 추가검사 선택완료(다음 단계) 버튼 클릭 이벤트
+            document.getElementById('btnConfirmAdditional').addEventListener('click', function() {
+                // 1. 현재 누적 금액 가져오기
+                const totalCost = document.getElementById('totalAdditionalCost').textContent;
+                
+                // 2. 예약정보 테이블에 표시 (원 단위 추가)
+                document.getElementById('selectedAdditionalCostDisplay').textContent = totalCost + '원';
+                
+                // 3. 다음 탭(예약자 정보 확인)으로 이동
+                const step4Tab = new bootstrap.Tab(document.querySelector('[href="#step4"]'));
+                step4Tab.show();
+            });
+
+            // 이전 버튼 (상품선택 -> 병원선택)
+            document.getElementById('btnPrevToHospital').addEventListener('click', function() {
+                const step1Tab = new bootstrap.Tab(document.querySelector('[href="#step1"]'));
+                step1Tab.show();
+            });
+
+            // 이전 버튼 (추가검사 -> 검진일/상품선택)
+            document.getElementById('btnPrevToProduct').addEventListener('click', function() {
+                const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
+                step2Tab.show();
+            });
+
+            // 예약 취소 버튼 클릭 이벤트
+            document.getElementById('btnCancelReservation').addEventListener('click', function() {
+                Swal.fire({
+                    title: '준비중',
+                    text: '준비중입니다.',
+                    icon: 'info',
+                    confirmButtonText: '확인'
+                });
+            });
+            
+            // 완료 버튼 클릭 이벤트
+            document.getElementById('btnCompleteReservation').addEventListener('click', function() {
+                // 필수 값 검증
+                const handphone = document.getElementById('handphone').value;
+                const tel = document.getElementById('tel').value;
+                const zipCode = document.getElementById('zipCode').value;
+                const address1 = document.getElementById('address1').value;
+                const address2 = document.getElementById('address2').value;
+
+                if (!selectedHospitalSn) {
+                    Swal.fire('알림', '병원을 선택해주세요.', 'warning');
+                    return;
+                }
+                if (!selectedDate) {
+                     Swal.fire('알림', '검진일을 선택해주세요.', 'warning');
+                     return;
+                }
+                if (!handphone) {
+                    Swal.fire('알림', '핸드폰 번호를 입력해주세요.', 'warning');
+                    return;
+                }
+                if (!zipCode || !address1) {
+                    Swal.fire('알림', '주소를 입력해주세요.', 'warning');
+                    return;
+                }
+
+                // 데이터 수집
+                const formData = new FormData();
+                formData.append('ckup_trgt_sn', ckupTrgtSn);
+                formData.append('hsptl_sn', selectedHospitalSn);
+                formData.append('ckup_date', selectedDate);
+                // 상품 선택 (단일 선택 가정, 여러 개일 경우 로직 수정 필요)
+                const selectedProductBtn = document.querySelector('.btnSelectProduct.btn-primary');
+                if (selectedProductBtn) {
+                    formData.append('ckup_gds_sn', selectedProductBtn.getAttribute('data-ckup-gds-sn'));
+                }
+                
+                formData.append('tel', tel);
+                formData.append('handphone', handphone);
+                formData.append('zip_code', zipCode);
+                formData.append('addr', address1);
+                formData.append('addr2', address2);
+
+                // 선택 항목 수집
+                document.querySelectorAll('.choice-item-checkbox:checked').forEach(cb => {
+                    formData.append('choice_items[]', cb.value);
+                });
+
+                // 추가 검사 항목 수집
+                document.querySelectorAll('.additional-item-checkbox:checked').forEach(cb => {
+                    formData.append('additional_items[]', cb.value);
+                });
+                
+                // 서버 전송
+                fetch('<?= site_url('user/rsvnSel/complete') ?>', {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            title: '예약 완료',
+                            text: data.message,
+                            icon: 'success',
+                            confirmButtonText: '확인'
+                        }).then(() => {
+                            window.location.href = '<?= site_url('user/rsvn') ?>'; // 예약 내역 페이지로 이동
+                        });
+                    } else {
+                        Swal.fire('오류', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    Swal.fire('오류', '서버 통신 중 오류가 발생했습니다.', 'error');
+                });
+            });
+
+            // 우편번호 찾기 버튼 클릭 이벤트
+            document.getElementById('btnFindZip').addEventListener('click', execDaumPostcode);
         });
+
+        // Daum 우편번호 서비스
+        function execDaumPostcode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 도로명 주소의 노출 규칙에 따라 주소를 표시한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var roadAddr = data.roadAddress; // 도로명 주소 변수
+                    var extraRoadAddr = ''; // 참고 항목 변수
+
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraRoadAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                       extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraRoadAddr !== ''){
+                        extraRoadAddr = ' (' + extraRoadAddr + ')';
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    document.getElementById('zipCode').value = data.zonecode;
+                    document.getElementById("address1").value = roadAddr;
+                    
+                    // 상세주소 필드로 커서 이동
+                    document.getElementById("address2").focus();
+                }
+            }).open();
+        }
     </script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script src="<?= base_url('public/assets/js/app.js') ?>"></script>
 </body>
 </html>

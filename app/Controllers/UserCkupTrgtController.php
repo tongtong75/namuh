@@ -133,7 +133,15 @@ class UserCkupTrgtController extends BaseController
                     'RELATION'     => $relationText,
                     'SEX'          => $row['SEX'] === 'M' ? '남' : ($row['SEX'] === 'F' ? '여' : '-'),
                     'HANDPHONE'    => esc($row['HANDPHONE'] ?? '-'),
+                    'HANDPHONE'    => esc($row['HANDPHONE'] ?? '-'),
                     'CKUP_YN'      => $row['CKUP_YN'] === 'Y' ? '<span class="badge bg-success">완료</span>' : '<span class="badge bg-warning text-dark">미수검</span>',
+                    'HSPTL_NM'     => esc($row['HSPTL_NM'] ?? '-'),
+                    'GDS_NM'       => esc($row['GDS_NM'] ?? '-'),
+                    'CKUP_RSVN_YMD'=> !empty($row['CKUP_RSVN_YMD']) ? date('Y-m-d', strtotime($row['CKUP_RSVN_YMD'])) : '-',
+                    'RSVT_STTS'    => $row['RSVT_STTS'] === 'C' ? '<span class="badge bg-danger fs-6">예약확정</span>' : ($row['RSVT_STTS'] === 'Y' ? '<span class="badge bg-success fs-6">예약완료</span>' : '미예약'),
+                    'rsvn_button'  => ($row['RSVT_STTS'] === 'C' || $row['RSVT_STTS'] === 'Y') 
+                                      ? '<button class="btn btn-secondary btn-sm" onclick="alert(\'준비중입니다.\')">예약변경</button>' 
+                                      : '<a href="/user/rsvnSel?ckup_trgt_sn=' . $row['CKUP_TRGT_SN'] . '" class="btn btn-primary btn-sm">예약</a>',
                     'memo_status'  => $memoStatus,
                     'action'       => view('user/ckup_trgt/action_buttons', [
                                             'item' => $row,

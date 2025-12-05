@@ -40,6 +40,21 @@ class UserRsvnController extends BaseController
             return redirect()->back()->with('error', '대상자 정보를 찾을 수 없습니다.');
         }
 
+        // 본인이 아닐 경우, 본인의 지원금 정보를 가져옴
+        if ($targetInfo['RELATION'] !== 'S') {
+            $employeeInfo = $this->ckupTrgtModel
+                ->where('BUSINESS_NUM', $targetInfo['BUSINESS_NUM'])
+                ->where('CO_SN', $targetInfo['CO_SN'])
+                ->where('CKUP_YYYY', $targetInfo['CKUP_YYYY'])
+                ->where('RELATION', 'S')
+                ->first();
+
+            if ($employeeInfo) {
+                $targetInfo['SUPPORT_FUND'] = $employeeInfo['SUPPORT_FUND'];
+                $targetInfo['FAMILY_SUPPORT_FUND'] = $employeeInfo['FAMILY_SUPPORT_FUND'];
+            }
+        }
+
         // 회사 번호 (대상자의 회사 번호 사용)
         $coSn = $targetInfo['CO_SN'];
 
@@ -95,6 +110,21 @@ class UserRsvnController extends BaseController
         $targetInfo = $this->ckupTrgtModel->find($ckupTrgtSn);
         if (!$targetInfo) {
             return $this->response->setJSON(['success' => false, 'message' => '대상자 정보를 찾을 수 없습니다.']);
+        }
+
+        // 본인이 아닐 경우, 본인의 지원금 정보를 가져옴
+        if ($targetInfo['RELATION'] !== 'S') {
+            $employeeInfo = $this->ckupTrgtModel
+                ->where('BUSINESS_NUM', $targetInfo['BUSINESS_NUM'])
+                ->where('CO_SN', $targetInfo['CO_SN'])
+                ->where('CKUP_YYYY', $targetInfo['CKUP_YYYY'])
+                ->where('RELATION', 'S')
+                ->first();
+
+            if ($employeeInfo) {
+                $targetInfo['SUPPORT_FUND'] = $employeeInfo['SUPPORT_FUND'];
+                $targetInfo['FAMILY_SUPPORT_FUND'] = $employeeInfo['FAMILY_SUPPORT_FUND'];
+            }
         }
 
         // 지원구분 결정 (본인: SUPPORT_FUND, 가족: FAMILY_SUPPORT_FUND)
@@ -226,26 +256,178 @@ class UserRsvnController extends BaseController
     public function getAdditionalCheckups()
     {
         $ckupGdsSn = $this->request->getGet('ckup_gds_sn');
-
-        if (!$ckupGdsSn) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Invalid parameters']);
-        }
+        $hsptlSn = $this->request->getGet('hsptl_sn');
 
         $db = \Config\Database::connect();
         
-        // CKUP_GDS_EXCEL_ADD_CHC 테이블에서 직접 조회
-        // ckup_gds_sn은 실제로 CKUP_GDS_EXCEL_MNG_SN입니다
-        $builder = $db->table('CKUP_GDS_EXCEL_ADD_CHC');
-        $items = $builder->select('CKUP_GDS_EXCEL_ADD_CHC_SN, CKUP_ARTCL, GNDR_SE, CKUP_CST')
-                         ->where('CKUP_GDS_EXCEL_SN', $ckupGdsSn)
-                         ->where('DEL_YN', 'N')
-                         ->orderBy('CKUP_GDS_EXCEL_ADD_CHC_SN', 'ASC')
-                         ->get()
-                         ->getResultArray();
+        // hsptl_sn이 제공된 경우 (병원 선택 시)
+        if ($hsptlSn) {
+            // CKUP_GDS_EXCEL_MNG와 JOIN하여 해당 병원의 모든 추가검사 항목 조회
+            $builder = $db->table('CKUP_GDS_EXCEL_ADD_CHC a');
+            $items = $builder->select('a.CKUP_GDS_EXCEL_ADD_CHC_SN, a.CKUP_ARTCL, a.GNDR_SE, a.CKUP_CST')
+                             ->join('CKUP_GDS_EXCEL_MNG m', 'a.CKUP_GDS_EXCEL_SN = m.CKUP_GDS_EXCEL_MNG_SN')
+                             ->where('m.HSPTL_SN', $hsptlSn)
+                             ->where('a.DEL_YN', 'N')
+                             ->where('m.DEL_YN', 'N')
+                             ->orderBy('a.CKUP_GDS_EXCEL_ADD_CHC_SN', 'ASC')
+                             ->get()
+                             ->getResultArray();
+        }
+        // ckup_gds_sn이 제공된 경우 (상품 선택 시 - 이전 방식 유지)
+        else if ($ckupGdsSn) {
+            $builder = $db->table('CKUP_GDS_EXCEL_ADD_CHC');
+            $items = $builder->select('CKUP_GDS_EXCEL_ADD_CHC_SN, CKUP_ARTCL, GNDR_SE, CKUP_CST')
+                             ->where('CKUP_GDS_EXCEL_SN', $ckupGdsSn)
+                             ->where('DEL_YN', 'N')
+                             ->orderBy('CKUP_GDS_EXCEL_ADD_CHC_SN', 'ASC')
+                             ->get()
+                             ->getResultArray();
+        }
+        else {
+            return $this->response->setJSON(['success' => false, 'message' => 'Invalid parameters']);
+        }
 
         return $this->response->setJSON([
             'success' => true,
             'items' => $items
+        ]);
+    }
+
+    public function completeReservation()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Invalid request']);
+        }
+
+        $postData = $this->request->getPost();
+        
+        // 필수 데이터 검증
+        $ckupTrgtSn = $postData['ckup_trgt_sn'] ?? null;
+        $hsptlSn = $postData['hsptl_sn'] ?? null;
+        $ckupDate = $postData['ckup_date'] ?? null;
+        $ckupGdsSn = $postData['ckup_gds_sn'] ?? null;
+        $handphone = $postData['handphone'] ?? null;
+        $tel = $postData['tel'] ?? null;
+        $zipCode = $postData['zip_code'] ?? null;
+        $addr = $postData['addr'] ?? null;
+        $addr2 = $postData['addr2'] ?? null;
+        
+        if (!$ckupTrgtSn || !$hsptlSn || !$ckupDate || !$ckupGdsSn || !$handphone || !$zipCode || !$addr) {
+            return $this->response->setJSON(['success' => false, 'message' => '필수 정보가 누락되었습니다.']);
+        }
+
+        $db = \Config\Database::connect();
+        $db->transStart();
+
+        try {
+            // 1. CKUP_TRGT 업데이트
+            $this->ckupTrgtModel->update($ckupTrgtSn, [
+                'CKUP_HSPTL_SN' => $hsptlSn,
+                'CKUP_RSVN_YMD' => $ckupDate,
+                'CKUP_GDS_SN' => $ckupGdsSn,
+                'TEL' => $tel,
+                'HANDPHONE' => $handphone,
+                'RSVT_STTS' => 'Y', // 예약상태: 예약
+                'MDFCN_ID' => session()->get('user_id'),
+                'MDFCN_YMD' => date('Y-m-d H:i:s')
+            ]);
+
+            // 2. RSVN_CKUP_TRGT_ADDR 등록/수정
+            $rsvnAddrModel = model('RsvnCkupTrgtAddrModel');
+            $existingAddr = $rsvnAddrModel->where('CKUP_TRGT_SN', $ckupTrgtSn)->first();
+            
+            $addrData = [
+                'CKUP_TRGT_SN' => $ckupTrgtSn,
+                'ZIP_CODE' => $zipCode,
+                'ADDR' => $addr,
+                'ADDR2' => $addr2
+            ];
+
+            if ($existingAddr) {
+                $rsvnAddrModel->update($existingAddr['RSVN_CKUP_TRGT_ADDR_SN'], $addrData);
+            } else {
+                $rsvnAddrModel->insert($addrData);
+            }
+
+            // 3. RSVN_CKUP_GDS_CHC_ARTCL (선택항목) 등록
+            // 기존 데이터 삭제 (재예약 시)
+            $rsvnChcModel = model('RsvnCkupGdsChcArtclModel');
+            $rsvnChcModel->where('CKUP_TRGT_SN', $ckupTrgtSn)->delete();
+
+            if (!empty($postData['choice_items'])) {
+                foreach ($postData['choice_items'] as $itemSn) {
+                    $rsvnChcModel->insert([
+                        'CKUP_GDS_EXCEL_CHC_ARTCL_SN' => $itemSn,
+                        'CKUP_TRGT_SN' => $ckupTrgtSn
+                    ]);
+                }
+            }
+
+            // 4. RSVN_CKUP_GDS_ADD_CHC (추가검사) 등록
+            // 기존 데이터 삭제
+            $rsvnAddModel = model('RsvnCkupGdsAddChcModel');
+            $rsvnAddModel->where('CKUP_TRGT_SN', $ckupTrgtSn)->delete();
+
+            if (!empty($postData['additional_items'])) {
+                foreach ($postData['additional_items'] as $itemSn) {
+                    $rsvnAddModel->insert([
+                        'CKUP_GDS_EXCEL_ADD_ARTCL_SN' => $itemSn,
+                        'CKUP_TRGT_SN' => $ckupTrgtSn
+                    ]);
+                }
+            }
+
+            $db->transComplete();
+
+            if ($db->transStatus() === false) {
+                return $this->response->setJSON(['success' => false, 'message' => '예약 처리 중 오류가 발생했습니다.']);
+            }
+
+            return $this->response->setJSON(['success' => true, 'message' => '예약이 완료되었습니다.']);
+
+        } catch (\Exception $e) {
+            $db->transRollback();
+            log_message('error', 'Reservation Error: ' . $e->getMessage());
+            return $this->response->setJSON(['success' => false, 'message' => '시스템 오류가 발생했습니다.']);
+        }
+    }
+    public function getReservationDetails()
+    {
+        if (!$this->request->isAJAX()) {
+            return $this->response->setJSON(['success' => false, 'message' => 'Invalid request']);
+        }
+
+        $ckupTrgtSn = $this->request->getGet('ckup_trgt_sn');
+
+        if (!$ckupTrgtSn) {
+            return $this->response->setJSON(['success' => false, 'message' => '필수 파라미터가 없습니다.']);
+        }
+
+        $db = \Config\Database::connect();
+
+        // 1. 선택 항목 조회 (RSVN_CKUP_GDS_CHC_ARTCL + CKUP_GDS_EXCEL_CHC_ARTCL)
+        $choiceBuilder = $db->table('RSVN_CKUP_GDS_CHC_ARTCL a');
+        $choiceItems = $choiceBuilder->select('b.CKUP_ARTCL, b.CKUP_TYPE, b.CKUP_SE')
+            ->join('CKUP_GDS_EXCEL_CHC_ARTCL b', 'a.CKUP_GDS_EXCEL_CHC_ARTCL_SN = b.CKUP_GDS_EXCEL_CHC_ARTCL_SN')
+            ->where('a.CKUP_TRGT_SN', $ckupTrgtSn)
+            ->where('a.DEL_YN', 'N')
+            ->get()
+            ->getResultArray();
+
+        // 2. 추가 검사 항목 조회 (RSVN_CKUP_GDS_ADD_CHC + CKUP_GDS_EXCEL_ADD_CHC)
+        // Note: RSVN_CKUP_GDS_ADD_CHC table uses CKUP_GDS_EXCEL_ADD_ARTCL_SN column which maps to CKUP_GDS_EXCEL_ADD_CHC_SN
+        $addBuilder = $db->table('RSVN_CKUP_GDS_ADD_CHC a');
+        $addItems = $addBuilder->select('b.CKUP_ARTCL, b.CKUP_CST')
+            ->join('CKUP_GDS_EXCEL_ADD_CHC b', 'a.CKUP_GDS_EXCEL_ADD_ARTCL_SN = b.CKUP_GDS_EXCEL_ADD_CHC_SN')
+            ->where('a.CKUP_TRGT_SN', $ckupTrgtSn)
+            ->where('a.DEL_YN', 'N')
+            ->get()
+            ->getResultArray();
+
+        return $this->response->setJSON([
+            'success' => true,
+            'choiceItems' => $choiceItems,
+            'addItems' => $addItems
         ]);
     }
 }
