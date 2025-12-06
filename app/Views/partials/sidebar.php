@@ -62,17 +62,17 @@
                     </a>
                     <div class="collapse menu-dropdown <?= $is_goods_active ? 'show' : '' ?>" id="goods" data-bs-parent="#navbar-nav">
                         <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
+                            <!--li class="nav-item">
                                 <a href="/mngr/ckupArtclMng" class="nav-link <?= $current_uri == '/mngr/ckupArtclMng' ? 'active' : '' ?>">검진항목</a>
                             </li>
-                            <!--li class="nav-item">
-                                <a href="/mngr/chcArtclMng" class="nav-link <?= $current_uri == '/mngr/chcArtclMng' ? 'active' : '' ?>">선택항목</a>
-                            </l-->
                             <li class="nav-item">
-                                <a href="/mngr/ckupGdsMng" class="nav-link <?= $current_uri == '/mngr/ckupGdsMng' ? 'active' : '' ?>"> 검진상품 </a>
+                                <a href="/mngr/chcArtclMng" class="nav-link <?= $current_uri == '/mngr/chcArtclMng' ? 'active' : '' ?>">선택항목</a>
                             </li>
                             <li class="nav-item">
-                                <a href="/mngr/ckupGdsExcel" class="nav-link <?= $current_uri == '/mngr/ckupGdsExcel' ? 'active' : '' ?>"> 검진상품엑셀 </a>
+                                <a href="/mngr/ckupGdsMng" class="nav-link <?= $current_uri == '/mngr/ckupGdsMng' ? 'active' : '' ?>"> 검진상품 </a>
+                            </li>-->
+                            <li class="nav-item">
+                                <a href="/mngr/ckupGdsExcel" class="nav-link <?= $current_uri == '/mngr/ckupGdsExcel' ? 'active' : '' ?>"> 검진상품 </a>
                             </li>
                         </ul>
                     </div>

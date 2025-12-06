@@ -257,17 +257,23 @@
                                                         * 특수검사(대장내시경, 수면위내시경 등)는 병원사정에 따라 검사일자가 별도로 지정될 수 있습니다.
                                                     </div>
                                                     <h5 class="card-title mb-3"><i class="ri-shopping-bag-line"></i>추가검사 항목</h5>
-                                                    
+
                                                     <!-- 본인부담 발생금액 표시 (sticky) -->
                                                     <div class="sticky-cost-display alert alert-success border-1 material-shadow"  role="alert">
-                                                        <div class="row">
-                                                            <div class="col-md-6">
+                                                        <div class="row align-items-center">
+                                                            <div class="col-md-4">
                                                                 <h6 class="mb-0">본인부담 발생금액(누적)</h6>
                                                             </div>
-                                                            <div class="col-md-6 text-end">
+                                                            <div class="col-md-4 text-center">
                                                                 <h5 class="mb-0 text-primary">
                                                                     <strong><span id="totalAdditionalCost">0</span>원</strong>
                                                                 </h5>
+                                                            </div>
+                                                            <div class="col-md-4 text-end">
+                                                                <button type="button" class="btn btn-light border me-1" id="btnPrevToProductTop">이전</button>
+                                                                <button type="button" class="btn btn-primary" id="btnConfirmAdditionalTop">
+                                                                    다음 <i class="ri-arrow-right-line"></i>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -387,13 +393,66 @@
         document.addEventListener('DOMContentLoaded', function() {
             const ckupTrgtSn = new URLSearchParams(window.location.search).get('ckup_trgt_sn');
             const userGender = '<?= $targetInfo['SEX'] ?>'; // Get user's gender from PHP
+            // 기존 예약 정보 (PHP에서 전달받음)
+            const savedHsptlSn = '<?= $targetInfo['CKUP_HSPTL_SN'] ?? '' ?>';
+            const savedRsvnDate = '<?= $targetInfo['CKUP_RSVN_YMD'] ?? '' ?>';
+            const savedGdsSn = '<?= $targetInfo['CKUP_GDS_SN'] ?? '' ?>';
+            const rsvtStts = '<?= $targetInfo['RSVT_STTS'] ?? 'N' ?>';
+
             let selectedHospitalSn = null;
             let selectedDate = null;
             let calendar = null;
 
+            // --- 예약 정보 복원 로직 시작 ---
+            if (rsvtStts === 'Y' || rsvtStts === 'C') {
+                if (savedHsptlSn) {
+                    // 1. 병원 선택 복원
+                    restoreHospitalSelection(savedHsptlSn);
+                }
+            }
+
+            function restoreHospitalSelection(hsptlSn) {
+                const btn = document.querySelector(`.btnSelectHospital[data-id="${hsptlSn}"]`);
+                if (btn) {
+                    const hospitalName = btn.getAttribute('data-name');
+                    selectedHospitalSn = hsptlSn;
+                    
+                    // 병원 선택 표시
+                    document.getElementById('selectedHospitalDisplay').textContent = hospitalName;
+
+                    // 버튼 스타일 업데이트
+                    document.querySelectorAll('.btnSelectHospital').forEach(b => {
+                        b.classList.remove('btn-primary');
+                        b.classList.add('btn-outline-primary');
+                    });
+                    btn.classList.remove('btn-outline-primary');
+                    btn.classList.add('btn-primary');
+                    
+                    // 달력 로드
+                    loadCalendar(hsptlSn);
+
+                    // 상품 목록 로드 (복원 로직 포함)
+                    loadProducts(hsptlSn, ckupTrgtSn, true); // true: restore mode
+                    
+                    // 추가검사 항목 로드 (상품 선택 시 로드하도록 변경)
+                    // loadAdditionalCheckups(hsptlSn);
+
+                    // 예약 변경 시 '검진일/검진상품 선택' 탭으로 이동
+                    const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
+                    step2Tab.show();
+                }
+            }
+            // --- 예약 정보 복원 로직 끝 ---
+
             // 병원 선택 버튼
             document.querySelectorAll('.btnSelectHospital').forEach(btn => {
                 btn.addEventListener('click', function() {
+                    // 이미 선택된 병원인지 체크
+                    if (this.classList.contains('btn-primary')) {
+                        // 이미 선택된 병원이면 아무것도 안 함
+                        return;
+                    }
+
                     const hospitalSn = this.getAttribute('data-id');
                     const hospitalName = this.getAttribute('data-name');
                     const self = this; // Store reference to button
@@ -409,27 +468,53 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             selectedHospitalSn = hospitalSn;
-                            
+
                             // 병원 선택 표시 (상단 테이블)
                             document.getElementById('selectedHospitalDisplay').textContent = hospitalName;
+
+                            // 검사희망일, 본인부담금, 상품, 추가검사 초기화
+                            selectedDate = null; // 선택된 날짜 변수 초기화
+                            document.getElementById('selectedDateDisplay').textContent = ''; // 화면 표시 초기화
+                            document.getElementById('selectedProductDisplay').textContent = ''; // 선택된 상품 초기화
+                            document.getElementById('selectedAdditionalCostDisplay').textContent = ''; // 본인부담금 초기화
+                            document.getElementById('totalAdditionalCost').textContent = '0'; // 추가검사 누적금액 초기화
+
+                            // 상품 선택 버튼 스타일 초기화
+                            document.querySelectorAll('.btnSelectProduct').forEach(b => {
+                                b.classList.remove('btn-primary');
+                                b.classList.add('btn-outline-primary');
+                            });
+
+                            // 추가검사 항목 체크박스 초기화
+                            document.querySelectorAll('.additional-item-checkbox').forEach(cb => {
+                                cb.checked = false;
+                            });
+
+                            // 상품 선택 영역 숨김
+                            const productChoiceSection = document.getElementById('productChoiceSection');
+                            if (productChoiceSection) {
+                                productChoiceSection.style.display = 'none';
+                            }
 
                             // 병원 선택 버튼 스타일 업데이트
                             document.querySelectorAll('.btnSelectHospital').forEach(b => {
                                 b.classList.remove('btn-primary');
                                 b.classList.add('btn-outline-primary');
+                                b.style.cursor = 'pointer'; // 커서 복원
                             });
                             self.classList.remove('btn-outline-primary');
                             self.classList.add('btn-primary');
-                            
+                            self.style.cursor = 'not-allowed'; // 선택된 버튼은 비활성화 커서
+
                             // 달력 초기화 및 로드
                             loadCalendar(hospitalSn);
-                            
+
                             // 상품 목록 로드
                             loadProducts(hospitalSn, ckupTrgtSn);
-                            
-                            // 추가검사 항목 로드
-                            loadAdditionalCheckups(hospitalSn);
-                            
+
+                            // 추가검사 항목 로드 (상품 선택 시 로드하도록 변경)
+                            // loadAdditionalCheckups(hospitalSn);
+
                             // 다음 탭으로 이동
                             const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
                             step2Tab.show();
@@ -514,12 +599,12 @@
                 }
             }
 
-            function handleDateSelection(dateStr, element) {
+            function handleDateSelection(dateStr, element, isRestore = false) {
                 // Get all events for this date
                 const events = calendar.getEvents().filter(event => {
                     return event.startStr === dateStr;
                 });
-                
+
                 // Check if there are any events for this date
                 if (events.length === 0) {
                     Swal.fire({
@@ -530,7 +615,7 @@
                     });
                     return;
                 }
-                
+
                 // Check if any "전체" event is full
                 let isFull = false;
                 for (const event of events) {
@@ -546,7 +631,7 @@
                         }
                     }
                 }
-                
+
                 if (isFull) {
                     Swal.fire({
                         title: '검진마감',
@@ -556,27 +641,29 @@
                     });
                     return;
                 }
-                
+
                 // Format and display the selected date
                 const date = new Date(dateStr);
                 const year = date.getFullYear();
                 const month = String(date.getMonth() + 1).padStart(2, '0');
                 const day = String(date.getDate()).padStart(2, '0');
                 const formattedDate = `${year}-${month}-${day}`;
-                
+
                 selectedDate = dateStr;
                 document.getElementById('selectedDateDisplay').textContent = formattedDate;
-                
-                // Show confirmation alert
-                Swal.fire({
-                    title: `${year}년 ${month}월 ${day}일을 선택하셨습니다.`,
-                    icon: 'success',
-                    confirmButtonText: '확인',
-                    timer: 2000
-                });
+
+                // Show confirmation alert (복원 모드가 아닐 때만 알림 표시)
+                if (!isRestore) {
+                    Swal.fire({
+                        title: `${year}년 ${month}월 ${day}일을 선택하셨습니다.`,
+                        icon: 'success',
+                        confirmButtonText: '확인',
+                        timer: 2000
+                    });
+                }
             }
 
-            function loadProducts(hsptlSn, ckupTrgtSn) {
+            function loadProducts(hsptlSn, ckupTrgtSn, isRestore = false) {
                 fetch(`<?= site_url('user/rsvnSel/getProducts') ?>?hsptl_sn=${hsptlSn}&ckup_trgt_sn=${ckupTrgtSn}`, {
                     headers: {
                         'X-Requested-With': 'XMLHttpRequest'
@@ -584,20 +671,7 @@
                 })
                     .then(response => response.json())
                     .then(data => {
-                        // 디버그 정보 출력
-                        if (data.debug) {
-                            console.log('=== 검진상품 조회 디버그 정보 ===');
-                            console.log('병원 일련번호:', data.debug.hsptl_sn);
-                            console.log('검진년도:', data.debug.ckup_yyyy);
-                            console.log('관계:', data.debug.relation);
-                            console.log('본인지원금:', data.debug.support_fund);
-                            console.log('가족지원금:', data.debug.family_support_fund);
-                            console.log('선택된 지원구분:', data.debug.selected_sprt_se);
-                            console.log('필터 컬럼:', data.debug.filter_column);
-                            console.log('SQL 쿼리:', data.debug.sql_query);
-                            console.log('조회된 상품 개수:', data.debug.products_count);
-                            console.log('================================');
-                        }
+                        // ... (previous debug logging logic)
                         
                         const productList = document.getElementById('product-list');
                         
@@ -608,18 +682,30 @@
                             
                             
                             data.products.forEach((product, index) => {
-                                console.log('Product:', product); // 디버깅
+                                // console.log('Product:', product); // 디버깅
                                 html += `<tr>`;
                                 html += `<td>${index + 1}</td>`;
                                 html += `<td>${product.CKUP_GDS_NM}</td>`;
                                 html += `<td>${product.SPRT_SE || '-'}</td>`;
                                 html += `<td><button type="button" class="btn btn-outline-primary btn-sm btnViewItems" data-ckup-gds-sn="${product.CKUP_GDS_EXCEL_MNG_SN}"><i class="ri-eye-line"></i> 검사항목보기</button></td>`;
-                                html += `<td><button type="button" class="btn btn-outline-primary btn-sm btnSelectProduct" data-ckup-gds-sn="${product.CKUP_GDS_EXCEL_MNG_SN}"><i class="ri-check-line"></i>상품선택</button></td>`;
+                                html += `<td><button type="button" class="btn btn-outline-primary btn-sm btnSelectProduct" data-ckup-gds-sn="${product.CKUP_GDS_EXCEL_MNG_SN}" data-product-name="${product.CKUP_GDS_NM}"><i class="ri-check-line"></i>상품선택</button></td>`;
                                 html += `</tr>`;
                             });
                             
                             html += '</tbody></table>';
                             productList.innerHTML = html;
+
+                            // --- 상품 복원 로직 ---
+                            if (isRestore && savedGdsSn) {
+                                // 2. 날짜 복원 (달력이 로드된 후 실행되어야 함. 약 500ms 지연)
+                                setTimeout(() => {
+                                   restoreDateSelection(savedRsvnDate);
+                                }, 500);
+
+                                // 3. 상품 선택 복원
+                                restoreProductSelection(savedGdsSn);
+                            }
+
                         } else {
                             productList.innerHTML = '<p class="text-muted">해당 병원의 검진상품이 없습니다.</p>';
                         }
@@ -628,6 +714,41 @@
                         console.error('Error:', error);
                         document.getElementById('product-list').innerHTML = '<p class="text-danger">상품 목록 로드에 실패했습니다.</p>';
                     });
+            }
+
+            function restoreDateSelection(dateStr) {
+                if (calendar && dateStr) {
+                     // 달력 API를 사용하여 날짜 선택 (gotoDate, select 등 활용 필요하지만 custom logic이므로 handleDateSelection 직접 호출)
+                     // 단, handleDateSelection은 event click 기반일 수 있으므로 유사하게 처리
+
+                     // 1. 달력을 해당 월로 이동
+                     calendar.gotoDate(dateStr);
+
+                     // 2. handleDateSelection 호출 (element는 null, isRestore는 true로 전달하여 알림 억제)
+                     handleDateSelection(dateStr, null, true);
+                }
+            }
+
+            function restoreProductSelection(gdsSn) {
+                 const btn = document.querySelector(`.btnSelectProduct[data-ckup-gds-sn="${gdsSn}"]`);
+                 if (btn) {
+                     // 버튼 스타일 업데이트
+                    document.querySelectorAll('.btnSelectProduct').forEach(b => {
+                        b.classList.remove('btn-primary');
+                        b.classList.add('btn-outline-primary');
+                    });
+                    btn.classList.remove('btn-outline-primary');
+                    btn.classList.add('btn-primary');
+
+                    // 상품명 표시 (상단 테이블)
+                    const productName = btn.getAttribute('data-product-name');
+                    if (productName) {
+                        document.getElementById('selectedProductDisplay').textContent = productName;
+                    }
+
+                    // 상품 선택 영역 표시
+                    showProductChoice(gdsSn, true); // true: restore mode
+                 }
             }
 
             // 검사항목보기 버튼 클릭 이벤트 (이벤트 위임)
@@ -715,6 +836,11 @@
             document.getElementById('product-list').addEventListener('click', function(e) {
                 const btn = e.target.closest('.btnSelectProduct');
                 if (btn) {
+                    // 이미 선택된 상품이면 변화 없음
+                    if (btn.classList.contains('btn-primary')) {
+                        return;
+                    }
+
                     // Check if date is selected first
                     if (!selectedDate) {
                         Swal.fire({
@@ -728,6 +854,15 @@
                     
                     const ckupGdsSn = btn.getAttribute('data-ckup-gds-sn');
                     if (ckupGdsSn) {
+                        // 본인부담금 초기화
+                        document.getElementById('selectedAdditionalCostDisplay').textContent = '';
+                        document.getElementById('totalAdditionalCost').textContent = '0';
+
+                        // 추가검사 항목 체크박스 초기화
+                        document.querySelectorAll('.additional-item-checkbox').forEach(cb => {
+                            cb.checked = false;
+                        });
+
                         // 버튼 스타일 토글
                         document.querySelectorAll('.btnSelectProduct').forEach(b => {
                             b.classList.remove('btn-primary');
@@ -741,11 +876,11 @@
                 }
             });
 
-            function showProductChoice(ckupGdsSn) {
+            function showProductChoice(ckupGdsSn, isRestore = false) {
                 const section = document.getElementById('productChoiceSection');
                 const contentDiv = document.getElementById('productChoiceContent');
                 
-                // 로딩 표시
+                // ... (loading display logic)
                 contentDiv.innerHTML = `
                     <div class="text-center">
                         <div class="spinner-border text-primary" role="status">
@@ -754,6 +889,9 @@
                     </div>
                 `;
                 
+                // 추가검사 항목 로드 (상품 기준)
+                loadAdditionalCheckups(ckupGdsSn);
+
                 section.style.display = 'block';
                 section.scrollIntoView({ behavior: 'smooth' });
                 
@@ -764,7 +902,31 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success && data.groups && data.groups.length > 0) {
-                        renderProductChoiceTable(data.groups, contentDiv);
+                        
+                        // 복원 모드일 경우 예약 상세 정보를 가져옴
+                        if (isRestore) {
+                             fetch(`<?= site_url('user/rsvnSel/getReservationDetails') ?>?ckup_trgt_sn=${ckupTrgtSn}`, {
+                                headers: { 'X-Requested-With': 'XMLHttpRequest' }
+                            })
+                            .then(resp => resp.json())
+                            .then(details => {
+                                if (details.success) {
+                                    // 1. 선택 항목 복원
+                                    renderProductChoiceTable(data.groups, contentDiv, details.choiceItems);
+                                    
+                                    // 2. 추가 검사 항목 복원
+                                    restoreAdditionalItems(details.addItems);
+
+                                    // 3. 연락처 및 주소 정보 복원
+                                    restoreContactInfo(details.targetInfo, details.addrInfo);
+                                } else {
+                                    renderProductChoiceTable(data.groups, contentDiv);
+                                }
+                            });
+                        } else {
+                            renderProductChoiceTable(data.groups, contentDiv);
+                        }
+
                     } else {
                         contentDiv.innerHTML = '<p class="text-muted text-center">선택 가능한 항목이 없습니다.</p>';
                     }
@@ -775,27 +937,40 @@
                 });
             }
 
-            function renderProductChoiceTable(groups, container) {
+            function restoreContactInfo(targetInfo, addrInfo) {
+                if (targetInfo) {
+                    if (targetInfo.TEL) document.getElementById('tel').value = targetInfo.TEL;
+                    if (targetInfo.HANDPHONE) document.getElementById('handphone').value = targetInfo.HANDPHONE;
+                }
+                if (addrInfo) {
+                    if (addrInfo.ZIP_CODE) document.getElementById('zipCode').value = addrInfo.ZIP_CODE;
+                    if (addrInfo.ADDR) document.getElementById('address1').value = addrInfo.ADDR;
+                    if (addrInfo.ADDR2) document.getElementById('address2').value = addrInfo.ADDR2;
+                }
+            }
+
+            function renderProductChoiceTable(groups, container, savedItems = []) {
                 let html = '<div class="table-responsive">';
                 html += '<table class="table table-bordered table-hover align-middle text-center">';
                 html += '<thead class="table-light"><tr><th>번호</th><th>검사유형</th><th>검사항목</th><th>남녀구분</th><th>선택</th><th>선택갯수</th><th>비고</th></tr></thead>';
                 html += '<tbody>';
                 
+                // 저장된 항목의 SN 및 이름 목록 (매칭용)
+                const savedItemSNs = savedItems ? savedItems.map(i => String(i.CKUP_GDS_EXCEL_CHC_ARTCL_SN)) : [];
+                const savedItemNames = savedItems ? savedItems.map(i => i.CKUP_ARTCL) : [];
+
                 groups.forEach((group, groupIndex) => {
                     // Filter items based on user's gender
                     const filteredItems = group.items.filter(item => {
-                        // Show items that are common (C) or match user's gender
                         return item.GNDR_SE === 'C' || item.GNDR_SE === userGender;
                     });
                     
-                    // Skip this group if no items match the gender filter
                     if (filteredItems.length === 0) {
                         return;
                     }
                     
                     const rowspan = filteredItems.length;
                     
-                    // 선택갯수 표시 텍스트 생성
                     let countText = group.CHC_ARTCL_CNT;
                     if (group.CHC_ARTCL_CNT2 && group.CHC_ARTCL_CNT2 > 0) {
                         countText += ` 또는 ${group.CHC_ARTCL_CNT2}`;
@@ -804,49 +979,39 @@
                     filteredItems.forEach((item, itemIndex) => {
                         html += `<tr>`;
                         
-                        // 첫 번째 항목일 때 그룹 정보 표시 (Rowspan)
+                        // Row numbers
                         if (itemIndex === 0) {
-                            html += `<td rowspan="${rowspan}" class="fw-bold">${group.GROUP_NM}</td>`;
+                            html += `<td rowspan="${rowspan}">${groupIndex + 1}</td>`;
                         }
                         
-                        // 검사유형 표시
-                        const ckupTypeMap = {
-                            'GS': '위내시경',
-                            'CS': '대장내시경',
-                            'CT': 'CT',
-                            'UT': '초음파',
-                            'BU': '유방초음파',
-                            'PU': '골반초음파',
-                            'ET': '일반'
-                        };
+                        const ckupTypeMap = { 'GS': '위내시경', 'CS': '대장내시경', 'CT': 'CT', 'UT': '초음파', 'BU': '유방초음파', 'PU': '골반초음파', 'ET': '일반' };
                         const ckupTypeText = ckupTypeMap[item.CKUP_TYPE] || item.CKUP_TYPE || '-';
+                        
                         html += `<td>${ckupTypeText}</td>`;
-                        
                         html += `<td class="text-start ps-3">${item.CKUP_ARTCL}</td>`;
+                        html += `<td>${item.GNDR_SE === 'M' ? '남' : (item.GNDR_SE === 'F' ? '여' : '공통')}</td>`;
                         
-                        // 남녀구분 변환
-                        let genderText = '공통';
-                        if (item.GNDR_SE === 'M') genderText = '남성';
-                        else if (item.GNDR_SE === 'F') genderText = '여성';
-                        html += `<td>${genderText}</td>`;
-                        
-                        // 선택 체크박스
+                        // Checkbox checked state logic
+                        let isChecked = '';
+                        if (savedItemSNs.includes(item.CKUP_GDS_EXCEL_CHC_ARTCL_SN)) {
+                            isChecked = 'checked';
+                        }
+
                         html += `<td>
-                                    <input type="checkbox" class="form-check-input choice-item-checkbox" 
-                                           name="choice_item_${group.CKUP_GDS_EXCEL_CHC_GROUP_SN}[]" 
+                                    <input class="form-check-input choice-item-checkbox" type="checkbox" 
+                                           name="choice_items[]" 
                                            value="${item.CKUP_GDS_EXCEL_CHC_ARTCL_SN}"
                                            data-group-id="${group.CKUP_GDS_EXCEL_CHC_GROUP_SN}"
                                            data-max-count="${group.CHC_ARTCL_CNT}"
                                            data-max-count2="${group.CHC_ARTCL_CNT2 || ''}"
-                                           data-ckup-type="${item.CKUP_TYPE}">
-                                 </td>`;
-                        
-                        // 첫 번째 항목일 때 선택갯수 및 비고 표시 (Rowspan)
+                                           data-ckup-type="${item.CKUP_TYPE}"
+                                           ${isChecked}>
+                                </td>`;
+                                
                         if (itemIndex === 0) {
                             html += `<td rowspan="${rowspan}">${countText}</td>`;
-                            html += `<td rowspan="${rowspan}"></td>`; // 비고란 공란
+                            html += `<td rowspan="${rowspan}"></td>`; // 비고
                         }
-                        
                         html += `</tr>`;
                     });
                 });
@@ -854,8 +1019,22 @@
                 html += '</tbody></table></div>';
                 container.innerHTML = html;
                 
-                // 체크박스 이벤트 리스너 추가 (선택 제한 로직)
+                // 체크박스 이벤트 리스너 재등록
                 addCheckboxListeners(container);
+            }
+
+            function restoreAdditionalItems(savedAddItems) {
+                setTimeout(() => {
+                    if (savedAddItems && savedAddItems.length > 0) {
+                        const savedSNs = savedAddItems.map(i => String(i.CKUP_GDS_EXCEL_ADD_CHC_SN));
+                        document.querySelectorAll('input[name="additional_items[]"]').forEach(cb => {
+                             if(savedSNs.includes(cb.value)) {
+                                 cb.checked = true;
+                                 cb.dispatchEvent(new Event('change')); // Update total cost
+                             }
+                        });
+                    }
+                }, 1000);
             }
 
             function addCheckboxListeners(container) {
@@ -864,19 +1043,9 @@
                 checkboxes.forEach(checkbox => {
                     checkbox.addEventListener('change', function() {
                         if (this.checked) {
-                            // 1. Check capacity for this checkup type on the selected date
                             const ckupType = this.getAttribute('data-ckup-type');
                             
-                            // Map CKUP_TYPE code to the title used in calendar
-                            const ckupTypeMap = {
-                                'GS': '위내시경',
-                                'CS': '대장내시경',
-                                'CT': 'CT',
-                                'UT': '초음파',
-                                'BU': '유방초음파',
-                                'PU': '골반초음파',
-                                'ET': '일반'
-                            };
+                            const ckupTypeMap = { 'GS': '위내시경', 'CS': '대장내시경', 'CT': 'CT', 'UT': '초음파', 'BU': '유방초음파', 'PU': '골반초음파', 'ET': '일반' };
                             const ckupTypeName = ckupTypeMap[ckupType];
 
                             if (ckupTypeName && selectedDate && calendar) {
@@ -898,15 +1067,14 @@
                                                 confirmButtonText: '확인'
                                             });
                                             this.checked = false;
-                                            return; // Stop further processing
+                                            return; 
                                         }
                                     }
                                 }
                             }
                         }
 
-                        // 2. Cross-Group Selection Validation Logic
-                        // Collect all groups and their current states
+                        // Cross-Group Selection Validation Logic
                         const allGroups = {};
                         const groupElements = container.querySelectorAll('.choice-item-checkbox');
                         
@@ -925,8 +1093,7 @@
                             }
                         });
 
-                        // Check if current state is valid for EITHER Option 1 OR Option 2
-                        // Option 1: All groups satisfy maxCount1
+                        // Option 1
                         let isValidOption1 = true;
                         for (const gId in allGroups) {
                             if (allGroups[gId].checkedCount > allGroups[gId].maxCount1) {
@@ -935,18 +1102,9 @@
                             }
                         }
 
-                        // Option 2: All groups satisfy maxCount2 (if maxCount2 exists, otherwise use maxCount1)
-                        // Note: If any group doesn't have maxCount2, we assume it stays with maxCount1 for this option set too?
-                        // Or does the requirement imply that IF maxCount2 exists, we check that set?
-                        // Based on "Group 1: 3 or 2, Group 2: 1 or 3", it implies coupled sets:
-                        // Set A: G1=3, G2=1 (using CNT1 of G1 and CNT1 of G2?) -> Wait, the example is tricky.
-                        // G1: 3 or 2. G2: 1 or 3.
-                        // If G1 selects 3 (CNT1), G2 must be 1 (CNT1).
-                        // If G1 selects 2 (CNT2), G2 must be 3 (CNT2).
-                        // So we check if (All <= CNT1) OR (All <= CNT2).
-                        
+                        // Option 2
                         let isValidOption2 = true;
-                        let hasOption2 = false; // Check if any group actually has a second option
+                        let hasOption2 = false; 
                         
                         for (const gId in allGroups) {
                             const limit = allGroups[gId].maxCount2 !== null ? allGroups[gId].maxCount2 : allGroups[gId].maxCount1;
@@ -958,14 +1116,9 @@
                             }
                         }
                         
-                        if (!hasOption2) isValidOption2 = false; // If no group has option 2, this path is invalid/irrelevant
+                        if (!hasOption2) isValidOption2 = false; 
 
-                        // If neither option set is valid, revert the change
                         if (!isValidOption1 && !isValidOption2) {
-                            // Determine which limit was violated to show a helpful message
-                            // This is complex because it depends on which "mode" the user was implicitly in.
-                            // We can simply say "Selection limit exceeded for the current combination."
-                            
                             Swal.fire({
                                 title: '선택 불가',
                                 text: '선택 가능한 갯수 조합을 초과했습니다.',
@@ -980,6 +1133,15 @@
 
             // 선택완료 버튼 클릭 이벤트
             document.getElementById('btnConfirmSelection').addEventListener('click', function() {
+                // 예약 변경(수정) 모드일 경우: 데이터 처리/검증 로직 건너뛰고 탭만 이동
+                if (rsvtStts === 'Y' || rsvtStts === 'C') {
+                    const step3Tab = new bootstrap.Tab(document.querySelector('[href="#step3"]'));
+                    step3Tab.show();
+                    // 스크롤을 최상단으로 이동
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
                 const container = document.getElementById('productChoiceContent');
                 const checkboxes = container.querySelectorAll('.choice-item-checkbox');
                 
@@ -1049,18 +1211,20 @@
                 // 1. Display selected product name
                 const selectedProductBtn = document.querySelector('.btnSelectProduct.btn-primary');
                 if (selectedProductBtn) {
-                    const productName = selectedProductBtn.getAttribute('data-product-name'); // Need to ensure this attr exists or get text
-                    // Actually, the button text might contain the name. Let's use the button's text content or add data-name.
-                    // The button HTML: <button ...>${product.CKUP_GDS_NM}</button>
-                    document.getElementById('selectedProductDisplay').textContent = selectedProductBtn.textContent.trim();
+                    const productName = selectedProductBtn.getAttribute('data-product-name');
+                    if (productName) {
+                        document.getElementById('selectedProductDisplay').textContent = productName;
+                    }
                 }
 
                 // 2. Switch to Additional Checkup Tab
                 const step3Tab = new bootstrap.Tab(document.querySelector('[href="#step3"]'));
                 step3Tab.show();
+                // 스크롤을 최상단으로 이동
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
             
-            function loadAdditionalCheckups(hsptlSn) {
+            function loadAdditionalCheckups(ckupGdsSn) {
                 const container = document.getElementById('additionalCheckupList');
                 container.innerHTML = `
                     <div class="text-center py-5">
@@ -1070,7 +1234,7 @@
                     </div>
                 `;
                 
-                fetch(`<?= site_url('user/rsvnSel/getAdditionalCheckups') ?>?hsptl_sn=${hsptlSn}`, {
+                fetch(`<?= site_url('user/rsvnSel/getAdditionalCheckups') ?>?ckup_gds_sn=${ckupGdsSn}`, {
                     headers: { 'X-Requested-With': 'XMLHttpRequest' }
                 })
                 .then(response => response.json())
@@ -1120,7 +1284,8 @@
                     html += `<td>
                                 <input type="checkbox" class="form-check-input additional-item-checkbox" 
                                        value="${item.CKUP_GDS_EXCEL_ADD_CHC_SN}"
-                                       data-cost="${item.CKUP_CST}">
+                                       data-cost="${item.CKUP_CST}"
+                                       data-name="${item.CKUP_ARTCL}">
                              </td>`;
                     html += `</tr>`;
                 });
@@ -1130,6 +1295,30 @@
                 
                 // Add event listeners for cost calculation
                 addAdditionalCheckupListeners();
+            }
+
+            function restoreAdditionalItems(savedAddItems) {
+                // 추가검사 탭의 항목들도 로드된 후 체크해야 함.
+                // 1초 지연 후 시도 (loadAdditionalCheckups 완료 대기)
+                setTimeout(() => {
+                    if (savedAddItems && savedAddItems.length > 0) {
+                        const savedSNs = savedAddItems.map(i => i.CKUP_GDS_EXCEL_ADD_CHC_SN);
+                        const savedNames = savedAddItems.map(i => i.CKUP_ARTCL);
+
+                        document.querySelectorAll('.additional-item-checkbox').forEach(cb => {
+                             const sn = cb.value;
+                             const name = cb.getAttribute('data-name');
+                             
+                             // SN으로 매칭
+                             if (savedSNs.includes(sn)) {
+                                 cb.checked = true;
+                             }
+                        });
+                        
+                        // 비용 업데이트
+                        updateTotalAdditionalCost();
+                    }
+                }, 1000);
             }
             
             function addAdditionalCheckupListeners() {
@@ -1155,33 +1344,66 @@
                 document.getElementById('selectedAdditionalCostDisplay').textContent = total.toLocaleString() + '원';
             }
 
-            // 추가검사 선택완료(다음 단계) 버튼 클릭 이벤트
-            document.getElementById('btnConfirmAdditional').addEventListener('click', function() {
+            // 공통 함수: 추가검사 -> 예약자 정보 확인 탭 이동
+            function goToStep4FromAdditional() {
+                // 예약 변경(수정) 모드일 경우: 데이터 처리 로직 건너뛰고 탭만 이동
+                if (rsvtStts === 'Y' || rsvtStts === 'C') {
+                    const step4Tab = new bootstrap.Tab(document.querySelector('[href="#step4"]'));
+                    step4Tab.show();
+                    // 스크롤을 최상단으로 이동
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
                 // 1. 현재 누적 금액 가져오기
                 const totalCost = document.getElementById('totalAdditionalCost').textContent;
-                
+
                 // 2. 예약정보 테이블에 표시 (원 단위 추가)
                 document.getElementById('selectedAdditionalCostDisplay').textContent = totalCost + '원';
-                
+
                 // 3. 다음 탭(예약자 정보 확인)으로 이동
                 const step4Tab = new bootstrap.Tab(document.querySelector('[href="#step4"]'));
                 step4Tab.show();
-            });
+                // 스크롤을 최상단으로 이동
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // 공통 함수: 추가검사 -> 검진일/상품선택 탭 이동
+            function goToStep2FromAdditional() {
+                const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
+                step2Tab.show();
+                // 스크롤을 최상단으로 이동
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // 하단 다음 버튼 클릭 이벤트
+            document.getElementById('btnConfirmAdditional').addEventListener('click', goToStep4FromAdditional);
+
+            // 상단 다음 버튼 클릭 이벤트 (공통 함수 재사용)
+            document.getElementById('btnConfirmAdditionalTop').addEventListener('click', goToStep4FromAdditional);
 
             // 이전 버튼 (상품선택 -> 병원선택)
             document.getElementById('btnPrevToHospital').addEventListener('click', function() {
                 const step1Tab = new bootstrap.Tab(document.querySelector('[href="#step1"]'));
                 step1Tab.show();
+                // 스크롤을 최상단으로 이동
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // 이전 버튼 (추가검사 -> 검진일/상품선택)
-            document.getElementById('btnPrevToProduct').addEventListener('click', function() {
-                const step2Tab = new bootstrap.Tab(document.querySelector('[href="#step2"]'));
-                step2Tab.show();
-            });
+            // 하단 이전 버튼 클릭 이벤트
+            document.getElementById('btnPrevToProduct').addEventListener('click', goToStep2FromAdditional);
+
+            // 상단 이전 버튼 클릭 이벤트 (공통 함수 재사용)
+            document.getElementById('btnPrevToProductTop').addEventListener('click', goToStep2FromAdditional);
 
             // 예약 취소 버튼 클릭 이벤트
             document.getElementById('btnCancelReservation').addEventListener('click', function() {
+                // 예약 변경 모드일 경우 검진대상자 목록으로 이동
+                if (rsvtStts === 'Y' || rsvtStts === 'C') {
+                    window.location.href = '<?= site_url('user/ckupTrgt') ?>';
+                    return;
+                }
+
                 Swal.fire({
                     title: '준비중',
                     text: '준비중입니다.',
@@ -1260,7 +1482,11 @@
                             icon: 'success',
                             confirmButtonText: '확인'
                         }).then(() => {
-                            window.location.href = '<?= site_url('user/rsvn') ?>'; // 예약 내역 페이지로 이동
+                            // 예약 변경 모드일 경우 검진대상자 목록으로, 아니면 예약 내역으로 이동
+                            const redirectUrl = (rsvtStts === 'Y' || rsvtStts === 'C') 
+                                ? '<?= site_url('user/ckupTrgt') ?>'
+                                : '<?= site_url('user/rsvn') ?>';
+                            window.location.href = redirectUrl;
                         });
                     } else {
                         Swal.fire('오류', data.message, 'error');

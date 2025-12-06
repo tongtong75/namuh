@@ -25,6 +25,7 @@ $routes->group('user', static function ($routes) {
     $routes->get('rsvnSel/getCheckupItems', 'UserRsvnController::getCheckupItems'); // 검사항목 조회
     $routes->get('rsvnSel/getProductChoiceItems', 'UserRsvnController::getProductChoiceItems'); // 상품선택 항목 조회
     $routes->get('rsvnSel/getAdditionalCheckups', 'UserRsvnController::getAdditionalCheckups'); // 추가검사 항목 조회
+    $routes->get('rsvnSel/getReservationDetails', 'UserRsvnController::getReservationDetails'); // 예약 상세 조회 (복원용)
     $routes->post('rsvnSel/complete', 'UserRsvnController::completeReservation'); // 예약 완료 처리
     $routes->post('makeReservation', 'UserAuthController::makeReservation');     // 예약 처리
     $routes->post('cancelReservation', 'UserAuthController::cancelReservation'); // 예약 취소
@@ -75,16 +76,8 @@ $routes->group('mngr', static function ($routes) {
     });
 
     // 병원관리 (HsptlMngController)
-    // 이제 URL은 mngr/hsptlmng/* 형태가 됩니다.
-    // resource 라우트와 커스텀 AJAX 라우트를 함께 그룹화합니다.
     $routes->group('hsptlMng', static function ($routes) {
-        // resource는 그룹 내에서 '/'로 지정하여 mngr/hsptlmng/를 기본으로 사용합니다.
-       /* $routes->resource('/', [
-            'controller'    => 'HsptlMngController',
-            'placeholder'   => '(:num)',
-        ]);*/
         $routes->get('/', 'HsptlMngController::index'); // List view
-        // AJAX 처리용 라우트 (mngr/hsptlmng/ajax_*)
         $routes->get('ajax_list', 'HsptlMngController::ajax_list');
         $routes->get('ajax_get_hsptl/(:num)', 'HsptlMngController::ajax_get_hsptl/$1');
         $routes->post('ajax_create', 'HsptlMngController::ajax_create');
@@ -93,6 +86,7 @@ $routes->group('mngr', static function ($routes) {
     });
 
     //검진항목관리(CkupArtclMngController)
+    /*
     $routes->group('ckupArtclMng', static function ($routes) {
         $routes->get('/', 'CkupArtclMngController::index'); // List view
         $routes->post('ajax_list', 'CkupArtclMngController::ajax_list');
@@ -112,7 +106,7 @@ $routes->group('mngr', static function ($routes) {
         $routes->post('ajax_update', 'ChcArtclMngController::ajax_update');    // Update existing item
         $routes->post('ajax_delete/(:num)', 'ChcArtclMngController::ajax_delete/$1'); // Delete item (soft delete)
     });
-
+*/
 
     // 회사관리 (CoMngController)
     $routes->group('coMng', static function ($routes) { 
@@ -148,7 +142,7 @@ $routes->group('mngr', static function ($routes) {
     });
 
     // 상품관리 (CkupGdsController)
-    $routes->group('ckupGdsMng', static function ($routes) { 
+   /* $routes->group('ckupGdsMng', static function ($routes) { 
         $routes->get('/', 'CkupGdsController::index');         
         $routes->get('add', 'CkupGdsController::add');   
         $routes->post('ckupGdsSave', 'CkupGdsController::ckupGdsSave');
@@ -156,22 +150,22 @@ $routes->group('mngr', static function ($routes) {
         $routes->get('edit/(:num)', 'CkupGdsController::edit/$1');
         $routes->post('delete/(:num)', 'CkupGdsController::delete/$1');
     });
-
+*/
     // 검진상품 엑셀 관리 (CkupGdsExcelController)
     $routes->group('ckupGdsExcel', static function ($routes) {
-        $routes->get('/', 'mngr\CkupGdsExcelController::index');
-        $routes->post('ajax_list', 'mngr\CkupGdsExcelController::ajax_list');
-        $routes->get('add', 'mngr\CkupGdsExcelController::add');
-        $routes->get('edit/(:num)', 'mngr\CkupGdsExcelController::edit/$1');
-        $routes->post('save', 'mngr\CkupGdsExcelController::save');
-        $routes->post('delete/(:num)', 'mngr\CkupGdsExcelController::delete/$1');
-        $routes->post('deleteItem/(:segment)/(:num)', 'mngr\CkupGdsExcelController::deleteItem/$1/$2');
-        $routes->post('deleteGroup/(:num)', 'mngr\CkupGdsExcelController::deleteGroup/$1');
-        $routes->post('deleteItems/(:segment)', 'mngr\CkupGdsExcelController::deleteItems/$1');
-        $routes->post('updateChoiceItem/(:num)', 'mngr\CkupGdsExcelController::updateChoiceItem/$1');
-        $routes->post('updateBasicItem/(:num)', 'mngr\CkupGdsExcelController::updateBasicItem/$1');
-        $routes->post('updateAddChoiceItem/(:num)', 'mngr\CkupGdsExcelController::updateAddChoiceItem/$1');
-        $routes->post('copy/(:num)', 'mngr\CkupGdsExcelController::copy/$1');
+        $routes->get('/', 'CkupGdsExcelController::index');
+        $routes->post('ajax_list', 'CkupGdsExcelController::ajax_list');
+        $routes->get('add', 'CkupGdsExcelController::add');
+        $routes->get('edit/(:num)', 'CkupGdsExcelController::edit/$1');
+        $routes->post('save', 'CkupGdsExcelController::save');
+        $routes->post('delete/(:num)', 'CkupGdsExcelController::delete/$1');
+        $routes->post('deleteItem/(:segment)/(:num)', 'CkupGdsExcelController::deleteItem/$1/$2');
+        $routes->post('deleteGroup/(:num)', 'CkupGdsExcelController::deleteGroup/$1');
+        $routes->post('deleteItems/(:segment)', 'CkupGdsExcelController::deleteItems/$1');
+        $routes->post('updateChoiceItem/(:num)', 'CkupGdsExcelController::updateChoiceItem/$1');
+        $routes->post('updateBasicItem/(:num)', 'CkupGdsExcelController::updateBasicItem/$1');
+        $routes->post('updateAddChoiceItem/(:num)', 'CkupGdsExcelController::updateAddChoiceItem/$1');
+        $routes->post('copy/(:num)', 'CkupGdsExcelController::copy/$1');
     });
 
     // 요일별 검진 인원 관리 (DayCkupMngController)

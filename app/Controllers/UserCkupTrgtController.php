@@ -140,7 +140,7 @@ class UserCkupTrgtController extends BaseController
                     'CKUP_RSVN_YMD'=> !empty($row['CKUP_RSVN_YMD']) ? date('Y-m-d', strtotime($row['CKUP_RSVN_YMD'])) : '-',
                     'RSVT_STTS'    => $row['RSVT_STTS'] === 'C' ? '<span class="badge bg-danger fs-6">예약확정</span>' : ($row['RSVT_STTS'] === 'Y' ? '<span class="badge bg-success fs-6">예약완료</span>' : '미예약'),
                     'rsvn_button'  => ($row['RSVT_STTS'] === 'C' || $row['RSVT_STTS'] === 'Y') 
-                                      ? '<button class="btn btn-secondary btn-sm" onclick="alert(\'준비중입니다.\')">예약변경</button>' 
+                                      ? '<a href="/user/rsvnSel?ckup_trgt_sn=' . $row['CKUP_TRGT_SN'] . '" class="btn btn-secondary btn-sm">예약변경</a>' 
                                       : '<a href="/user/rsvnSel?ckup_trgt_sn=' . $row['CKUP_TRGT_SN'] . '" class="btn btn-primary btn-sm">예약</a>',
                     'memo_status'  => $memoStatus,
                     'action'       => view('user/ckup_trgt/action_buttons', [

@@ -40,8 +40,8 @@ class UserRsvnController extends BaseController
             return redirect()->back()->with('error', '대상자 정보를 찾을 수 없습니다.');
         }
 
-        // 본인이 아닐 경우, 본인의 지원금 정보를 가져옴
-        if ($targetInfo['RELATION'] !== 'S') {
+        // 지원금 정보가 없을 경우, 본인의 지원금 정보를 가져옴
+        if (empty($targetInfo['SUPPORT_FUND'])) {
             $employeeInfo = $this->ckupTrgtModel
                 ->where('BUSINESS_NUM', $targetInfo['BUSINESS_NUM'])
                 ->where('CO_SN', $targetInfo['CO_SN'])
@@ -112,8 +112,8 @@ class UserRsvnController extends BaseController
             return $this->response->setJSON(['success' => false, 'message' => '대상자 정보를 찾을 수 없습니다.']);
         }
 
-        // 본인이 아닐 경우, 본인의 지원금 정보를 가져옴
-        if ($targetInfo['RELATION'] !== 'S') {
+        // 지원금 정보가 없을 경우, 본인의 지원금 정보를 가져옴
+        if (empty($targetInfo['SUPPORT_FUND'])) {
             $employeeInfo = $this->ckupTrgtModel
                 ->where('BUSINESS_NUM', $targetInfo['BUSINESS_NUM'])
                 ->where('CO_SN', $targetInfo['CO_SN'])
@@ -407,7 +407,7 @@ class UserRsvnController extends BaseController
 
         // 1. 선택 항목 조회 (RSVN_CKUP_GDS_CHC_ARTCL + CKUP_GDS_EXCEL_CHC_ARTCL)
         $choiceBuilder = $db->table('RSVN_CKUP_GDS_CHC_ARTCL a');
-        $choiceItems = $choiceBuilder->select('b.CKUP_ARTCL, b.CKUP_TYPE, b.CKUP_SE')
+        $choiceItems = $choiceBuilder->select('b.CKUP_GDS_EXCEL_CHC_ARTCL_SN, b.CKUP_ARTCL, b.CKUP_TYPE, b.CKUP_SE')
             ->join('CKUP_GDS_EXCEL_CHC_ARTCL b', 'a.CKUP_GDS_EXCEL_CHC_ARTCL_SN = b.CKUP_GDS_EXCEL_CHC_ARTCL_SN')
             ->where('a.CKUP_TRGT_SN', $ckupTrgtSn)
             ->where('a.DEL_YN', 'N')
@@ -415,19 +415,34 @@ class UserRsvnController extends BaseController
             ->getResultArray();
 
         // 2. 추가 검사 항목 조회 (RSVN_CKUP_GDS_ADD_CHC + CKUP_GDS_EXCEL_ADD_CHC)
-        // Note: RSVN_CKUP_GDS_ADD_CHC table uses CKUP_GDS_EXCEL_ADD_ARTCL_SN column which maps to CKUP_GDS_EXCEL_ADD_CHC_SN
         $addBuilder = $db->table('RSVN_CKUP_GDS_ADD_CHC a');
-        $addItems = $addBuilder->select('b.CKUP_ARTCL, b.CKUP_CST')
+        $addItems = $addBuilder->select('b.CKUP_GDS_EXCEL_ADD_CHC_SN, b.CKUP_ARTCL, b.CKUP_CST')
             ->join('CKUP_GDS_EXCEL_ADD_CHC b', 'a.CKUP_GDS_EXCEL_ADD_ARTCL_SN = b.CKUP_GDS_EXCEL_ADD_CHC_SN')
             ->where('a.CKUP_TRGT_SN', $ckupTrgtSn)
             ->where('a.DEL_YN', 'N')
             ->get()
             ->getResultArray();
 
+        // 3. 연락처 정보 조회 (CKUP_TRGT)
+        $targetInfo = $db->table('CKUP_TRGT')
+            ->select('TEL, HANDPHONE')
+            ->where('CKUP_TRGT_SN', $ckupTrgtSn)
+            ->get()
+            ->getRowArray();
+
+        // 4. 주소 정보 조회 (RSVN_CKUP_TRGT_ADDR)
+        $addrInfo = $db->table('RSVN_CKUP_TRGT_ADDR')
+            ->select('ZIP_CODE, ADDR, ADDR2')
+            ->where('CKUP_TRGT_SN', $ckupTrgtSn)
+            ->get()
+            ->getRowArray();
+
         return $this->response->setJSON([
             'success' => true,
             'choiceItems' => $choiceItems,
-            'addItems' => $addItems
+            'addItems' => $addItems,
+            'targetInfo' => $targetInfo,
+            'addrInfo' => $addrInfo
         ]);
     }
 }

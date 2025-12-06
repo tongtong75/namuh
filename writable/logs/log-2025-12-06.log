@@ -1,0 +1,444 @@
+DEBUG - 2025-12-06 00:13:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:13:09 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:13:09 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 00:13:09 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:13:09 --> RELATION: S
+DEBUG - 2025-12-06 00:13:09 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:13:09 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:13:09 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:13:09 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:13:09 --> Products found: 2
+DEBUG - 2025-12-06 00:13:09 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:13:09 --> =========================
+DEBUG - 2025-12-06 00:22:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:22:31 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:22:31 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 00:22:31 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:22:31 --> RELATION: S
+DEBUG - 2025-12-06 00:22:31 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:22:31 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:22:31 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:22:31 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:22:31 --> Products found: 2
+DEBUG - 2025-12-06 00:22:31 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:22:31 --> =========================
+DEBUG - 2025-12-06 00:23:14 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:23:14 --> HSPTL_SN: 1
+DEBUG - 2025-12-06 00:23:14 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:23:14 --> RELATION: S
+DEBUG - 2025-12-06 00:23:14 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:23:14 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:23:14 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:23:14 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:23:14 --> Products found: 1
+DEBUG - 2025-12-06 00:23:14 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '1'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:23:14 --> =========================
+DEBUG - 2025-12-06 00:28:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:28:25 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:28:25 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 00:28:25 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:28:25 --> RELATION: S
+DEBUG - 2025-12-06 00:28:25 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:28:25 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:28:25 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:28:25 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:28:25 --> Products found: 2
+DEBUG - 2025-12-06 00:28:25 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:28:25 --> =========================
+DEBUG - 2025-12-06 00:29:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:29:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:29:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:29:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:29:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:29:59 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:29:59 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 00:29:59 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:29:59 --> RELATION: S
+DEBUG - 2025-12-06 00:29:59 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:29:59 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:29:59 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:29:59 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:29:59 --> Products found: 2
+DEBUG - 2025-12-06 00:29:59 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:29:59 --> =========================
+DEBUG - 2025-12-06 00:31:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:31:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:31:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:31:48 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:31:48 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 00:31:48 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:31:48 --> RELATION: S
+DEBUG - 2025-12-06 00:31:48 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:31:48 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:31:48 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:31:48 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:31:48 --> Products found: 2
+DEBUG - 2025-12-06 00:31:48 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:31:48 --> =========================
+DEBUG - 2025-12-06 00:34:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:34:26 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:34:26 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 00:34:26 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:34:26 --> RELATION: S
+DEBUG - 2025-12-06 00:34:26 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:34:26 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:34:26 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:34:26 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:34:26 --> Products found: 2
+DEBUG - 2025-12-06 00:34:26 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:34:26 --> =========================
+DEBUG - 2025-12-06 00:34:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:34:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:34:39 --> === Product Query Debug ===
+DEBUG - 2025-12-06 00:34:39 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 00:34:39 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 00:34:39 --> RELATION: S
+DEBUG - 2025-12-06 00:34:39 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 00:34:39 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 00:34:39 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 00:34:39 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 00:34:39 --> Products found: 2
+DEBUG - 2025-12-06 00:34:39 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 00:34:39 --> =========================
+DEBUG - 2025-12-06 00:34:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 00:34:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 01:03:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 01:03:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 01:26:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 01:26:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 01:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-06 06:52:23 --> REDIRECTED ROUTE at http://localhost/user/login
+DEBUG - 2025-12-06 06:52:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 06:52:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 06:52:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 06:52:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 06:52:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 06:52:46 --> === Product Query Debug ===
+DEBUG - 2025-12-06 06:52:46 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 06:52:46 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 06:52:46 --> RELATION: S
+DEBUG - 2025-12-06 06:52:46 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 06:52:46 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 06:52:46 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 06:52:46 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 06:52:46 --> Products found: 2
+DEBUG - 2025-12-06 06:52:46 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 06:52:46 --> =========================
+DEBUG - 2025-12-06 06:53:02 --> === Product Query Debug ===
+DEBUG - 2025-12-06 06:53:02 --> HSPTL_SN: 1
+DEBUG - 2025-12-06 06:53:02 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 06:53:02 --> RELATION: S
+DEBUG - 2025-12-06 06:53:02 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 06:53:02 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 06:53:02 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 06:53:02 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 06:53:02 --> Products found: 1
+DEBUG - 2025-12-06 06:53:02 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '1'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 06:53:02 --> =========================
+DEBUG - 2025-12-06 06:53:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 06:53:25 --> === Product Query Debug ===
+DEBUG - 2025-12-06 06:53:25 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 06:53:25 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 06:53:25 --> RELATION: S
+DEBUG - 2025-12-06 06:53:25 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 06:53:25 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 06:53:25 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 06:53:25 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 06:53:25 --> Products found: 2
+DEBUG - 2025-12-06 06:53:25 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 06:53:25 --> =========================
+DEBUG - 2025-12-06 06:57:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 06:57:34 --> === Product Query Debug ===
+DEBUG - 2025-12-06 06:57:34 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 06:57:34 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 06:57:34 --> RELATION: S
+DEBUG - 2025-12-06 06:57:34 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 06:57:34 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 06:57:34 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 06:57:34 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 06:57:34 --> Products found: 2
+DEBUG - 2025-12-06 06:57:34 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 06:57:34 --> =========================
+DEBUG - 2025-12-06 07:03:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:03:38 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:03:38 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:03:38 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:03:38 --> RELATION: S
+DEBUG - 2025-12-06 07:03:38 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:03:38 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:03:38 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:03:38 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:03:38 --> Products found: 2
+DEBUG - 2025-12-06 07:03:38 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:03:38 --> =========================
+DEBUG - 2025-12-06 07:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:04:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:04:05 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:04:05 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:04:05 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:04:05 --> RELATION: S
+DEBUG - 2025-12-06 07:04:05 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:04:05 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:04:05 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:04:05 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:04:05 --> Products found: 2
+DEBUG - 2025-12-06 07:04:05 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:04:05 --> =========================
+DEBUG - 2025-12-06 07:11:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:11:28 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:11:28 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:11:28 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:11:28 --> RELATION: S
+DEBUG - 2025-12-06 07:11:28 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:11:28 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:11:28 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:11:28 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:11:28 --> Products found: 2
+DEBUG - 2025-12-06 07:11:28 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:11:28 --> =========================
+DEBUG - 2025-12-06 07:23:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:23:56 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:23:56 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:23:56 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:23:56 --> RELATION: S
+DEBUG - 2025-12-06 07:23:56 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:23:56 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:23:56 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:23:56 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:23:56 --> Products found: 2
+DEBUG - 2025-12-06 07:23:56 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:23:56 --> =========================
+DEBUG - 2025-12-06 07:29:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:29:24 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:29:24 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:29:24 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:29:24 --> RELATION: S
+DEBUG - 2025-12-06 07:29:24 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:29:24 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:29:24 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:29:24 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:29:24 --> Products found: 2
+DEBUG - 2025-12-06 07:29:24 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:29:24 --> =========================
+DEBUG - 2025-12-06 07:30:08 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:30:08 --> HSPTL_SN: 1
+DEBUG - 2025-12-06 07:30:08 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:30:08 --> RELATION: S
+DEBUG - 2025-12-06 07:30:08 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:30:08 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:30:08 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:30:08 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:30:08 --> Products found: 1
+DEBUG - 2025-12-06 07:30:08 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '1'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:30:08 --> =========================
+DEBUG - 2025-12-06 07:30:24 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:30:24 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:30:24 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:30:24 --> RELATION: S
+DEBUG - 2025-12-06 07:30:24 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:30:24 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:30:24 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:30:24 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:30:24 --> Products found: 2
+DEBUG - 2025-12-06 07:30:24 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:30:24 --> =========================
+DEBUG - 2025-12-06 07:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:35:22 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:35:22 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:35:22 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:35:22 --> RELATION: S
+DEBUG - 2025-12-06 07:35:22 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:35:22 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:35:22 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:35:22 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:35:22 --> Products found: 2
+DEBUG - 2025-12-06 07:35:22 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:35:22 --> =========================
+DEBUG - 2025-12-06 07:39:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:39:39 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:39:39 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:39:39 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:39:39 --> RELATION: S
+DEBUG - 2025-12-06 07:39:39 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:39:39 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:39:39 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:39:39 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:39:39 --> Products found: 2
+DEBUG - 2025-12-06 07:39:39 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:39:39 --> =========================
+DEBUG - 2025-12-06 07:40:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:40:07 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:40:07 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:40:07 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:40:07 --> RELATION: S
+DEBUG - 2025-12-06 07:40:07 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:40:07 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:40:07 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:40:07 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:40:07 --> Products found: 2
+DEBUG - 2025-12-06 07:40:07 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:40:07 --> =========================
+DEBUG - 2025-12-06 07:40:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:40:09 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:40:09 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:40:09 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:40:09 --> RELATION: S
+DEBUG - 2025-12-06 07:40:09 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:40:09 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:40:09 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:40:09 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:40:09 --> Products found: 2
+DEBUG - 2025-12-06 07:40:09 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:40:09 --> =========================
+DEBUG - 2025-12-06 07:43:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:43:07 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:43:07 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:43:07 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:43:07 --> RELATION: S
+DEBUG - 2025-12-06 07:43:07 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:43:07 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:43:07 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:43:07 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:43:07 --> Products found: 2
+DEBUG - 2025-12-06 07:43:07 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:43:07 --> =========================
+DEBUG - 2025-12-06 07:47:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-12-06 07:47:54 --> === Product Query Debug ===
+DEBUG - 2025-12-06 07:47:54 --> HSPTL_SN: 3
+DEBUG - 2025-12-06 07:47:54 --> CKUP_YYYY: 2025
+DEBUG - 2025-12-06 07:47:54 --> RELATION: S
+DEBUG - 2025-12-06 07:47:54 --> SUPPORT_FUND: 5
+DEBUG - 2025-12-06 07:47:54 --> FAMILY_SUPPORT_FUND: 10
+DEBUG - 2025-12-06 07:47:54 --> Selected SPRT_SE: 5
+DEBUG - 2025-12-06 07:47:54 --> Filtering by SPRT_SE: 5
+DEBUG - 2025-12-06 07:47:54 --> Products found: 2
+DEBUG - 2025-12-06 07:47:54 --> SQL Query: SELECT *
+FROM `CKUP_GDS_EXCEL_MNG`
+WHERE `HSPTL_SN` = '3'
+AND `CKUP_YYYY` = '2025'
+AND `DEL_YN` = 'N'
+AND `SPRT_SE` = '5'
+DEBUG - 2025-12-06 07:47:54 --> =========================
